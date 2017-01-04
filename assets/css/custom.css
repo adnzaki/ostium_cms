@@ -2,10 +2,33 @@
     height: 120px !important;
     padding-top: 15px;
 }
-.icon {
+.icon-custom {
     margin-top: -20px !important;
     padding-top: 20px !important;
 }
 .text-large {
     font-size: 1.6em !important;
+}
+
+#add-post {
+    display: block;
+}
+
+.os-btn-custom {
+    /*margin-top: -28px;*/
+    float: right;
+}
+
+.os-btn-icon {
+    padding-top: 8px;
+}
+
+.os-icon-button {
+    padding-left: 0 !important;
+    margin-left: -8px;
+    margin-right: 10px;
+}
+
+#dashboard {
+    display: none;
 }
