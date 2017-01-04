@@ -11,6 +11,10 @@
 
 class Home extends CI_Controller
 {
+    /**
+     * Load main page
+     * @return void
+     */
     public function index()
     {
         $data['asset']      = base_url()."assets/";
