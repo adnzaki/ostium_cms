@@ -7,7 +7,7 @@
     <div class="row clearfix">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="info-box bg-pink hover-expand-effect info-box-custom">
-                <div class="icon">
+                <div class="icon icon-custom">
                     <i class="material-icons">filter_none</i>
                 </div>
                 <div class="content">
@@ -18,7 +18,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="info-box bg-cyan hover-expand-effect info-box-custom">
-                <div class="icon">
+                <div class="icon icon-custom">
                     <i class="material-icons">forum</i>
                 </div>
                 <div class="content">
@@ -29,7 +29,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="info-box bg-light-green hover-expand-effect info-box-custom">
-                <div class="icon">
+                <div class="icon icon-custom">
                     <i class="material-icons">favorite</i>
                 </div>
                 <div class="content">
@@ -61,7 +61,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);">Buat Post Baru</a></li>
+                                <li id="buat-post"><a href="javascript:void(0);">Buat Post Baru</a></li>
                                 <li><a href="javascript:void(0);">Lihat Semua Post</a></li>
                             </ul>
                         </li>
