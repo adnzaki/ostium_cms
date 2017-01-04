@@ -4,7 +4,7 @@
  * Class Home
  * Class ini merupakan class utama yang digunakan untuk
  * mengontrol segala aktivitas pada halaman Dashboard
- * @copyright   Dilisensikan dibawah MIT License
+ * @copyright   https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
  */
