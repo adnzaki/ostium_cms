@@ -17,6 +17,12 @@ class Home extends CI_Controller
         $data['main_title'] = 'Ostium CMS | Dashboard';
         $this->load->view('main', $data);
     }
+
+    public function test()
+    {
+        $data['asset'] = base_url()."assets/";
+        $this->load->view('test', $data);
+    }
 }
 
 ?>
