@@ -36,16 +36,4 @@ class Posts_handler extends CI_Controller
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

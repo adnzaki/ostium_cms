@@ -44,8 +44,5 @@
          $this->db->insert('os_post', $data);
      }
  }
-
-
-
-
+ 
 ?>
