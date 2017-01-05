@@ -116,19 +116,19 @@ switch (ENVIRONMENT)
  */
 	$application_folder = 'application';
 
-	/*
-	 *---------------------------------------------------------------
-	 * ASSET DIRECTORY NAME
-	 *---------------------------------------------------------------
-	 *
-	 * This is a custom variable to define assets folder.
-	 * It is used to get plugins file to be loaded in helper or library
-	 *
-	 * https://codeigniter.com/user_guide/general/managing_apps.html
-	 *
-	 * NO TRAILING SLASH!
-	 */
-		$asset_folder = 'assets';
+/*
+ *---------------------------------------------------------------
+ * ASSET DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * This is a custom variable to define assets folder.
+ * It is used to get plugins file to be loaded in helper or library
+ *
+ * https://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ */
+	$asset_folder = 'assets';
 
 
 /*
