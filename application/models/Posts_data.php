@@ -24,7 +24,7 @@
       }
 
      /**
-      * Insert post into database
+      * Simpan data ke database
       * @return void
       */
      public function insert_post()

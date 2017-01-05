@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Posts_section
+ * Class Posts_handler
  * Class ini merupakan class yang mengatur aktifitas posting
  * mengontrol segala aktivitas pada halaman Dashboard
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
@@ -25,8 +25,7 @@ class Posts_handler extends CI_Controller
     }
 
     /**
-     * Add post to the database
-     * through Posts model
+     * Tambahkan post ke database melalui model Posts_data
      * @return void
      */
     public function add_post()
