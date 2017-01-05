@@ -36,7 +36,7 @@
 <script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/paste/plugin.dev.js"></script>
 <script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/wordcount/plugin.js"></script>
 <script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/spellchecker/plugin.dev.js"></script> -->
-<script src="<?php echo $asset?>plugins/tinymce_prod/tinymce.min.js"></script>
+<script src="<?php echo $asset?>plugins/tinymce/tinymce.min.js"></script>
 
 <!-- Ckeditor -->
 <script src="<?php echo $asset ?>js/plugins/ckeditor/ckeditor.js"></script>
