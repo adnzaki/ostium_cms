@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Class Home
- * Class ini merupakan class utama yang digunakan untuk
+ * Class Posts_handler
+ * Class ini merupakan class yang mengatur aktifitas posting
  * mengontrol segala aktivitas pada halaman Dashboard
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
@@ -11,8 +11,9 @@
  * @version     OstiumCMS v0.0.1
  */
 
-class Home extends CI_Controller
+class Posts_handler extends CI_Controller
 {
+
     /**
      * Models loader
      * @return void
@@ -24,22 +25,15 @@ class Home extends CI_Controller
     }
 
     /**
-     * Load main page
+     * Tambahkan post ke database melalui model Posts_data
      * @return void
      */
-    public function index()
+    public function add_post()
     {
-        $data['asset']      = base_url()."assets/";
-        $data['main_title'] = 'Ostium CMS | Dashboard';
-        $data['kategori']   = $this->Posts_data->get_category();
-        $this->load->view('main', $data);
+        $this->Posts_data->insert_post();
+        redirect('Home');
     }
 
-    /*public function test()
-    {
-        $data['asset'] = base_url()."assets/";
-        $this->load->view('test', $data);
-    }*/
 }
 
 ?>
