@@ -48,8 +48,6 @@ define('DEBUG_ERROR_MESSAGE', true); // TRUE or FALSE
 |    |   |   |   |   |- plugin.min.js
 */
 
-$source_url = "http://localhost:8080/ostium_cms/assets/plugins/tinymce/plugins/filemanager";
-
 $config = array(
 
 	/*
@@ -70,7 +68,8 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/assets/uploads/',
+	'upload_dir' => '/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/',
+	
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder
