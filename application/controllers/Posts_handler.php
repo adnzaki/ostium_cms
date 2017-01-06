@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Ostium CMS
+ * A content management system for Wolestech's based site
  * Class Posts_handler
  * Class ini merupakan class yang mengatur aktifitas posting
  * mengontrol segala aktivitas pada halaman Dashboard
@@ -8,7 +10,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.1
+ * @version     OstiumCMS v0.0.2
  */
 
 class Posts_handler extends CI_Controller

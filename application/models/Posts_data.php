@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Ostium CMS
+ * A content management system for Wolestech's based site
  * Class Posts
  * Class ini digunakan untuk memroses segala aktifitas transaksi data
  * pada bagian posting
@@ -8,7 +10,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.1
+ * @version     OstiumCMS v0.0.2
  */
 
  class Posts_data extends CI_Model
@@ -44,5 +46,5 @@
          $this->db->insert('os_post', $data);
      }
  }
- 
+
 ?>
