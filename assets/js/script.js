@@ -20,10 +20,13 @@ function runTinyMCE() {
             'advlist autolink lists link charmap print preview hr anchor pagebreak',
             'searchreplace wordcount visualblocks visualchars code fullscreen',
             'insertdatetime nonbreaking save table contextmenu directionality',
-            'emoticons template paste textcolor colorpicker textpattern imagetools image'
+            'emoticons template paste textcolor colorpicker textpattern imagetools image responsivefilemanager'
         ],
         toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        toolbar2: 'print preview | forecolor backcolor emoticons',
-        image_advtab: true
+        toolbar2: 'responsivefilemanager print preview | forecolor backcolor emoticons',
+        image_advtab: true,
+        external_filemanager_path:"assets/plugins/tinymce/plugins/filemanager/",
+        filemanager_title:"Responsive Filemanager" ,
+        external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}
     });
 }
