@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Test tiny mce</title>
+        <title>Test tinymce</title>
         <script src="<?php echo $asset?>plugins/tinymce/tinymce.min.js"></script>
 
         <script type="text/javascript">
