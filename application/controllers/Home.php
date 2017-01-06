@@ -35,11 +35,6 @@ class Home extends CI_Controller
         $this->load->view('main', $data);
     }
 
-    /*public function test()
-    {
-        $data['asset'] = base_url()."assets/";
-        $this->load->view('test', $data);
-    }*/
 }
 
 ?>
