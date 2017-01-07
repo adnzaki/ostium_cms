@@ -25,6 +25,16 @@
           return $get_data;
       }
 
+      /**
+       * Ambil user dari database
+       * @return void
+       */
+       public function get_user()
+       {
+           $get_data = $this->db->get('os_user');
+           return $get_data;
+       }
+
      /**
       * Simpan data ke database
       * @return void
@@ -33,10 +43,15 @@
      {
          $judul     = $this->input->post('judul_post');
          $kategori  = $this->input->post('kategori');
-         $author    = 1; // isi variabel ini akan diambil dari session nantinya
+         $author    = $this->input->post('user');
          $status    = "publik";
          $isi_post  = $this->input->post('isi_post');
-         $data      = array(
+         if($judul === '')
+         {
+             $judul     = "Tanpa Judul";
+             $status    = "draft";
+         }
+         $data = array(
              'judul_post'       => $judul,
              'kategori_post'    => $kategori,
              'penulis_post'     => $author,
