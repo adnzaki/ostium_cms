@@ -25,6 +25,18 @@
 
                                         </select>
                                     </div>
+                                    <div class="col-md-3">
+                                        <p>
+                                            <b>Penulis</b>
+                                        </p>
+                                        <select name="user" class="form-control show-tick">
+
+                                            <?php foreach ($user->result() as $user) {
+                                                echo "<option value='$user->id' id='$user->id'>$user->user_name</option>";
+                                            } ?>
+
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +47,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);">Simpan Draft</a></li>
+                                <li><a href="javascript:void(0);">Simpan sebagai Draft</a></li>
                                 <li><a href="javascript:void(0);">Tutup</a></li>
                             </ul>
                         </li>
