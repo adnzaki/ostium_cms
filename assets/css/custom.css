@@ -29,6 +29,10 @@
     margin-right: 10px;
 }
 
+.post-edit, .post-delete {
+    cursor: pointer;
+}
+
 /*#dashboard {
     display: none;
 }*/

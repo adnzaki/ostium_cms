@@ -76,7 +76,7 @@
                                     <th>Judul Post</th>
                                     <th>Kategori</th>
                                     <th>Penulis</th>
-                                    <th>Tanggal</th>
+                                    <th colspan="2" class="align-center">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,11 +85,8 @@
                                     <td>Task A</td>
                                     <td><span class="label bg-green">Doing</span></td>
                                     <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
-                                        </div>
-                                    </td>
+                                    <td class="align-center post-edit"><i class="material-icons">mode_edit</i></td>
+                                    <td class="align-center post-delete"><i class="material-icons">delete</i></td>
                                 </tr>
 
                             </tbody>
