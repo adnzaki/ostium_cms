@@ -31,10 +31,11 @@ class Home extends CI_Controller
      */
     public function index()
     {
-        $data['asset']      = base_url()."assets/";
-        $data['main_title'] = 'Ostium CMS | Dashboard';
-        $data['kategori']   = $this->Posts_data->get_category();
-        $data['user']       = $this->Posts_data->get_user();
+        $data['asset']          = base_url()."assets/";
+        $data['main_title']     = 'Ostium CMS | Dashboard';
+        $data['kategori']       = $this->Posts_data->get_category();
+        $data['user']           = $this->Posts_data->get_user();
+        $data['recent_post']    = $this->Posts_data->get_recent_post();
         $this->load->view('main', $data);
     }
 
