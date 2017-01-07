@@ -35,31 +35,42 @@
            return $get_data;
        }
 
+       /**
+        * Ambil data post terbaru
+        * @return void
+        */
+    //    public function get_recent_post()
+    //    {
+    //        $get_data = $this->db->
+    //    }
+
      /**
       * Simpan data ke database
       * @return void
       */
-     public function insert_post()
-     {
-         $judul     = $this->input->post('judul_post');
-         $kategori  = $this->input->post('kategori');
-         $author    = $this->input->post('user');
-         $status    = "publik";
-         $isi_post  = $this->input->post('isi_post');
-         if($judul === '')
-         {
-             $judul     = "Tanpa Judul";
-             $status    = "draft";
-         }
-         $data = array(
-             'judul_post'       => $judul,
-             'kategori_post'    => $kategori,
-             'penulis_post'     => $author,
-             'status_post'      => $status,
-             'isi_post'         => $isi_post
-         );
-         $this->db->insert('os_post', $data);
-     }
+      public function insert_post()
+      {
+          $judul    = $this->input->post('judul_post');
+          $kategori = $this->input->post('kategori');
+          $author   = $this->input->post('user');
+          $status   = "publik";
+          $isi_post = $this->input->post('isi_post');
+          $tanggal  = date('Y-m-d H:i:s');
+          if($judul === '')
+          {
+              $judul     = "Tanpa Judul";
+              $status    = "draft";
+          }
+          $data = array(
+              'judul_post'      => $judul,
+              'kategori_post'   => $kategori,
+              'penulis_post'    => $author,
+              'status_post'     => $status,
+              'isi_post'        => $isi_post,
+              'tanggal_post'    => $tanggal
+          );
+          $this->db->insert('os_post', $data);
+      }
  }
 
 ?>
