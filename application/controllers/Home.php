@@ -34,6 +34,7 @@ class Home extends CI_Controller
         $data['asset']      = base_url()."assets/";
         $data['main_title'] = 'Ostium CMS | Dashboard';
         $data['kategori']   = $this->Posts_data->get_category();
+        $data['user']       = $this->Posts_data->get_user();
         $this->load->view('main', $data);
     }
 
