@@ -31,7 +31,7 @@ class Posts_handler extends CI_Controller
      * @return void
      */
     public function add_post()
-    {
+    {        
         $this->Posts_data->insert_post();
         redirect('Home');
     }
