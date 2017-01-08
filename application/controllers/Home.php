@@ -33,12 +33,14 @@ class Home extends CI_Controller
     {
         $data['asset']          = base_url()."assets/";
         $data['main_title']     = 'Ostium CMS | Dashboard';
-        $data['kategori']       = $this->Posts_data->get_category();
-        $data['user']           = $this->Posts_data->get_user();
+        $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
+        $data['user']           = $this->Posts_data->get_post_attribute('os_user');
         // ambil post yang telah dipublish
         $data['recent_post']    = $this->Posts_data->get_recent_post(5, 'publik');
         // ambil post yang masih berstatus draft
-        $data['recent_draft']    = $this->Posts_data->get_recent_post(5, 'draft');
+        $data['recent_draft']   = $this->Posts_data->get_recent_post(5, 'draft');
+        $data['total_post']     = $this->Posts_data->get_total_rows('os_post');
+        $data['total_comment']  = $this->Posts_data->get_total_rows('os_komentar');
         $this->load->view('main', $data);
     }
 

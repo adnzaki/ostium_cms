@@ -16,22 +16,23 @@
 class Posts_data extends CI_Model
 {
     /**
-     * Ambil kategori dari database
+     * Ambil data total baris dari beberapa tabel
+     * Input berasal dari controller
+     * @param string $table
      * @return void
      */
-    public function get_category()
+    public function get_total_rows($table)
     {
-        $get_data = $this->db->get('os_kategori');
-        return $get_data;
+        return $this->db->count_all($table);
     }
 
     /**
-     * Ambil user dari database
+     * Ambil atribut post dari database
      * @return void
      */
-    public function get_user()
+    public function get_post_attribute($table)
     {
-        $get_data = $this->db->get('os_user');
+        $get_data = $this->db->get($table);
         return $get_data;
     }
 
