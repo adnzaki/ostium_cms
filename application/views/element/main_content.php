@@ -12,7 +12,7 @@
                 </div>
                 <div class="content">
                     <div class="text text-large">TOTAL POST</div>
-                    <div class="number count-to" data-from="0" data-to="125" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo $total_post ?>" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="content">
                     <div class="text text-large">KOMENTAR</div>
-                    <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo $total_comment ?>" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
@@ -92,7 +92,9 @@
                                         if(strlen($rp->judul_post) <= 25 )
                                         {
                                             echo $rp->judul_post;
-                                        } else {
+                                        }
+                                        else
+                                        {
                                             echo substr($rp->judul_post, 0, 25)."...";
                                         }
                                         ?>
@@ -150,7 +152,9 @@
                                         if(strlen($draft->judul_post) <= 12 )
                                         {
                                             echo $draft->judul_post;
-                                        } else {
+                                        }
+                                        else
+                                        {
                                             echo substr($draft->judul_post, 0, 12)."...";
                                         }
                                         ?>
