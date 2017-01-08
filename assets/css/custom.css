@@ -11,7 +11,7 @@
 }
 
 #add-post {
-    display: block;
+    display: none;
 }
 
 .os-btn-custom {
@@ -29,6 +29,10 @@
     margin-right: 10px;
 }
 
-#dashboard {
-    display: none;
+.post-edit, .post-delete {
+    cursor: pointer;
 }
+
+/*#dashboard {
+    display: none;
+}*/

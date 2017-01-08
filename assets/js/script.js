@@ -8,6 +8,16 @@ $("#buat-post").on('click', function() {
     });
 })
 
+$("#tutup-post-editor").on('click', function() {
+    $("#add-post").fadeOut(300, function() {
+        $("#dashboard").fadeIn(400);
+    })
+})
+
+$(".post-edit").on('click', function() {
+    
+})
+
 $(window).load(function() {
     runTinyMCE();
 })
