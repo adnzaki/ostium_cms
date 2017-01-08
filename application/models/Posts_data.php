@@ -83,6 +83,25 @@ class Posts_data extends CI_Model
         );
         $this->db->insert('os_post', $data);
     }
+
+    public function insert_draft()
+    {
+        $judul    = $this->input->post('judul_post');
+        $kategori = $this->input->post('kategori');
+        $author   = $this->input->post('user');
+        $status   = "draft";
+        $isi_post = $this->input->post('isi_post');
+        $tanggal  = date('Y-m-d H:i:s');
+        $data     = array(
+            'judul_post'      => $judul,
+            'kategori_post'   => $kategori,
+            'penulis_post'    => $author,
+            'status_post'     => $status,
+            'isi_post'        => $isi_post,
+            'tanggal_post'    => $tanggal
+        );
+        $this->db->insert('os_post', $data);
+    }
 }
 
 ?>
