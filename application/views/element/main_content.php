@@ -80,15 +80,29 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $no = 0;
+                                foreach($recent_post->result() as $rp) {
+                                    $no++;
+                                ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Task A</td>
-                                    <td><span class="label bg-green">Doing</span></td>
-                                    <td>John Doe</td>
+                                    <td><?php echo $no ?></td>
+                                    <td>
+                                        <?php
+                                        if(strlen($rp->judul_post) <= 25 )
+                                        {
+                                            echo $rp->judul_post;
+                                        } else {
+                                            echo substr($rp->judul_post, 0, 25)."...";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><span class="label bg-green"><?php echo $rp->nama_kategori ?></span></td>
+                                    <td><?php echo $rp->user_name ?></td>
                                     <td class="align-center post-edit"><i class="material-icons">mode_edit</i></td>
                                     <td class="align-center post-delete"><i class="material-icons">delete</i></td>
                                 </tr>
-
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -107,9 +121,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);">Action</a></li>
-                                <li><a href="javascript:void(0);">Another action</a></li>
-                                <li><a href="javascript:void(0);">Something else here</a></li>
+                                <li><a href="javascript:void(0);">Lihat semua draft</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -122,13 +134,31 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Judul Post</th>
+                                    <th colspan="2" class="align-center">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $no = 0;
+                                foreach ($recent_draft->result() as $draft) {
+                                    $no++;
+                                ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Task A</td>
+                                    <td><?php echo $no ?></td>
+                                    <td>
+                                        <?php
+                                        if(strlen($draft->judul_post) <= 12 )
+                                        {
+                                            echo $draft->judul_post;
+                                        } else {
+                                            echo substr($draft->judul_post, 0, 12)."...";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td class="align-center post-edit"><i class="material-icons">mode_edit</i></td>
+                                    <td class="align-center post-delete"><i class="material-icons">delete</i></td>
                                 </tr>
+                                <?php } ?>
 
                             </tbody>
                         </table>
