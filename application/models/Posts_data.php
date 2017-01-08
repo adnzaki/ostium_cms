@@ -84,6 +84,10 @@ class Posts_data extends CI_Model
         $this->db->insert('os_post', $data);
     }
 
+    /**
+     * Simpan draft....
+     * @return void
+     */
     public function insert_draft()
     {
         $judul    = $this->input->post('judul_post');
