@@ -35,6 +35,16 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Ambil atribut post dari database
+     * @return void
+     */
+    public function get_post_attribute($table)
+    {
+        $get_data = $this->db->get($table);
+        return $get_data;
+    }
+
+    /**
      * Ambil data post dan draft terbaru
      * @param int $limit
      * @param string $key
