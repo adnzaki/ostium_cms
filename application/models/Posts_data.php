@@ -52,7 +52,6 @@ class Posts_data extends CI_Model
      */
     public function get_recent_post($limit, $key)
     {
-        //$this->db->select('os_post.judul_post', 'os_kategori.nama_kategori', 'os_user.user_name');
         $this->db->select('*');
         $this->db->from('os_post');
         $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
