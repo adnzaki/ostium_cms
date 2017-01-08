@@ -16,14 +16,22 @@
 class Posts_data extends CI_Model
 {
     /**
-     * Ambil data total baris dari beberapa tabel
-     * Input berasal dari controller
-     * @param string $table
+     * Ambil data total baris dari tabel post
      * @return void
      */
-    public function get_total_rows($table)
+    public function get_total_post()
     {
-        return $this->db->count_all($table);
+        $this->db->where('status_post', 'publik');
+        return $this->db->count_all_results('os_post');
+    }
+
+    /**
+     * Ambil data total baris dari tabel komentar
+     * @return void
+     */
+    public function get_total_comment()
+    {
+        return $this->db->count_all('os_komentar');
     }
 
     /**
@@ -44,7 +52,6 @@ class Posts_data extends CI_Model
      */
     public function get_recent_post($limit, $key)
     {
-        //$this->db->select('os_post.judul_post', 'os_kategori.nama_kategori', 'os_user.user_name');
         $this->db->select('*');
         $this->db->from('os_post');
         $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
@@ -74,6 +81,29 @@ class Posts_data extends CI_Model
             $status    = "draft";
         }
         $data = array(
+            'judul_post'      => $judul,
+            'kategori_post'   => $kategori,
+            'penulis_post'    => $author,
+            'status_post'     => $status,
+            'isi_post'        => $isi_post,
+            'tanggal_post'    => $tanggal
+        );
+        $this->db->insert('os_post', $data);
+    }
+
+    /**
+     * Simpan draft....
+     * @return void
+     */
+    public function insert_draft()
+    {
+        $judul    = $this->input->post('judul_post');
+        $kategori = $this->input->post('kategori');
+        $author   = $this->input->post('user');
+        $status   = "draft";
+        $isi_post = $this->input->post('isi_post');
+        $tanggal  = date('Y-m-d H:i:s');
+        $data     = array(
             'judul_post'      => $judul,
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,

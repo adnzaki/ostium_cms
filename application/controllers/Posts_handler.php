@@ -27,13 +27,22 @@ class Posts_handler extends CI_Controller
     }
 
     /**
-     * Tambahkan post ke database melalui model Posts_data
+     * Tambahkan post..
      * @return void
      */
     public function add_post()
     {
         $this->Posts_data->insert_post();
         redirect('Home');
+    }
+
+    /**
+     * Tambahkan draft...
+     * @return void
+     */
+    public function add_draft()
+    {
+        $this->Posts_data->insert_draft();
     }
 
 }

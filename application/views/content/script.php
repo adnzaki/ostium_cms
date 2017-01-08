@@ -1,3 +1,7 @@
+<script type="text/javascript">
+    var baseUrl = "<?php echo base_url() ?>";
+</script>
+
 <!-- Jquery Core Js -->
 <script src="<?php echo $asset ?>plugins/jquery/jquery.min.js"></script>
 

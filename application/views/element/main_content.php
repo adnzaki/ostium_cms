@@ -149,13 +149,13 @@
                                     <td><?php echo $no ?></td>
                                     <td>
                                         <?php
-                                        if(strlen($draft->judul_post) <= 12 )
+                                        if(strlen($draft->judul_post) <= 15 )
                                         {
                                             echo $draft->judul_post;
                                         }
                                         else
                                         {
-                                            echo substr($draft->judul_post, 0, 12)."...";
+                                            echo substr($draft->judul_post, 0, 15)."...";
                                         }
                                         ?>
                                     </td>
