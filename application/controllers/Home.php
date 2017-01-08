@@ -35,7 +35,10 @@ class Home extends CI_Controller
         $data['main_title']     = 'Ostium CMS | Dashboard';
         $data['kategori']       = $this->Posts_data->get_category();
         $data['user']           = $this->Posts_data->get_user();
-        $data['recent_post']    = $this->Posts_data->get_recent_post();
+        // ambil post yang telah dipublish
+        $data['recent_post']    = $this->Posts_data->get_recent_post(5, 'publik');
+        // ambil post yang masih berstatus draft
+        $data['recent_draft']    = $this->Posts_data->get_recent_post(5, 'draft');
         $this->load->view('main', $data);
     }
 
