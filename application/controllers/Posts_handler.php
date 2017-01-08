@@ -10,7 +10,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.2
+ * @version     OstiumCMS v0.0.3
  */
 
 class Posts_handler extends CI_Controller
@@ -31,7 +31,7 @@ class Posts_handler extends CI_Controller
      * @return void
      */
     public function add_post()
-    {        
+    {
         $this->Posts_data->insert_post();
         redirect('Home');
     }

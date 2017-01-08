@@ -1,4 +1,4 @@
-# ostium_cms
+# ostium_cms version 0.0.3
 ## Content Management System untuk situs web buatan Wolestech
 Aplikasi ini dibuat untuk melakukan manajemen konten pada situs web yang dibuat oleh
 Wolestech (Software Development Agency).
