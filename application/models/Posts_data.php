@@ -16,14 +16,22 @@
 class Posts_data extends CI_Model
 {
     /**
-     * Ambil data total baris dari beberapa tabel
-     * Input berasal dari controller
-     * @param string $table
+     * Ambil data total baris dari tabel post
      * @return void
      */
-    public function get_total_rows($table)
+    public function get_total_post()
     {
-        return $this->db->count_all($table);
+        $this->db->where('status_post', 'publik');
+        return $this->db->count_all_results('os_post');
+    }
+
+    /**
+     * Ambil data total baris dari tabel komentar
+     * @return void
+     */
+    public function get_total_comment()
+    {
+        return $this->db->count_all('os_komentar');
     }
 
     /**

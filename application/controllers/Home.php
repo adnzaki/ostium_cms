@@ -39,8 +39,8 @@ class Home extends CI_Controller
         $data['recent_post']    = $this->Posts_data->get_recent_post(5, 'publik');
         // ambil post yang masih berstatus draft
         $data['recent_draft']   = $this->Posts_data->get_recent_post(5, 'draft');
-        $data['total_post']     = $this->Posts_data->get_total_rows('os_post');
-        $data['total_comment']  = $this->Posts_data->get_total_rows('os_komentar');
+        $data['total_post']     = $this->Posts_data->get_total_post();
+        $data['total_comment']  = $this->Posts_data->get_total_comment();
         $this->load->view('main', $data);
     }
 
