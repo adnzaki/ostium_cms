@@ -16,20 +16,19 @@ $("#tutup-post-editor").on('click', function() {
 
 $("#simpan-draft").on('click', function(e) {
     e.preventDefault();
-    var judul = $("#judul_post").val();
-    var kategori = $("#kategori").find(":selected").attr('id');
-    var penulis = $("#user").find(":selected").attr('id');
-    var konten = tinymce.get('editor').getContent();
+    var judul       = $("#judul_post").val();
+    var kategori    = $("#kategori").find(":selected").attr('id');
+    var penulis     = $("#user").find(":selected").attr('id');
+    var konten      = tinymce.get('editor').getContent();
     //alert("Judul Post: " + judul + " kategori: " + kategori + " penulis: " + penulis + " isi post: " + konten);
-    var data = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten;
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten;
     //alert("Data posting: " + data);
     $.ajax({
         url: baseUrl + 'Posts_handler/add_draft',
         type: 'POST',
         dataType: 'html',
         data: data,
-        success: function()
-        {
+        success: function() {
             window.location.href = baseUrl;
         }
     })
