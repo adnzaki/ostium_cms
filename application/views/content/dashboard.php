@@ -62,7 +62,7 @@
                             </a>
                             <ul class="dropdown-menu pull-right">
                                 <li id="buat-post"><a href="javascript:void(0);">Buat Post Baru</a></li>
-                                <li><a href="javascript:void(0);">Lihat Semua Post</a></li>
+                                <li><a href="<?php echo base_url() ?>posts">Lihat Semua Post</a></li>
                             </ul>
                         </li>
                     </ul>
