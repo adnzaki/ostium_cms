@@ -3,7 +3,7 @@
 /**
  * Ostium CMS
  * A content management system for Wolestech's based site
- * Class Posts
+ * Class Posts_data
  * Class ini digunakan untuk memroses segala aktifitas transaksi data
  * pada bagian posting
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
