@@ -22,7 +22,7 @@
     <!-- #END# Overlay For Sidebars -->
 
     <!-- Top Section -->
-    <?php $this->view('content/top_section') ?>
+    <?php $this->view('element/top_section') ?>
     <!-- # END Top Section -->
     <section>
         <!-- Left Sidebar -->
