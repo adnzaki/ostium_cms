@@ -46,7 +46,7 @@
     </section>
 
     <section class="content" id="dashboard">
-        <?php $this->view('element/main_content') ?>
+        <?php $this->view('content/dashboard') ?>
     </section>
 
     <section class="content" id="add-post">
