@@ -64,6 +64,23 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Ambil data seluruh post dan draft
+     * @param string $key
+     * @return void
+     */
+    public function get_all_post($key)
+    {
+        $this->db->select('*');
+        $this->db->from('os_post');
+        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
+        $this->db->join('os_user', 'os_post.penulis_post = os_user.id');
+        $this->db->where('status_post', $key); // Input parameter dari controller
+        $this->db->order_by('os_post.id', 'DESC');
+        $get_data = $this->db->get();
+        return $get_data;
+    }
+
+    /**
      * Simpan data ke database
      * @return void
      */
