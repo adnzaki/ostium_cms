@@ -53,7 +53,7 @@
         <?php $this->view('content/add_post') ?>
     </section>
 
-    <?php $this->view('content/script') ?>
+    <?php $this->view('element/script') ?>
 </body>
 
 </html>
