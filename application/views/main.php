@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+<?php
+/**
+ * Ostium CMS
+ * A content management system for Wolestech based website
+ * View:: main
+ * Halaman ini adalah halaman utama yang digunakan untuk menampilkan beberapa informasi seputar website
+ * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
+ * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @author      Adnan Zaki
+ * @link        http://wolestech.com
+ * @version     OstiumCMS v0.0.3
+ */
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
