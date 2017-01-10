@@ -3,8 +3,7 @@
  * A content management system for Wolestech based website
  * Script.js
  * Script utama untuk mengatur interaksi user dengan aplikasi
- * Included: Ajax
- * pada bagian posting
+ * Include: Ajax
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
