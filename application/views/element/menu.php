@@ -2,17 +2,34 @@
     <ul class="list">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active">
-            <a href="index.html">
+            <a href="<?php echo base_url() ?>">
                 <i class="material-icons">home</i>
                 <span>Home</span>
             </a>
         </li>
         <li>
-            <a href="pages/typography.html">
+            <a href="javascript:void(0);" class="menu-toggle">
+                <i class="material-icons">filter_none</i>
+                <span>Post</span>
+            </a>
+            <ul class="ml-menu">
+                <li>
+                    <a href="<?php echo base_url() ?>posts">Semua Post</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">Buat Post</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">Kelola Atribut</a>
+                </li>
+            </ul>
+        </li>
+        <!-- <li>
+            <a href="<?php echo base_url() ?>posts">
                 <i class="material-icons">filter_none</i>
                 <span>Posts</span>
             </a>
-        </li>
+        </li> -->
         <li>
             <a href="pages/helper-classes.html">
                 <i class="material-icons">layers</i>

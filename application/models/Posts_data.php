@@ -2,8 +2,8 @@
 
 /**
  * Ostium CMS
- * A content management system for Wolestech's based site
- * Class Posts
+ * A content management system for Wolestech based website
+ * Class Posts_data
  * Class ini digunakan untuk memroses segala aktifitas transaksi data
  * pada bagian posting
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
@@ -59,6 +59,23 @@ class Posts_data extends CI_Model
         $this->db->where('status_post', $key); // Input parameter dari controller
         $this->db->order_by('os_post.id', 'DESC');
         $this->db->limit($limit, 0);
+        $get_data = $this->db->get();
+        return $get_data;
+    }
+
+    /**
+     * Ambil data seluruh post dan draft
+     * @param string $key
+     * @return void
+     */
+    public function get_all_post($key)
+    {
+        $this->db->select('*');
+        $this->db->from('os_post');
+        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
+        $this->db->join('os_user', 'os_post.penulis_post = os_user.id');
+        $this->db->where('status_post', $key); // Input parameter dari controller
+        $this->db->order_by('os_post.id', 'DESC');
         $get_data = $this->db->get();
         return $get_data;
     }

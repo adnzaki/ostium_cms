@@ -45,8 +45,8 @@
         <!-- #END# Right Sidebar -->
     </section>
 
-    <section class="content" id="dashboard">
-        <?php $this->view('content/dashboard') ?>
+    <section class="content" id="all-post">
+        <?php $this->view('content/all_post') ?>
     </section>
 
     <section class="content" id="add-post">

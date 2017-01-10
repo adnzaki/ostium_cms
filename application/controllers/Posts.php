@@ -2,8 +2,8 @@
 
 /**
  * Ostium CMS
- * A content management system for Wolestech's based site
- * Class Posts_handler
+ * A content management system for Wolestech based website
+ * Class Posts
  * Class ini merupakan class yang mengatur aktifitas posting
  * mengontrol segala aktivitas pada halaman Dashboard
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
@@ -13,7 +13,7 @@
  * @version     OstiumCMS v0.0.3
  */
 
-class Posts_handler extends CI_Controller
+class Posts extends CI_Controller
 {
 
     /**
@@ -27,13 +27,28 @@ class Posts_handler extends CI_Controller
     }
 
     /**
+     * Index page
+     * @return void
+     */
+    public function index()
+    {
+        $data['asset']          = base_url()."assets/";
+        $data['main_title']     = 'Ostium CMS | Post';
+        $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
+        $data['user']           = $this->Posts_data->get_post_attribute('os_user');
+        $data['all_post']       = $this->Posts_data->get_all_post('publik');
+        $data['all_draft']      = $this->Posts_data->get_all_post('draft');
+        $this->load->view('post', $data);
+    }
+
+    /**
      * Tambahkan post..
      * @return void
      */
     public function add_post()
     {
         $this->Posts_data->insert_post();
-        redirect('Home');
+        redirect('home');
     }
 
     /**

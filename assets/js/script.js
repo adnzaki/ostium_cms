@@ -1,16 +1,30 @@
-﻿// Main javascript file
+/**
+ * Ostium CMS
+ * A content management system for Wolestech based website
+ * Script.js
+ * Script utama untuk mengatur interaksi user dengan aplikasi
+ * Include: Ajax
+ * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
+ * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @author      Adnan Zaki
+ * @link        http://wolestech.com
+ * @version     OstiumCMS v0.0.3
+ */
 
-
-$("#buat-post").on('click', function() {
-    $("#dashboard").fadeOut(300, function() {
-        $("#add-post").fadeIn(400);
-        runTinyMCE();
-    });
+$(".buat-post").on('click', function() {
+    $("#dashboard, #all-post").each(function() {
+        $(this).fadeOut(300, function() {
+            $("#add-post").fadeIn(400);
+            runTinyMCE();
+        });
+    })
 })
 
 $("#tutup-post-editor").on('click', function() {
     $("#add-post").fadeOut(300, function() {
-        $("#dashboard").fadeIn(400);
+        $("#dashboard, #all-post").each(function() {
+            $(this).fadeIn(400);
+        })
     })
 })
 

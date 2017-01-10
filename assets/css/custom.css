@@ -33,6 +33,42 @@
     cursor: pointer;
 }
 
+.os-p-l-10 {
+    padding-left: 10px !important;
+}
+
+.os-p-l-0 {
+    padding-left: 0 !important;
+}
+
+.os-m-r-0 {
+    margin-right: 0 !important;
+}
+
+.os-br-3 {
+    border-radius: 2px !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.os-cp {
+    padding: 0 !important;
+}
+
+.os-search-btn {
+    cursor: pointer;
+}
+
+.os-mb-0 {
+    margin-bottom: 0 !important;
+}
+
 /*#dashboard {
     display: none;
 }*/
