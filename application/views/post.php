@@ -49,6 +49,10 @@
         <?php $this->view('content/all_post') ?>
     </section>
 
+    <section class="content" id="add-post">
+        <?php $this->view('content/add_post') ?>
+    </section>
+
     <?php $this->view('element/script') ?>
 </body>
 
