@@ -38,7 +38,7 @@ $("#simpan-draft").on('click', function(e) {
     var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten;
     //alert("Data posting: " + data);
     $.ajax({
-        url: baseUrl + 'Posts_handler/add_draft',
+        url: baseUrl + 'posts/add_draft',
         type: 'POST',
         dataType: 'html',
         data: data,
