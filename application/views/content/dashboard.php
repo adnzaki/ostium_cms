@@ -61,7 +61,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li id="buat-post"><a href="javascript:void(0);">Buat Post Baru</a></li>
+                                <li class="buat-post"><a href="javascript:void(0);">Buat Post Baru</a></li>
                                 <li><a href="<?php echo base_url() ?>posts">Lihat Semua Post</a></li>
                             </ul>
                         </li>
