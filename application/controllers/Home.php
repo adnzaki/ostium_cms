@@ -2,7 +2,7 @@
 
 /**
  * Ostium CMS
- * A content management system for Wolestech's based site
+ * A content management system for Wolestech based website
  * Class Home
  * Class ini merupakan class utama yang digunakan untuk
  * mengontrol segala aktivitas pada halaman Dashboard

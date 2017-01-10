@@ -2,7 +2,7 @@
 
 /**
  * Ostium CMS
- * A content management system for Wolestech's based site
+ * A content management system for Wolestech based website
  * Class Posts
  * Class ini merupakan class yang mengatur aktifitas posting
  * mengontrol segala aktivitas pada halaman Dashboard

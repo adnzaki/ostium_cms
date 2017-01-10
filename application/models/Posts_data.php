@@ -2,7 +2,7 @@
 
 /**
  * Ostium CMS
- * A content management system for Wolestech's based site
+ * A content management system for Wolestech based website
  * Class Posts_data
  * Class ini digunakan untuk memroses segala aktifitas transaksi data
  * pada bagian posting
