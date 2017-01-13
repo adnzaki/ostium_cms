@@ -63,7 +63,7 @@
     </section>
 
     <section class="content" id="add-post">
-        <?php $this->view('content/add_post') ?>
+        <?php $this->view('content/post-editor-add') ?>
     </section>
 
     <?php $this->view('element/script') ?>
