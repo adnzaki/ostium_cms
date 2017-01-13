@@ -10,7 +10,7 @@
         <li>
             <a href="javascript:void(0);" class="menu-toggle">
                 <i class="material-icons">filter_none</i>
-                <span>Post</span>
+                <span>Posts</span>
             </a>
             <ul class="ml-menu">
                 <li>
