@@ -130,6 +130,12 @@ class Posts_data extends CI_Model
         );
         $this->db->insert('os_post', $data);
     }
+
+    public function post_to_edit($id)
+    {
+        $get_data = $this->db->get_where('os_post', array('id' => $id));
+        return $get_data;
+    }
 }
 
 ?>
