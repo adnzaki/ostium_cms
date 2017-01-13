@@ -42,9 +42,6 @@
 <script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/spellchecker/plugin.dev.js"></script> -->
 <script src="<?php echo $asset?>plugins/tinymce/tinymce.min.js"></script>
 
-<!-- Ckeditor -->
-<script src="<?php echo $asset ?>js/plugins/ckeditor/ckeditor.js"></script>
-
 <!-- Sparkline Chart Plugin Js -->
 <script src="<?php echo $asset ?>plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
