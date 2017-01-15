@@ -1,7 +1,7 @@
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
-            <form action="<?php echo base_url() ?>Posts_handler/add_post" method="post">
+            <form action="<?php echo base_url() ?>posts/edit_post" method="post">
                 <div class="header">
                     <h2>EDIT POST</h2>
                     <div class="row clearfix">
@@ -65,7 +65,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>in
+                            </div>
                         </div>
                     </div>
                     <ul class="header-dropdown m-r--5">
@@ -80,16 +80,20 @@
                     </ul>
                 </div>
                 <div class="body">
-                    <textarea name="isi_post" id="editor"></textarea>
+                    <textarea name="isi_post" id="editor">
+                        <?php
+                        foreach ($edit_post as $edit)
+                        {
+                            echo $edit->isi_post;
+                        }
+                        ?>
+                    </textarea>
                 </div>
                 <div class="row clearfix">
                     <div class="body">
                         <div class="button-demo">
                             <button type="submit" class="btn btn-lg btn-primary waves-effect os-btn-custom os-btn-icon">
-                                <span class="icon os-icon-button"><i class="material-icons">publish</i></span>PUBLIKASIKAN
-                            </button>
-                            <button id="simpan-draft" class="btn btn-lg bg-orange waves-effect os-btn-custom os-btn-icon">
-                                <span class="icon os-icon-button"><i class="material-icons">save</i></span>SIMPAN DRAFT
+                                <span class="icon os-icon-button"><i class="material-icons">publish</i></span>PERBARUI
                             </button>
                             <button type="submit" class="btn btn-lg btn-info waves-effect os-btn-custom os-btn-icon">
                                 <span class="icon os-icon-button"><i class="material-icons">visibility</i></span>PRATINJAU

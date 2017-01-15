@@ -1,7 +1,7 @@
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
-            <form action="<?php echo base_url() ?>Posts_handler/add_post" method="post">
+            <form action="<?php echo base_url() ?>posts/add_post" method="post">
                 <div class="header">
                     <h2>
                         BUAT POST BARU
