@@ -131,11 +131,36 @@ class Posts_data extends CI_Model
         $this->db->insert('os_post', $data);
     }
 
+    /**
+     * Mengambil draft yang akan diedit
+     * @return array()
+     */
     public function post_to_edit($id)
     {
         $get_data = $this->db->get_where('os_post', array('id' => $id));
-        return $get_data;
+        return $get_data->result();
     }
+
+    /**
+     * Mengecek kategori yang ada di post yang akan diedit
+     * @return bool
+     */
+    public function check_attribute($col, $col_id, $post_id)
+    {
+        $this->db->where($col, $col_id);
+        $this->db->where('id', $post_id);
+        $query = $this->db->get('os_post');
+        if($query->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+
 }
 
 ?>
