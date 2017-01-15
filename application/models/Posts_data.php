@@ -132,7 +132,7 @@ class Posts_data extends CI_Model
     }
 
     /**
-     * Mengambil draft yang akan diedit
+     * Mengambil post yang akan diedit
      * @return array()
      */
     public function post_to_edit($id)
@@ -143,6 +143,9 @@ class Posts_data extends CI_Model
 
     /**
      * Mengecek kategori yang ada di post yang akan diedit
+     * @param string $col
+     * @param string $col_id
+     * @param int $post_id
      * @return bool
      */
     public function check_attribute($col, $col_id, $post_id)
