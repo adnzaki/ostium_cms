@@ -133,6 +133,7 @@ class Posts_data extends CI_Model
 
     /**
      * Mengambil post yang akan diedit
+     * @param int $id
      * @return array()
      */
     public function post_to_edit($id)
@@ -162,7 +163,6 @@ class Posts_data extends CI_Model
             return FALSE;
         }
     }
-
 
 }
 
