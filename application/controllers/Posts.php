@@ -70,8 +70,7 @@ class Posts extends CI_Controller
         $data['post_id']        = $id;
         $this->load->view('content/post-edit', $data);
     }
-
-
+    
 }
 
 ?>
