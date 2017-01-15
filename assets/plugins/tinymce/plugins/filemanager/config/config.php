@@ -68,8 +68,8 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/',
-	
+	'upload_dir' => '/localhost:8080/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/',
+
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder
