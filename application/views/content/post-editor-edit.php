@@ -1,7 +1,14 @@
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
-            <form action="<?php echo base_url() ?>posts/edit_post" method="post">
+
+            <?php
+            foreach ($edit_post as $edit)
+            {
+                echo "<input type='hidden' id='post-id' name='post-id' value='$edit->id'>";
+            }
+            ?>
+            <form action="<?php echo base_url()."posts/update_post/".$edit->id ?>" method="post">
                 <div class="header">
                     <h2>EDIT POST</h2>
                     <div class="row clearfix">
@@ -83,10 +90,10 @@
                 <div class="body">
                     <textarea name="isi_post" id="editor">
                         <?php
-                        // foreach ($edit_post as $edit)
-                        // {
-                        //     echo $edit->isi_post;
-                        // }
+                        foreach ($edit_post as $edit)
+                        {
+                            echo $edit->isi_post;
+                        }
                         ?>
                     </textarea>
                 </div>
