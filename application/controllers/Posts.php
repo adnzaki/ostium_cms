@@ -65,8 +65,9 @@ class Posts extends CI_Controller
         $data['asset']          = base_url()."assets/";
         $data['main_title']     = 'Ostium CMS | Post';
 
+        // check whether the post is exist or not
         if($this->Posts_data->post_exists($id))
-        {            
+        {
             $data['user']           = $this->Posts_data->get_post_attribute('os_user');
             $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
             $data['edit_post']      = $this->Posts_data->post_to_edit($id);
