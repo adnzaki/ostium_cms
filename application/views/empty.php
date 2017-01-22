@@ -6,5 +6,6 @@
     </head>
     <body>
         <h2>Maaf halaman yang anda cari tidak ditemukan</h2>
+        <h3>Kesalahan: Argumen "<?php echo $param ?>" tidak ada, silakan cek url yang anda masukkan</h3>
     </body>
 </html>
