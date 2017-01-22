@@ -14,7 +14,7 @@
             </a>
             <ul class="ml-menu">
                 <li>
-                    <a href="<?php echo base_url() ?>posts">Semua Post</a>
+                    <a href="<?php echo base_url() ?>post">Semua Post</a>
                 </li>
                 <li>
                     <a href="javascript:void(0);">Buat Post</a>
