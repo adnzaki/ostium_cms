@@ -132,6 +132,24 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Mengecek apakah post ada atau tidak
+     * @param int $id
+     * @return bool
+     */
+    public function post_exists($id)
+    {
+        $get_data = $this->db->get_where('os_post', array('id' => $id));
+        if($get_data->num_rows() === 0)
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
+    /**
      * Mengambil post yang akan diedit
      * @param int $id
      * @return array()
