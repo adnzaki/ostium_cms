@@ -182,6 +182,22 @@ class Posts_data extends CI_Model
         }
     }
 
+    public function edit_post($id)
+    {
+        $judul    = $this->input->post('judul_post');
+        $kategori = $this->input->post('kategori');
+        $author   = $this->input->post('user');
+        $isi_post = $this->input->post('isi_post');
+        $data     = array(
+            'judul_post'      => $judul,
+            'kategori_post'   => $kategori,
+            'penulis_post'    => $author,
+            'isi_post'        => $isi_post,
+        );
+        $this->db->where('id', $id);
+        $this->db->update('os_post', $data);
+    }
+
 }
 
 ?>

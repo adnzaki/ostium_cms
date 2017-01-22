@@ -77,8 +77,14 @@ class Posts extends CI_Controller
         else
         {
             $data['param'] = $id;
-            $this->load->view('empty', $data);
+            $this->load->view('errors/empty', $data);
         }
+    }
+
+    public function update_post($id)
+    {
+        $this->Posts_data->edit_post($id);
+        redirect('post');
     }
 
 }
