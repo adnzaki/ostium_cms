@@ -69,6 +69,8 @@ function runTinyMCE() {
         toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         toolbar2: 'responsivefilemanager print preview | forecolor backcolor emoticons',
         image_advtab: true,
+        relative_urls: false,
+		remove_script_host: false,
         external_filemanager_path:"assets/plugins/tinymce/plugins/filemanager/",
         filemanager_title:"File Manager" ,
         external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}
