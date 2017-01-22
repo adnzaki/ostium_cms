@@ -59,8 +59,8 @@
     </section>
 
     <section class="content" id="message">
-        <h3>Maaf halaman yang anda cari tidak ditemukan</h3>
-        <h4>Kesalahan: Argumen "<?php echo $param ?>" tidak ada, silakan cek url yang anda masukkan</h4>
+        <h3>Maaf halaman yang anda cari tidak ditemukan.</h3>
+        <h4>Kesalahan: Argumen "<?php echo $param ?>" tidak ada, silakan cek url yang anda masukkan.</h4>
     </section>
 
     <?php $this->view('element/script') ?>
