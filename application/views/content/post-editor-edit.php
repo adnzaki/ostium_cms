@@ -48,7 +48,8 @@
                                         </p>
                                         <select name="user" id="user" class="form-control show-tick">
 
-                                            <?php foreach ($user->result() as $user)
+                                            <?php
+                                            foreach ($user->result() as $user)
                                             {
                                                 $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id, $post_id);
                                                 if($cek)
@@ -82,10 +83,10 @@
                 <div class="body">
                     <textarea name="isi_post" id="editor">
                         <?php
-                        foreach ($edit_post as $edit)
-                        {
-                            echo $edit->isi_post;
-                        }
+                        // foreach ($edit_post as $edit)
+                        // {
+                        //     echo $edit->isi_post;
+                        // }
                         ?>
                     </textarea>
                 </div>

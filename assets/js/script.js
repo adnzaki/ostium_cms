@@ -34,9 +34,7 @@ $("#simpan-draft").on('click', function(e) {
     var kategori    = $("#kategori").find(":selected").attr('id');
     var penulis     = $("#user").find(":selected").attr('id');
     var konten      = tinymce.get('editor').getContent();
-    //alert("Judul Post: " + judul + " kategori: " + kategori + " penulis: " + penulis + " isi post: " + konten);
     var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten;
-    //alert("Data posting: " + data);
     $.ajax({
         url: baseUrl + 'posts/add_draft',
         type: 'POST',
