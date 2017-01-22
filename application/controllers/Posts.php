@@ -62,15 +62,23 @@ class Posts extends CI_Controller
 
     public function post_edit($id)
     {
-        $data['asset']          = base_url()."assets/";
-        $data['main_title']     = 'Ostium CMS | Post';
-        $data['user']           = $this->Posts_data->get_post_attribute('os_user');
-        $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
-        $data['edit_post']      = $this->Posts_data->post_to_edit($id);
-        $data['post_id']        = $id;
-        $this->load->view('content/post-edit', $data);
+        if($this->Posts_data->post_exists($id))
+        {
+            $data['asset']          = base_url()."assets/";
+            $data['main_title']     = 'Ostium CMS | Post';
+            $data['user']           = $this->Posts_data->get_post_attribute('os_user');
+            $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
+            $data['edit_post']      = $this->Posts_data->post_to_edit($id);
+            $data['post_id']        = $id;
+            $this->load->view('content/post-edit', $data);
+        }
+        else
+        {
+            $data['param'] = $id;
+            $this->load->view('empty', $data);
+        }
     }
-    
+
 }
 
 ?>
