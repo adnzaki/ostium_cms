@@ -44,10 +44,13 @@
                                 $no = 0;
                                 foreach($all_post->result() as $ap) {
                                     $no++;
+                                    //$id = $ap->id;
                                 ?>
                                 <tr>
+
                                     <td><?php echo $no ?></td>
                                     <td>
+                                        <input type="hidden" name="id-post" value="<?php //echo $ap->id ?>">
                                         <?php
                                         if(strlen($ap->judul_post) <= 40 )
                                         {
@@ -69,7 +72,11 @@
                                         echo $tanggal;
                                         ?>
                                     </td>
-                                    <td class="align-center post-edit"><i class="material-icons">mode_edit</i></td>
+                                    <td class="align-center post-edit">
+                                        <a href="<?php echo base_url('post/edit/').$ap->id ?>">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                    </td>
                                     <td class="align-center post-delete"><i class="material-icons">delete</i></td>
                                 </tr>
                                 <?php } ?>
