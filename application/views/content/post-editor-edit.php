@@ -5,10 +5,10 @@
             <?php
             foreach ($edit_post as $edit)
             {
-                echo "<input type='hidden' id='post-id' name='post-id' value='$edit->id'>";
+                echo "<input type='hidden' id='post-id' name='post-id' value='$edit->id_post'>";
             }
             ?>
-            <form action="<?php echo base_url()."posts/update_post/".$edit->id ?>" method="post">
+            <form action="<?php echo base_url()."posts/update_post/".$edit->id_post ?>" method="post">
                 <div class="header">
                     <h2>EDIT POST</h2>
                     <div class="row clearfix">
@@ -34,14 +34,14 @@
                                             <?php
                                             foreach ($kategori->result() as $kat)                                            {
 
-                                                $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id, $post_id);
+                                                $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, $post_id);
                                                 if($cek)
                                                 {
-                                                    echo "<option value='$kat->id' id='$kat->id' selected='selected'>$kat->nama_kategori</option>";
+                                                    echo "<option value='$kat->id_kategori' id='$kat->id_kategori' selected='selected'>$kat->nama_kategori</option>";
                                                 }
                                                 else
                                                 {
-                                                    echo "<option value='$kat->id' id='$kat->id'>$kat->nama_kategori</option>";
+                                                    echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
                                                 }
                                             }
                                             ?>
@@ -58,14 +58,14 @@
                                             <?php
                                             foreach ($user->result() as $user)
                                             {
-                                                $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id, $post_id);
+                                                $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, $post_id);
                                                 if($cek)
                                                 {
-                                                    echo "<option value='$user->id' id='$user->id' selected='selected'>$user->user_name</option>";
+                                                    echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";
                                                 }
                                                 else
                                                 {
-                                                    echo "<option value='$user->id' id='$user->id'>$user->user_name</option>";
+                                                    echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
                                                 }
 
                                             } ?>

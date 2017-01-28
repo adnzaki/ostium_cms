@@ -20,7 +20,7 @@
                                         <select name="kategori" id="kategori" class="form-control show-tick">
 
                                             <?php foreach ($kategori->result() as $kat) {
-                                                echo "<option value='$kat->id' id='$kat->id'>$kat->nama_kategori</option>";
+                                                echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
                                             } ?>
 
                                         </select>
@@ -32,7 +32,7 @@
                                         <select name="user" id="user" class="form-control show-tick">
 
                                             <?php foreach ($user->result() as $user) {
-                                                echo "<option value='$user->id' id='$user->id'>$user->user_name</option>";
+                                                echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
                                             } ?>
 
                                         </select>

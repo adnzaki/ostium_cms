@@ -54,10 +54,10 @@ class Posts_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('os_post');
-        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
-        $this->db->join('os_user', 'os_post.penulis_post = os_user.id');
+        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
+        $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
         $this->db->where('status_post', $key); // Input parameter dari controller
-        $this->db->order_by('os_post.id', 'DESC');
+        $this->db->order_by('os_post.id_post', 'DESC');
         $this->db->limit($limit, 0);
         $get_data = $this->db->get();
         return $get_data;
@@ -72,10 +72,10 @@ class Posts_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('os_post');
-        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
-        $this->db->join('os_user', 'os_post.penulis_post = os_user.id');
+        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
+        $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
         $this->db->where('status_post', $key); // Input parameter dari controller
-        $this->db->order_by('os_post.id', 'DESC');
+        $this->db->order_by('os_post.id_post', 'DESC');
         $get_data = $this->db->get();
         return $get_data;
     }
@@ -138,7 +138,7 @@ class Posts_data extends CI_Model
      */
     public function post_exists($id)
     {
-        $get_data = $this->db->get_where('os_post', array('id' => $id));
+        $get_data = $this->db->get_where('os_post', array('id_post' => $id));
         if($get_data->num_rows() === 0)
         {
             return FALSE;
@@ -156,7 +156,7 @@ class Posts_data extends CI_Model
      */
     public function post_to_edit($id)
     {
-        $get_data = $this->db->get_where('os_post', array('id' => $id));
+        $get_data = $this->db->get_where('os_post', array('id_post' => $id));
         return $get_data->result();
     }
 
@@ -170,7 +170,7 @@ class Posts_data extends CI_Model
     public function check_attribute($col, $col_id, $post_id)
     {
         $this->db->where($col, $col_id);
-        $this->db->where('id', $post_id);
+        $this->db->where('id_post', $post_id);
         $query = $this->db->get('os_post');
         if($query->num_rows() > 0)
         {
@@ -194,7 +194,7 @@ class Posts_data extends CI_Model
             'penulis_post'    => $author,
             'isi_post'        => $isi_post,
         );
-        $this->db->where('id', $id);
+        $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
     }
 

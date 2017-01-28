@@ -48,7 +48,7 @@ class Posts extends CI_Controller
     public function add_post()
     {
         $this->Posts_data->insert_post();
-        redirect('home');
+        redirect('post');
     }
 
     /**

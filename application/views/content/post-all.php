@@ -50,7 +50,6 @@
 
                                     <td><?php echo $no ?></td>
                                     <td>
-                                        <input type="hidden" name="id-post" value="<?php //echo $ap->id ?>">
                                         <?php
                                         if(strlen($ap->judul_post) <= 40 )
                                         {
@@ -73,7 +72,7 @@
                                         ?>
                                     </td>
                                     <td class="align-center post-edit">
-                                        <a href="<?php echo base_url('post/edit/').$ap->id ?>">
+                                        <a href="<?php echo base_url('post/edit/').$ap->id_post ?>">
                                             <i class="material-icons">mode_edit</i>
                                         </a>
                                     </td>

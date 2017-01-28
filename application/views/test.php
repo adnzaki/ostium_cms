@@ -2,10 +2,14 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Test Selected Category</title>
+        <title>Test Post</title>
 
     </head>
     <body>
-        <?php echo $badak; ?>
+        <?php
+        foreach ($all_post->result() as $post) {
+            echo $post->id_post." - ".$post->judul_post."<br>";
+        }
+        ?>
     </body>
 </html>
