@@ -41,7 +41,7 @@ $("#simpan-draft").on('click', function(e) {
         dataType: 'html',
         data: data,
         success: function() {
-            window.location.href = baseUrl;
+            window.location.href = baseUrl + 'post';
         }
     })
 })
