@@ -10,7 +10,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.3
+ * @version     OstiumCMS v0.0.4
  */
 
 class Posts extends CI_Controller
@@ -48,7 +48,7 @@ class Posts extends CI_Controller
     public function add_post()
     {
         $this->Posts_data->insert_post();
-        redirect('home');
+        redirect('post');
     }
 
     /**
@@ -58,6 +58,33 @@ class Posts extends CI_Controller
     public function add_draft()
     {
         $this->Posts_data->insert_draft();
+    }
+
+    public function post_edit($id)
+    {
+        $data['asset']          = base_url()."assets/";
+        $data['main_title']     = 'Ostium CMS | Post';
+
+        // check whether the post is exist or not
+        if($this->Posts_data->post_exists($id))
+        {
+            $data['user']           = $this->Posts_data->get_post_attribute('os_user');
+            $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
+            $data['edit_post']      = $this->Posts_data->post_to_edit($id);
+            $data['post_id']        = $id;
+            $this->load->view('content/post-edit', $data);
+        }
+        else
+        {
+            $data['param'] = $id;
+            $this->load->view('errors/empty', $data);
+        }
+    }
+
+    public function update_post($id)
+    {
+        $this->Posts_data->edit_post($id);
+        redirect('post');
     }
 
 }

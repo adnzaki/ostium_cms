@@ -10,7 +10,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.3
+ * @version     OstiumCMS v0.0.4
  */
 
 class Posts_data extends CI_Model
@@ -54,10 +54,10 @@ class Posts_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('os_post');
-        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
-        $this->db->join('os_user', 'os_post.penulis_post = os_user.id');
+        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
+        $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
         $this->db->where('status_post', $key); // Input parameter dari controller
-        $this->db->order_by('os_post.id', 'DESC');
+        $this->db->order_by('os_post.id_post', 'DESC');
         $this->db->limit($limit, 0);
         $get_data = $this->db->get();
         return $get_data;
@@ -72,10 +72,10 @@ class Posts_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('os_post');
-        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id');
-        $this->db->join('os_user', 'os_post.penulis_post = os_user.id');
+        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
+        $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
         $this->db->where('status_post', $key); // Input parameter dari controller
-        $this->db->order_by('os_post.id', 'DESC');
+        $this->db->order_by('os_post.id_post', 'DESC');
         $get_data = $this->db->get();
         return $get_data;
     }
@@ -130,6 +130,74 @@ class Posts_data extends CI_Model
         );
         $this->db->insert('os_post', $data);
     }
+
+    /**
+     * Mengecek apakah post ada atau tidak
+     * @param int $id
+     * @return bool
+     */
+    public function post_exists($id)
+    {
+        $get_data = $this->db->get_where('os_post', array('id_post' => $id));
+        if($get_data->num_rows() === 0)
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
+    /**
+     * Mengambil post yang akan diedit
+     * @param int $id
+     * @return array()
+     */
+    public function post_to_edit($id)
+    {
+        $get_data = $this->db->get_where('os_post', array('id_post' => $id));
+        return $get_data->result();
+    }
+
+    /**
+     * Mengecek kategori yang ada di post yang akan diedit
+     * @param string $col
+     * @param string $col_id
+     * @param int $post_id
+     * @return bool
+     */
+    public function check_attribute($col, $col_id, $post_id)
+    {
+        $this->db->where($col, $col_id);
+        $this->db->where('id_post', $post_id);
+        $query = $this->db->get('os_post');
+        if($query->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    public function edit_post($id)
+    {
+        $judul    = $this->input->post('judul_post');
+        $kategori = $this->input->post('kategori');
+        $author   = $this->input->post('user');
+        $isi_post = $this->input->post('isi_post');
+        $data     = array(
+            'judul_post'      => $judul,
+            'kategori_post'   => $kategori,
+            'penulis_post'    => $author,
+            'isi_post'        => $isi_post,
+        );
+        $this->db->where('id_post', $id);
+        $this->db->update('os_post', $data);
+    }
+
 }
 
 ?>

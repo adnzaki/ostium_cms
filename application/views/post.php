@@ -1,3 +1,17 @@
+<?php
+/**
+ * Ostium CMS
+ * A content management system for Wolestech based website
+ * View:: posts
+ * Halaman ini digunakan untuk menampilkan berbagai hal yang berkaitan dengan post
+ * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
+ * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @author      Adnan Zaki
+ * @link        http://wolestech.com
+ * @version     OstiumCMS v0.0.4
+ */
+?>
+
 ﻿<!DOCTYPE html>
 <html>
 
@@ -46,11 +60,11 @@
     </section>
 
     <section class="content" id="all-post">
-        <?php $this->view('content/all_post') ?>
+        <?php $this->view('content/post-all') ?>
     </section>
 
     <section class="content" id="add-post">
-        <?php $this->view('content/add_post') ?>
+        <?php $this->view('content/post-editor-add') ?>
     </section>
 
     <?php $this->view('element/script') ?>

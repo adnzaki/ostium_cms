@@ -8,7 +8,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.3
+ * @version     OstiumCMS v0.0.4
  */
 
 $(".buat-post").on('click', function() {
@@ -34,16 +34,14 @@ $("#simpan-draft").on('click', function(e) {
     var kategori    = $("#kategori").find(":selected").attr('id');
     var penulis     = $("#user").find(":selected").attr('id');
     var konten      = tinymce.get('editor').getContent();
-    //alert("Judul Post: " + judul + " kategori: " + kategori + " penulis: " + penulis + " isi post: " + konten);
     var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten;
-    //alert("Data posting: " + data);
     $.ajax({
         url: baseUrl + 'posts/add_draft',
         type: 'POST',
         dataType: 'html',
         data: data,
         success: function() {
-            window.location.href = baseUrl;
+            window.location.href = baseUrl + 'post';
         }
     })
 })
@@ -69,8 +67,10 @@ function runTinyMCE() {
         toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         toolbar2: 'responsivefilemanager print preview | forecolor backcolor emoticons',
         image_advtab: true,
+        relative_urls: false,
+		remove_script_host: false,
         external_filemanager_path:"assets/plugins/tinymce/plugins/filemanager/",
-        filemanager_title:"Responsive Filemanager" ,
+        filemanager_title:"File Manager" ,
         external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}
     });
 }

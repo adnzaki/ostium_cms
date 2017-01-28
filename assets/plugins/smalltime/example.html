@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DateTime.js Example</title>
+</head>
+<body>
+
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div4"></div>
+<div id="div5"></div>
+<div id="div6"></div>
+<div id="div7"></div>
+<div id="div8"></div>
+<div id="div9"></div>
+<script src="SmallTime.js" type="text/javascript"></script>
+<script type="text/javascript">
+var dt = new SmallTime();
+document.getElementById("div1").innerHTML = dt.fullDate('-');
+document.getElementById("div2").innerHTML = dt.shortDate('-');
+document.getElementById("div3").innerHTML = dt.format('dd-mm/YY');
+dt.clock("#div4", true, '', dt.fullDate('', getToday() ));
+document.getElementById("div5").innerHTML = dt.dateAdd(10)
+document.getElementById("div6").innerHTML = dt.dateSub(10);
+document.getElementById("div7").innerHTML = dt.dateDiff('28-01-2017', 'now');
+</script>
+</body>
+</html>
