@@ -10,7 +10,7 @@
  * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.3
+ * @version     OstiumCMS v0.0.4
  */
 
 class Posts_data extends CI_Model
