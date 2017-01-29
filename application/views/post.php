@@ -5,7 +5,7 @@
  * View:: posts
  * Halaman ini digunakan untuk menampilkan berbagai hal yang berkaitan dengan post
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
- * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
  * @version     OstiumCMS v0.0.4
