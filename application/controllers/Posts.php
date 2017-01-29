@@ -27,7 +27,7 @@ class Posts extends CI_Controller
     }
 
     /**
-     * Index page
+     * Halaman utama untuk posting
      * @return void
      */
     public function index()
@@ -60,6 +60,11 @@ class Posts extends CI_Controller
         $this->Posts_data->insert_draft();
     }
 
+    /**
+     * Menampilkan halaman edit post
+     * @param int $id
+     * @return void
+     */
     public function post_edit($id)
     {
         $data['asset']          = base_url()."assets/";
@@ -81,6 +86,11 @@ class Posts extends CI_Controller
         }
     }
 
+    /**
+     * Eksekusi update post
+     * @param int $id
+     * @return void
+     */
     public function update_post($id)
     {
         $this->Posts_data->edit_post($id);

@@ -182,6 +182,11 @@ class Posts_data extends CI_Model
         }
     }
 
+    /**
+     * Update data posting
+     * @param int $id
+     * @return void
+     */
     public function edit_post($id)
     {
         $judul    = $this->input->post('judul_post');
