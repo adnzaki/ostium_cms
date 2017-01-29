@@ -11,6 +11,7 @@
  * @version     OstiumCMS v0.0.4
  */
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -30,42 +31,12 @@
         <?php $this->view('content/loader') ?>
     </div>
     <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
+
     <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-
-    <!-- Top Section -->
     <?php $this->view('element/top_section') ?>
-    <!-- # END Top Section -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <?php $this->view('element/user_info') ?>
-            <!-- #User Info -->
-            <!-- Menu -->
-            <?php $this->view('element/menu') ?>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <?php $this->view('element/footer') ?>
-            </div>
-            <!-- #Footer -->
-        </aside>
-        <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <?php $this->view('element/right_sidebar') ?>
-        <!-- #END# Right Sidebar -->
-    </section>
-
-    <section class="content" id="dashboard">
-        <?php $this->view('content/dashboard') ?>
-    </section>
-
-    <section class="content" id="add-post">
-        <?php $this->view('content/post-editor-add') ?>
-    </section>
-
+    <?php $this->view('element/sidebar') ?>
+    <?php $this->view('content/dashboard') ?>
+    <?php $this->view('content/post-editor-add') ?>
     <?php $this->view('element/script') ?>
 </body>
 
