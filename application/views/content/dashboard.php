@@ -102,7 +102,10 @@
                                       </td>
                                       <td><span class="label bg-green"><?php echo $rp->nama_kategori ?></span></td>
                                       <td><?php echo $rp->user_name ?></td>
-                                      <td class="align-center post-edit"><i class="material-icons">mode_edit</i></td>
+                                      <td class="align-center post-edit">
+                                          <a href="<?=base_url('post/edit/').$rp->id_post ?>">
+                                              <i class="material-icons">mode_edit</i>
+                                          </a></td>
                                       <td class="align-center post-delete"><i class="material-icons">delete</i></td>
                                   </tr>
                                   <?php } ?>
