@@ -77,7 +77,7 @@ class Posts extends CI_Controller
             $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
             $data['edit_post']      = $this->Posts_data->post_to_edit($id);
             $data['post_id']        = $id;
-            $this->load->view('content/post-edit', $data);
+            $this->load->view('section/post-edit', $data);
         }
         else
         {
