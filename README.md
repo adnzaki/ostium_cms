@@ -1,7 +1,7 @@
 # OstiumCMS versi 0.0.4
 ## Content Management System untuk situs web buatan Wolestech
 Aplikasi ini dibuat untuk melakukan manajemen konten pada situs web yang dibuat oleh
-Wolestech (Software Development Agency).
+Wolestech (Software Development Agency). Meski begitu, kami tetap menjadikannya sebagai proyek open source agar semua orang bisa menggunakan dan mengembangkannya menjadi CMS yang lebih baik.
 
 ## Peringatan
 Aplikasi ini masih dalam tahap awal pengembangan dan belum dapat digunakan sama sekali
