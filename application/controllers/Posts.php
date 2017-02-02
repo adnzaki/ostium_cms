@@ -38,7 +38,7 @@ class Posts extends CI_Controller
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
         $data['all_post']       = $this->Posts_data->get_all_post('publik');
         $data['all_draft']      = $this->Posts_data->get_all_post('draft');
-        $this->load->view('post', $data);
+        $this->load->view('section/post', $data);
     }
 
     /**
