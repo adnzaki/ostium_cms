@@ -7,7 +7,7 @@
  * Class ini digunakan untuk memroses segala aktifitas transaksi data
  * pada bagian posting
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
- * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
  * @version     OstiumCMS v0.0.4
@@ -182,6 +182,11 @@ class Posts_data extends CI_Model
         }
     }
 
+    /**
+     * Update data posting
+     * @param int $id
+     * @return void
+     */
     public function edit_post($id)
     {
         $judul    = $this->input->post('judul_post');

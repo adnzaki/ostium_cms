@@ -7,7 +7,7 @@
  * Class ini merupakan class yang mengatur aktifitas posting
  * mengontrol segala aktivitas pada halaman Dashboard
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
- * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
  * @version     OstiumCMS v0.0.4
@@ -27,7 +27,7 @@ class Posts extends CI_Controller
     }
 
     /**
-     * Index page
+     * Halaman utama untuk posting
      * @return void
      */
     public function index()
@@ -38,7 +38,7 @@ class Posts extends CI_Controller
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
         $data['all_post']       = $this->Posts_data->get_all_post('publik');
         $data['all_draft']      = $this->Posts_data->get_all_post('draft');
-        $this->load->view('post', $data);
+        $this->load->view('section/post', $data);
     }
 
     /**
@@ -60,6 +60,11 @@ class Posts extends CI_Controller
         $this->Posts_data->insert_draft();
     }
 
+    /**
+     * Menampilkan halaman edit post
+     * @param int $id
+     * @return void
+     */
     public function post_edit($id)
     {
         $data['asset']          = base_url()."assets/";
@@ -72,7 +77,7 @@ class Posts extends CI_Controller
             $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
             $data['edit_post']      = $this->Posts_data->post_to_edit($id);
             $data['post_id']        = $id;
-            $this->load->view('content/post-edit', $data);
+            $this->load->view('section/post-edit', $data);
         }
         else
         {
@@ -81,6 +86,11 @@ class Posts extends CI_Controller
         }
     }
 
+    /**
+     * Eksekusi update post
+     * @param int $id
+     * @return void
+     */
     public function update_post($id)
     {
         $this->Posts_data->edit_post($id);

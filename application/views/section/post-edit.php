@@ -5,10 +5,10 @@
  * View:: posts
  * Halaman ini digunakan untuk menampilkan berbagai hal yang berkaitan dengan post
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
- * @license     https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.3
+ * @version     OstiumCMS v0.0.4
  */
 ?>
 
@@ -31,38 +31,10 @@
         <?php $this->view('content/loader') ?>
     </div>
     <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-
-    <!-- Top Section -->
     <?php $this->view('element/top_section') ?>
-    <!-- # END Top Section -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <?php $this->view('element/user_info') ?>
-            <!-- #User Info -->
-            <!-- Menu -->
-            <?php $this->view('element/menu') ?>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <?php $this->view('element/footer') ?>
-            </div>
-            <!-- #Footer -->
-        </aside>
-        <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <?php $this->view('element/right_sidebar') ?>
-        <!-- #END# Right Sidebar -->
-    </section>
-
-    <section class="content">
-        <?php $this->view('content/post-editor-edit') ?>
-    </section>
-
+    <?php $this->view('element/sidebar') ?>
+    <?php $this->view('content/post-editor-edit') ?>
     <?php $this->view('element/script') ?>
 </body>
 
