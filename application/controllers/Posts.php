@@ -97,6 +97,18 @@ class Posts extends CI_Controller
         redirect('post');
     }
 
+    /**
+     * Eksekusi hapus post...
+     * @param int $id
+     * @return void
+     */
+    public function hapus_post($id)
+    {
+        $this->Posts_data->delete_post($id);
+        $data['all_post'] = $this->Posts_data->get_all_post('publik');
+        $this->load->view('data/post-list', $data);
+    }
+
 }
 
 ?>

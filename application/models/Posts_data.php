@@ -202,6 +202,16 @@ class Posts_data extends CI_Model
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
     }
+    
+    /**
+     * Hapus post...
+     * @param int $id
+     * @return void
+     */
+    public function delete_post($id)
+    {
+        $this->db->delete('os_post', ['id_post' => $id]);
+    }
 
 }
 
