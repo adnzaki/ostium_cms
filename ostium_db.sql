@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Jan 2017 pada 04.12
+-- Generation Time: 04 Feb 2017 pada 19.10
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -75,13 +75,6 @@ CREATE TABLE `os_post` (
 --
 
 INSERT INTO `os_post` (`id_post`, `judul_post`, `kategori_post`, `penulis_post`, `status_post`, `isi_post`, `tanggal_post`) VALUES
-(10, 'hehehe', 1, 1, 'publik', '', '2017-01-07 13:12:48'),
-(11, 'dfdfdfdfd', 1, 1, 'publik', '', '2017-01-07 13:27:11'),
-(13, 'adas', 1, 1, 'publik', '', '2017-01-07 19:32:07'),
-(14, 'asda', 1, 1, 'publik', '', '2017-01-07 19:33:39'),
-(15, 'asdfgh jklopiuytrfg ', 2, 1, 'publik', '<p>sdsds</p>', '2017-01-08 12:24:33'),
-(16, 'selamat siang teman-temanku yang budiman hahaha hehehe', 1, 1, 'publik', '', '2017-01-08 12:41:32'),
-(19, 'sdsafsd', 2, 1, 'publik', '<p>dsgdfgdf</p>', '2017-01-08 19:15:44'),
 (20, 'dfsfdg', 1, 1, NULL, '<p>dfgdgd</p>', '2017-01-08 19:29:30'),
 (21, 'Tanpa Judul', 1, 1, 'draft', '', '2017-01-08 19:58:08'),
 (22, 'Tanpa Judul', 1, 1, 'draft', '', '2017-01-08 19:58:48'),
@@ -90,17 +83,14 @@ INSERT INTO `os_post` (`id_post`, `judul_post`, `kategori_post`, `penulis_post`,
 (25, 'alhamdulillah', 1, 1, 'draft', '<p>akhirnya bisa juga..//</p>', '2017-01-08 20:31:33'),
 (26, 'heheheh senengnya kita orang ini.. hihi', 2, 1, 'draft', '<p>yeeaaay!!!</p>', '2017-01-08 20:34:32'),
 (27, 'dddddrrrrrrr', 2, 1, 'draft', '<p>dddd</p>', '2017-01-08 20:49:43'),
-(28, 'assalamu', 2, 1, 'publik', '<p>adsda eeeeeeeeeeeeekkkk</p>', '2017-01-08 21:04:43'),
-(31, 'testt', 1, 1, 'publik', '', '2017-01-08 21:53:34'),
 (32, 'badai pasti berlaluaaaaaaaaaaaaaa', 1, 1, 'draft', '', '2017-01-10 13:21:51'),
-(33, 'Bismillah', 2, 1, 'publik', '<p>Ya Allah tolonglah hamba-Mu ini ya Allah...</p>\r\n<p>Aku sedang kesusahan ya Allah.....</p>\r\n<p><img src="assets/plugins/tinymce/plugins/filemanager/source/gahar1.png" alt="" width="700" height="735" /></p>', '2017-01-15 23:36:11'),
-(34, 'test image lagi', 2, 1, 'publik', '<p><img src="http://localhost:8080/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/My%20Start%20Wallpapers%209090333782.jpg" alt="" width="800" height="450" /></p>\r\n<p>halo ada aku disini...</p>', '2017-01-22 19:45:42'),
-(35, 'masukin gambar', 1, 1, 'publik', '<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/gahar1.png" alt="" width="500" height="525" /></p>\r\n<p>SETAAAAAAAAAAAAAAAAAN</p>', '2017-01-28 09:33:22'),
-(36, 'coba tanya saya', 2, 1, 'publik', '<p>adsdsa</p>', '2017-01-28 09:35:30'),
 (37, 'anak ayaaam', 1, 1, 'draft', '', '2017-01-28 09:36:09'),
 (38, '', 1, 1, 'draft', '', '2017-01-28 09:37:40'),
 (39, 'busukkk', 1, 1, 'draft', '', '2017-01-28 09:51:00'),
-(40, 'kereeeen', 1, 1, 'publik', '<p>bodoamat ah kosongajaaa</p>', '2017-01-28 09:51:28');
+(47, 'Bismillah', 1, 1, 'publik', '<p>Allahu akbar!</p>', '2017-02-04 23:00:29'),
+(48, 'Apakah ini masalahnya?', 2, 1, 'publik', '', '2017-02-04 23:00:47'),
+(50, 'monyetttt', 1, 1, 'publik', '', '2017-02-04 23:41:25'),
+(51, 'sialaaaaan', 1, 1, 'publik', '', '2017-02-04 23:41:43');
 
 -- --------------------------------------------------------
 
@@ -170,7 +160,7 @@ ALTER TABLE `os_komentar`
 -- AUTO_INCREMENT for table `os_post`
 --
 ALTER TABLE `os_post`
-  MODIFY `id_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `os_user`
 --
