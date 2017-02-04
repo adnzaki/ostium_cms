@@ -46,11 +46,28 @@ $("#simpan-draft").on('click', function(e) {
     })
 })
 
-$('.post-delete').on('click', function() {
+// Show confirmation box to delete post
+$(document).delegate('.post-delete', 'click', function() {
+    var id = $(this).data('post');
     var color = $(this).data('color');
     $('#mdModal .modal-content').removeAttr('class').addClass('modal-content modal-col-' + color);
     $('#mdModal').modal('show');
+    $(".btn-delete").attr('id', id);
 });
+
+// Confirm to delete post
+$(".btn-delete").on('click', function() {
+    var id = $(this).attr('id');
+    $.ajax({
+        url: baseUrl + 'post/del/' + id,
+        type: 'POST',
+        success: function(data) {
+            $('#mdModal').modal('hide');
+            $("#post-list").html(data);
+            $("#delete-msg").show();
+        }
+    })
+})
 
 $(window).load(function() {
     runTinyMCE();
