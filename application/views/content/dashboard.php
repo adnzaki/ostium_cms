@@ -69,49 +69,7 @@
                       </ul>
                   </div>
                   <div class="body">
-                      <div class="table-responsive">
-                          <table class="table table-hover dashboard-task-infos">
-                              <thead>
-                                  <tr>
-                                      <th>#</th>
-                                      <th>Judul Post</th>
-                                      <th>Kategori</th>
-                                      <th>Penulis</th>
-                                      <th colspan="2" class="align-center">Tindakan</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <?php
-                                  $no = 0;
-                                  foreach($recent_post->result() as $rp) {
-                                      $no++;
-                                  ?>
-                                  <tr>
-                                      <td><?php echo $no ?></td>
-                                      <td>
-                                          <?php
-                                          if(strlen($rp->judul_post) <= 25 )
-                                          {
-                                              echo $rp->judul_post;
-                                          }
-                                          else
-                                          {
-                                              echo substr($rp->judul_post, 0, 25)."...";
-                                          }
-                                          ?>
-                                      </td>
-                                      <td><span class="label bg-green"><?php echo $rp->nama_kategori ?></span></td>
-                                      <td><?php echo $rp->user_name ?></td>
-                                      <td class="align-center post-edit">
-                                          <a href="<?=base_url('post/edit/').$rp->id_post ?>">
-                                              <i class="material-icons">mode_edit</i>
-                                          </a></td>
-                                      <td class="align-center post-delete"><i class="material-icons">delete</i></td>
-                                  </tr>
-                                  <?php } ?>
-                              </tbody>
-                          </table>
-                      </div>
+                      <?php $this->view('data/recent-post') ?>
                   </div>
               </div>
           </div>
@@ -140,7 +98,6 @@
                                   <tr>
                                       <th>#</th>
                                       <th>Judul Post</th>
-                                      <th colspan="2" class="align-center">Tindakan</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -153,18 +110,16 @@
                                       <td><?php echo $no ?></td>
                                       <td>
                                           <?php
-                                          if(strlen($draft->judul_post) <= 15 )
+                                          if(strlen($draft->judul_post) <= 20 )
                                           {
                                               echo $draft->judul_post;
                                           }
                                           else
                                           {
-                                              echo substr($draft->judul_post, 0, 15)."...";
+                                              echo substr($draft->judul_post, 0, 20)."...";
                                           }
                                           ?>
                                       </td>
-                                      <td class="align-center post-edit"><i class="material-icons">mode_edit</i></td>
-                                      <td class="align-center post-delete"><i class="material-icons">delete</i></td>
                                   </tr>
                                   <?php } ?>
 
@@ -174,7 +129,8 @@
                   </div>
               </div>
           </div>
-          <!-- #END# Browser Usage -->
+          <!-- #END draft list -->
       </div>
+
   </div>
 </section>
