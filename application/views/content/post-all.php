@@ -23,37 +23,17 @@
           </div>
       </div>
       <!-- Success message for deleted post -->
-      <div class="row clearfix" id="delete-msg">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="alert bg-green alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  Post berhasil dihapus...
-              </div>
-          </div>
-      </div>
+      <?php $this->view('content/message/success-delete') ?>
       <!-- #END -->
+
       <div class="row clearfix" id="post-list">
           <!-- Display All Posts -->
           <?php $this->view('data/post-list') ?>
           <!-- #END Display post -->
       </div>
+
       <!-- Confirmation box -->
-      <div class="modal fade" id="mdModal" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h4 class="modal-title" id="defaultModalLabel">Konfirmasi</h4>
-                  </div>
-                  <div class="modal-body">
-                      Apakah anda yakin ingin menghapus post ini?
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-link waves-effect btn-delete">OK</button>
-                      <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Batal</button>
-                  </div>
-              </div>
-          </div>
-      </div>
+      <?php $this->view('content/popup/delete-confirm') ?>
       <!-- #END -->
   </div>
 </section>
