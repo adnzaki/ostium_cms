@@ -18,7 +18,7 @@ $(".buat-post").on('click', function() {
             runTinyMCE();
         });
     })
-})
+});
 
 $("#tutup-post-editor").on('click', function() {
     $("#add-post").fadeOut(300, function() {
@@ -26,7 +26,7 @@ $("#tutup-post-editor").on('click', function() {
             $(this).fadeIn(400);
         })
     })
-})
+});
 
 $("#simpan-draft").on('click', function(e) {
     e.preventDefault();
@@ -44,7 +44,7 @@ $("#simpan-draft").on('click', function(e) {
             window.location.href = baseUrl + 'post';
         }
     })
-})
+});
 
 // Show confirmation box to delete post
 $(document).delegate('.post-delete', 'click', function() {
@@ -67,11 +67,11 @@ $(".btn-delete").on('click', function() {
             $("#delete-msg").show();
         }
     })
-})
+});
 
 $(window).load(function() {
     runTinyMCE();
-})
+});
 
 function runTinyMCE() {
     tinymce.init({
