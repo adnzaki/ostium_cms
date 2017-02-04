@@ -46,9 +46,11 @@ $("#simpan-draft").on('click', function(e) {
     })
 })
 
-$(".post-edit").on('click', function() {
-
-})
+$('.post-delete').on('click', function() {
+    var color = $(this).data('color');
+    $('#mdModal .modal-content').removeAttr('class').addClass('modal-content modal-col-' + color);
+    $('#mdModal').modal('show');
+});
 
 $(window).load(function() {
     runTinyMCE();
