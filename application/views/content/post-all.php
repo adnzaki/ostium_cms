@@ -12,7 +12,7 @@
                   <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
                       <div class="form-group">
                           <div class="form-line">
-                              <input type="password" class="form-control os-p-l-10" placeholder="Cari post...">
+                              <input type="text" class="form-control os-p-l-10" placeholder="Cari post...">
                           </div>
                       </div>
                   </div>
@@ -22,7 +22,16 @@
               </div>
           </div>
       </div>
-
+      <!-- Success message for deleted post -->
+      <div class="row clearfix">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="alert bg-red alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  Post berhasil dihapus...
+              </div>
+          </div>
+      </div>
+      <!-- #END -->
       <div class="row clearfix">
           <!-- Display All Posts -->
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -77,11 +86,33 @@
                                               <i class="material-icons">mode_edit</i>
                                           </a>
                                       </td>
-                                      <td class="align-center post-delete"><i class="material-icons">delete</i></td>
+                                      <td class="align-center post-delete" data-color="red">
+                                          <i class="material-icons">delete</i>
+                                      </td>
                                   </tr>
                                   <?php } ?>
                               </tbody>
                           </table>
+
+                          <!-- Confirmation box -->
+                          <div class="modal fade" id="mdModal" tabindex="-1" role="dialog">
+                              <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h4 class="modal-title" id="defaultModalLabel">Konfirmasi</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                          Apakah anda yakin ingin menghapus post ini?
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-link waves-effect">OK</button>
+                                          <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Batal</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- #END -->
+
                       </div>
                   </div>
               </div>
