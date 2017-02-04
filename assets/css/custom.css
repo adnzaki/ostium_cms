@@ -76,3 +76,7 @@
 body {
     overflow: auto !important;
 }
+
+#delete-msg {
+    display: none;
+}
