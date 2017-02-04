@@ -13,3 +13,6 @@ Aplikasi ini masih dalam tahap awal pengembangan dan belum dapat digunakan sama 
 - Jika anda menggunakan pengaturan database yang berbeda, buka folder application\config\database.php kemudian sesuaikan konfigurasi database sesuai dengan yang ada pada sistem database anda seperti username, hostname, password, dsb.
 - Selesai, jalankan pada web browser anda.
 - Catatan: Jika anda menggunakan virtual machine atau online hosting, anda perlu mengatur base_url di application\config\config.php
+
+##Server Requirement
+PHP 5.6 ke atas.
