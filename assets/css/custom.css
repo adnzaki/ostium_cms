@@ -33,6 +33,10 @@
     cursor: pointer;
 }
 
+.post-edit a {
+    color: #000;
+}
+
 .os-p-l-10 {
     padding-left: 10px !important;
 }
@@ -69,6 +73,6 @@
     margin-bottom: 0 !important;
 }
 
-/*#dashboard {
-    display: none;
-}*/
+body {
+    overflow: auto !important;
+}
