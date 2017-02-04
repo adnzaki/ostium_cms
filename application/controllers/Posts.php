@@ -10,7 +10,7 @@
  * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.4
+ * @version     OstiumCMS v0.0.5
  */
 
 class Posts extends CI_Controller

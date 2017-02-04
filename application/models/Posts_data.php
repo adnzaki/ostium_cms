@@ -10,7 +10,7 @@
  * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.4
+ * @version     OstiumCMS v0.0.5
  */
 
 class Posts_data extends CI_Model
@@ -202,7 +202,7 @@ class Posts_data extends CI_Model
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
     }
-    
+
     /**
      * Hapus post...
      * @param int $id
