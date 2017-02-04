@@ -64,7 +64,9 @@ $(".btn-delete").on('click', function() {
         success: function(data) {
             $('#mdModal').modal('hide');
             $("#post-list").html(data);
-            $("#delete-msg").show();
+            $("#delete-msg").show(400, setTimeout(function() {
+                $("#delete-msg").hide();
+            }, 5000));
         }
     })
 });
