@@ -34,7 +34,7 @@
 }
 
 .post-edit a {
-    color: #000;
+    color: rgb(102, 102, 102);
 }
 
 .os-p-l-10 {
@@ -79,4 +79,13 @@ body {
 
 #delete-msg {
     display: none;
+}
+
+tbody a {
+    color: #555;
+}
+
+tbody a:hover {
+    text-decoration: none;
+    color: rgb(226, 36, 36);
 }
