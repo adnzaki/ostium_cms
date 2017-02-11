@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04 Feb 2017 pada 19.10
+-- Generation Time: 11 Feb 2017 pada 07.25
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -89,8 +89,7 @@ INSERT INTO `os_post` (`id_post`, `judul_post`, `kategori_post`, `penulis_post`,
 (39, 'busukkk', 1, 1, 'draft', '', '2017-01-28 09:51:00'),
 (47, 'Bismillah', 1, 1, 'publik', '<p>Allahu akbar!</p>', '2017-02-04 23:00:29'),
 (48, 'Apakah ini masalahnya?', 2, 1, 'publik', '', '2017-02-04 23:00:47'),
-(50, 'monyetttt', 1, 1, 'publik', '', '2017-02-04 23:41:25'),
-(51, 'sialaaaaan', 1, 1, 'publik', '', '2017-02-04 23:41:43');
+(49, 'Coba XSS', 1, 1, 'publik', '<p>nih coba bro...</p>', '2017-02-11 13:22:45');
 
 -- --------------------------------------------------------
 
@@ -160,7 +159,7 @@ ALTER TABLE `os_komentar`
 -- AUTO_INCREMENT for table `os_post`
 --
 ALTER TABLE `os_post`
-  MODIFY `id_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `os_user`
 --
