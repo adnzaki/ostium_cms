@@ -2,8 +2,8 @@
 /**
  * Ostium CMS
  * A content management system for Wolestech based website
- * View:: posts
- * Halaman ini digunakan untuk menampilkan berbagai hal yang berkaitan dengan post
+ * View:: main
+ * Halaman ini adalah halaman utama yang digunakan untuk menampilkan beberapa informasi seputar website
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
  * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
@@ -12,7 +12,7 @@
  */
 ?>
 
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -31,6 +31,7 @@
         <?php $this->view('content/loader') ?>
     </div>
     <!-- #END# Page Loader -->
+
     <div class="overlay"></div>
     <?php $this->view('element/top_section') ?>
     <?php $this->view('element/sidebar') ?>
