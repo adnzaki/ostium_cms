@@ -2,8 +2,8 @@
 /**
  * Ostium CMS
  * A content management system for Wolestech based website
- * View:: main
- * Halaman ini adalah halaman utama yang digunakan untuk menampilkan beberapa informasi seputar website
+ * View:: editing post
+ * Halaman ini berfungsi untuk mengedit post
  * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
  * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
