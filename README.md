@@ -1,4 +1,3 @@
-# OstiumCMS versi 0.0.6
 ## Content Management System untuk situs web buatan Wolestech
 Aplikasi ini dibuat untuk melakukan manajemen konten pada situs web yang dibuat oleh
 Wolestech (Software Development Agency). Meski begitu, kami tetap menjadikannya sebagai proyek open source agar semua orang bisa menggunakan dan mengembangkannya menjadi CMS yang lebih baik. OstiumCMS ditulis dalam bahasa pemrograman PHP berbasis framework CodeIgniter 3.x, kode sumber OstiumCMS ditulis dengan mengikuti standar penulisan kode PHP serta menyesuaikan dengan standar pada Codeigniter dalam beberapa kasus untuk menjaga konsistensi kode, kualitas, mudah dibaca dan di-maintain. Hal ini memungkinkan siapapun yang menguasai framework CodeIgniter untuk dengan mudah memodifikasi OstiumCMS bahkan hingga Core system-nya.
