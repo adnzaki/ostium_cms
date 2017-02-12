@@ -1,16 +1,14 @@
 <?php
 
 /**
- * Ostium CMS
- * A content management system for Wolestech based website
- * Class Home
- * Class ini merupakan class utama yang digunakan untuk
- * mengontrol segala aktivitas pada halaman Dashboard
- * @copyright   Copyright (c) 2017, Wolestech | Adnan Zaki (https://wolestech.com/)
+ * OstiumCMS
+ * A simple, fast and fully customizable Content Management System
+ * for website made by Wolestech (Software Development Agency)
+ *
+ * @copyright   Copyright (c) 2016-2017, Wolestech | Adnan Zaki
  * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
  * @author      Adnan Zaki
  * @link        http://wolestech.com
- * @version     OstiumCMS v0.0.5
  */
 
 class Home extends CI_Controller
