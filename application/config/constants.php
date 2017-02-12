@@ -6,10 +6,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | OstiumCMS Version
 |--------------------------------------------------------------------------
 |
-| Used to display CMS version either for user or developer 
+| Used to display CMS version either for user or developer
 |
 */
-define('OSTIUM_VERSION', '0.0.5');
+define('OSTIUM_VERSION', '0.0.6');
 
 /*
 |--------------------------------------------------------------------------
