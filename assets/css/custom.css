@@ -100,3 +100,11 @@ tbody a:hover {
     text-decoration: none;
     color: rgb(226, 36, 36);
 }
+
+section.content {
+    margin-left: 275px !important;
+}
+
+.sidebar {
+    width: 250px !important;
+}
