@@ -90,7 +90,7 @@ function runTinyMCE() {
         image_advtab: true,
         relative_urls: false,
 		remove_script_host: false,
-        external_filemanager_path:"assets/plugins/tinymce/plugins/filemanager/",
+        external_filemanager_path: baseUrl + "assets/plugins/tinymce/plugins/filemanager/",
         filemanager_title:"File Manager" ,
         external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}
     });
