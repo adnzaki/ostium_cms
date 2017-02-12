@@ -83,7 +83,7 @@
                                     <i class="material-icons">more_vert</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li id="tutup-post-editor"><a href="javascript:void(0);">Tutup</a></li>
+                                    <li><a href="<?= base_url('post') ?>">Tutup</a></li>
                                 </ul>
                             </li>
                         </ul>
