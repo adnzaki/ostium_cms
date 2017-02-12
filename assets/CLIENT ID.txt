@@ -1,3 +1,0 @@
-client ID:  500736399491-7de7ogu9ur9370n7v2uejrll1rps6qbm.apps.googleusercontent.com 
-client secreet:  xYF8px_Q7fZFuDkYckUPd_Gd 
-v=1&t=pageview&tid=UA-89676387-1&cid=6523a0b1-b6f0-4fe2-ab77-c05b89addcec&dp=%2Fapplication
