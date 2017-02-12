@@ -34,12 +34,6 @@
 <script src="<?php echo $asset ?>plugins/flot-charts/jquery.flot.categories.js"></script>
 <script src="<?php echo $asset ?>plugins/flot-charts/jquery.flot.time.js"></script>
 
-<!-- TinyMCE -->
-<!-- <script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/tinymce.dev.js"></script>
-<script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/table/plugin.dev.js"></script>
-<script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/paste/plugin.dev.js"></script>
-<script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/wordcount/plugin.js"></script>
-<script src="<?php //echo $asset ?>plugins/tinymce/js/tinymce/plugins/spellchecker/plugin.dev.js"></script> -->
 <script src="<?php echo $asset?>plugins/tinymce/tinymce.min.js"></script>
 
 <!-- Sparkline Chart Plugin Js -->
