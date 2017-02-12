@@ -18,7 +18,7 @@ $(".buat-post").on('click', function() {
     })
 });
 
-$("#tutup-post-editor").on('click', function() {
+$(".tutup-post-editor").on('click', function() {
     $("#add-post").fadeOut(300, function() {
         $("#dashboard, #all-post").each(function() {
             $(this).fadeIn(400);
