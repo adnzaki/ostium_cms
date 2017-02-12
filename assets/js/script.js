@@ -80,16 +80,18 @@ function runTinyMCE() {
         plugins: [
             'advlist autolink lists link charmap print preview hr anchor pagebreak',
             'searchreplace wordcount visualblocks visualchars code fullscreen',
-            'insertdatetime nonbreaking save table contextmenu directionality',
+            'insertdatetime nonbreaking save table contextmenu directionality codesample',
             'emoticons template paste textcolor colorpicker textpattern imagetools image responsivefilemanager'
         ],
-        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        toolbar2: 'responsivefilemanager print preview | forecolor backcolor emoticons',
+        toolbar1: 'insertfile undo redo | fontsizeselect styleselect fontselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'responsivefilemanager print preview | forecolor backcolor emoticons | codesample fullscreen',
         image_advtab: true,
+        codesample_dialog_height: '200',
+        fontsize_formats: "8px 10px 12px 14px 18px 24px 36px",
         relative_urls: false,
 		remove_script_host: false,
         external_filemanager_path: baseUrl + "assets/plugins/tinymce/plugins/filemanager/",
         filemanager_title:"File Manager" ,
-        external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}
+        external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}        
     });
 }
