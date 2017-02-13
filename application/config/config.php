@@ -25,8 +25,8 @@ date_default_timezone_set("Asia/Jakarta");
 | a PHP script and you can easily do that on your own.
 |
 */
-$root_script    = explode("/", $_SERVER['PHP_SELF']);
-$doc_root       = $root_script[1];
+$root_script        = explode("/", $_SERVER['PHP_SELF']);
+$doc_root           = $root_script[1];
 $config['base_url'] = (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/'.$doc_root.'/';
 
 /*
@@ -118,7 +118,7 @@ $config['enable_hooks'] = FALSE;
 | https://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'OS_';
 
 /*
 |--------------------------------------------------------------------------
@@ -372,7 +372,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'os_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
