@@ -12,8 +12,15 @@
             <?php $this->view('element/footer') ?>
         </div>
         <!-- #Footer -->
-    </aside>
+    </aside>    
     <!-- #END# Left Sidebar -->
+
+    <!-- POST SETTING -->
+    <aside id="post-attribute" class="sidebar post-sidebar">       
+       <?php $this->view('element/post-setting') ?>
+    </aside>
+    <!-- #END POST SETTING -->
+
     <!-- Right Sidebar -->
     <?php $this->view('element/right_sidebar') ?>
     <!-- #END# Right Sidebar -->
