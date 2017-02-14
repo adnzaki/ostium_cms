@@ -12,16 +12,20 @@
 $(".buat-post").on('click', function() {
     $("#dashboard, #all-post").each(function() {
         $(this).fadeOut(300, function() {
-            $("#add-post").fadeIn(400);
+            $("#add-post, .post-sidebar").each(function() {
+                $(this).fadeIn(400);
+            })
             runTinyMCE();
         });
     })
 });
 
 $(".tutup-post-editor").on('click', function() {
-    $("#add-post").fadeOut(300, function() {
-        $("#dashboard, #all-post").each(function() {
-            $(this).fadeIn(400);
+    $("#add-post, .post-sidebar").each(function() {
+        $(this).fadeOut(300, function() {
+            $("#dashboard, #all-post").each(function() {
+                $(this).fadeIn(400);
+            })
         })
     })
 });
@@ -83,10 +87,10 @@ function runTinyMCE() {
             'insertdatetime nonbreaking save table contextmenu directionality codesample',
             'emoticons template paste textcolor colorpicker textpattern imagetools image responsivefilemanager'
         ],
-        toolbar1: 'insertfile undo redo | fontsizeselect styleselect fontselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        toolbar2: 'responsivefilemanager print preview | forecolor backcolor emoticons | codesample fullscreen',
+        toolbar1: 'insertfile undo redo | fontsizeselect styleselect fontselect | bold italic underline | alignleft aligncenter alignright alignjustify',
+        toolbar2: 'bullist numlist outdent indent | link image | responsivefilemanager print preview | forecolor backcolor emoticons | codesample fullscreen',
         image_advtab: true,
-        codesample_dialog_height: '200',
+        codesample_dialog_height: 200,
         fontsize_formats: "8px 10px 12px 14px 18px 24px 36px",
         relative_urls: false,
 		remove_script_host: false,
