@@ -36,6 +36,11 @@
     <?php $this->view('element/sidebar') ?>
     <?php $this->view('content/post-editor-edit') ?>
     <?php $this->view('element/script') ?>
+    <script>
+        $(window).load(function () {
+            $(".post-sidebar").show();
+        })
+    </script>
 </body>
 
 </html>
