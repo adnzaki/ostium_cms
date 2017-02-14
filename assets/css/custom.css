@@ -101,10 +101,20 @@ tbody a:hover {
     color: rgb(226, 36, 36);
 }
 
-section.content {
-    margin-left: 275px !important;
+section.content, .post-content {
+    margin-left: 275px;
+}
+
+section.post-content {
+    margin-right: 295px !important;
 }
 
 .sidebar {
     width: 250px !important;
+}
+
+.post-sidebar {
+    width: 275px !important;
+    right: 0 !important;
+    display: none;
 }
