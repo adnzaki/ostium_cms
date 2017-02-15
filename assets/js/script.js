@@ -87,7 +87,8 @@ function runTinyMCE() {
             'insertdatetime nonbreaking save table contextmenu directionality codesample',
             'emoticons template paste textcolor colorpicker textpattern imagetools image responsivefilemanager'
         ],
-        toolbar1: 'insertfile undo redo | fontsizeselect styleselect fontselect | bold italic underline | alignleft aligncenter alignright alignjustify',
+        menubar: false,
+        toolbar1: 'insertfile undo redo | fontsizeselect styleselect fontselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify',
         toolbar2: 'bullist numlist outdent indent | link image | responsivefilemanager print preview | forecolor backcolor emoticons | codesample fullscreen',
         image_advtab: true,
         codesample_dialog_height: 200,
@@ -96,6 +97,6 @@ function runTinyMCE() {
 		remove_script_host: false,
         external_filemanager_path: baseUrl + "assets/plugins/tinymce/plugins/filemanager/",
         filemanager_title:"File Manager" ,
-        external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}        
+        external_plugins: { "filemanager" : "plugins/filemanager/plugin.min.js"}
     });
 }
