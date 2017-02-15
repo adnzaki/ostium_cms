@@ -118,3 +118,10 @@ section.post-content {
     right: 0 !important;
     display: none;
 }
+
+.setting-content {
+    width: 98%;
+    margin: 5px 1%;
+    box-sizing: border-box;
+    min-height: 40px;
+}
