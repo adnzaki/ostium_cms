@@ -8,13 +8,13 @@
             </a>
         </li>
         <li>
-            <a href="javascript:void(0);" class="menu-toggle">
+            <a href="<?php echo base_url('post') ?>">
                 <i class="material-icons">filter_none</i>
                 <span>Posts</span>
             </a>
-            <ul class="ml-menu">
+            <!-- <ul class="ml-menu">
                 <li>
-                    <a href="<?php echo base_url() ?>post">Semua Post</a>
+                    <a href="<?php //echo base_url() ?>post">Semua Post</a>
                 </li>
                 <li>
                     <a href="javascript:void(0);">Buat Post</a>
@@ -22,7 +22,7 @@
                 <li>
                     <a href="javascript:void(0);">Kelola Atribut</a>
                 </li>
-            </ul>
+            </ul> -->
         </li>
         <li>
             <a href="javascript:void(0);" class="menu-toggle">
