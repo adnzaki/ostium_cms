@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Used to display CMS version either for user or developer
 |
 */
-define('OSTIUM_VERSION', '0.0.6');
+const OSTIUM_VERSION = '0.0.7-dev';
 
 /*
 |--------------------------------------------------------------------------
