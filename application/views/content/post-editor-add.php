@@ -12,33 +12,7 @@
                               <div class="form-group form-group-lg">
                                   <div class="form-line">
                                       <input type="text" id="judul_post" name="judul_post" class="form-control" placeholder="Judul" />
-                                  </div>
-                                  <div class="row clearfix">
-                                      <div class="col-md-3">
-                                          <p>
-                                              <b>Kategori</b>
-                                          </p>
-                                          <select name="kategori" id="kategori" class="form-control show-tick">
-
-                                              <?php foreach ($kategori->result() as $kat) {
-                                                  echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
-                                              } ?>
-
-                                          </select>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <p>
-                                              <b>Penulis</b>
-                                          </p>
-                                          <select name="user" id="user" class="form-control show-tick">
-
-                                              <?php foreach ($user->result() as $user) {
-                                                  echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
-                                              } ?>
-
-                                          </select>
-                                      </div>
-                                  </div>
+                                  </div>                                  
                               </div>
                           </div>
                       </div>

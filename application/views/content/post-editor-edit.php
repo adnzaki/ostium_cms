@@ -17,7 +17,6 @@
                                 <div class="form-group form-group-lg">
                                     <div class="form-line">
                                         <?php
-                                        $CI =& get_instance();
                                         foreach ($edit_post as $edit)
                                         {
                                             echo "<input type='text' id='judul_post' name='judul_post' class='form-control' placeholder='Judul' value='$edit->judul_post' />";
@@ -26,54 +25,7 @@
                                         ?>
 
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-md-3">
-                                            <p>
-                                                <b>Kategori</b>
-                                            </p>
-                                            <select name="kategori" id="kategori" class="form-control show-tick">
-                                                <?php
-                                                foreach ($kategori->result() as $kat)                                            {
-
-                                                    $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, $post_id);
-                                                    if($cek)
-                                                    {
-                                                        echo "<option value='$kat->id_kategori' id='$kat->id_kategori' selected='selected'>$kat->nama_kategori</option>";
-                                                    }
-                                                    else
-                                                    {
-                                                        echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-
-                                        </div>
-                                        <div class="col-md-3">
-                                            <p>
-                                                <b>Penulis</b>
-
-                                            </p>
-                                            <select name="user" id="user" class="form-control show-tick">
-
-                                                <?php
-                                                foreach ($user->result() as $user)
-                                                {
-                                                    $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, $post_id);
-                                                    if($cek)
-                                                    {
-                                                        echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";
-                                                    }
-                                                    else
-                                                    {
-                                                        echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
-                                                    }
-
-                                                } ?>
-
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <!-- Post attribute moved! -->
                                 </div>
                             </div>
                         </div>
