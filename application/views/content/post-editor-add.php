@@ -3,6 +3,9 @@
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="card">
               <form action="<?php echo base_url() ?>posts/add_post" method="post">
+                  <input type="hidden" name="kategori" id="kategori" value="">
+                  <input type="hidden" name="user" id="user" value="">
+                  <input type="hidden" name="gambar-fitur" id="link-img" value="">
                   <div class="header">
                       <h2>
                           BUAT POST BARU
@@ -12,7 +15,7 @@
                               <div class="form-group form-group-lg">
                                   <div class="form-line">
                                       <input type="text" id="judul_post" name="judul_post" class="form-control" placeholder="Judul" />
-                                  </div>                                  
+                                  </div>
                               </div>
                           </div>
                       </div>

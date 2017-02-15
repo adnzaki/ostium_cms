@@ -33,10 +33,11 @@ $(".tutup-post-editor").on('click', function() {
 $("#simpan-draft").on('click', function(e) {
     e.preventDefault();
     var judul       = $("#judul_post").val();
-    var kategori    = $("#kategori").find(":selected").attr('id');
-    var penulis     = $("#user").find(":selected").attr('id');
+    var kategori    = $("#kategori").val();
+    var penulis     = $("#user").val();
     var konten      = tinymce.get('editor').getContent();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten;
+    var gambar      = $("#link-img").val();
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar;
     $.ajax({
         url: baseUrl + 'posts/add_draft',
         type: 'POST',
@@ -73,9 +74,66 @@ $(".btn-delete").on('click', function() {
     })
 });
 
+var postAttribute = {
+    kategori: "#kategori-sender",
+    user: "#user-sender",
+    // send category id to form input
+    setKategori: function() {
+        $(this.kategori).on('change', function() {
+            var id = $(this).find(":selected").attr('id');
+            $("#kategori").val(id);
+        })
+    },
+    // send user id to form input
+    setUser: function() {
+        $(this.user).on('change', function() {
+            var id = $(this).find(":selected").attr('id');
+            $("#user").val(id);
+        })
+    },
+    // default attribute selected when the page is loaded
+    defaultAttribute: function() {
+        var kategori    = $(this.kategori).find(":selected").attr('id'),
+            user        = $(this.user).find(":selected").attr('id'),
+            gambar      = $("#prev-img").attr('src');
+        $("#kategori").val(kategori);
+        $("#user").val(user);
+        $("#link-img").val(gambar);
+    }
+}
+// scripts running when the page is loaded
 $(window).load(function() {
     runTinyMCE();
+    activateScroll();
+    postAttribute.setKategori();
+    postAttribute.setUser();
+    postAttribute.defaultAttribute();
 });
+
+$(window).resize(function () {
+    activateScroll();
+});
+
+function responsive_filemanager_callback(field_id) {
+    var image = $("#" + field_id).val();
+    $("#prev-img").attr('src', image);
+}
+
+var $list = $('.list-setting'),
+    minsHeight = 100,
+    windowHeight = $(window).height(),
+    scrollHeight = windowHeight - minsHeight;
+
+function activateScroll() {
+    $list.slimscroll({
+        height: scrollHeight + 'px',
+        scrollColor: 'rgba(0,0,0,0.5)',
+        scrollWidth: '4px',
+        scrollAlwaysVisible: false,
+        scrollBorderRadius: '0',
+        scrollRailBorderRadius: '0'
+    })
+}
 
 function runTinyMCE() {
     tinymce.init({

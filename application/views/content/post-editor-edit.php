@@ -10,8 +10,12 @@
                 }
                 ?>
                 <form action="<?php echo base_url()."posts/update_post/".$edit->id_post ?>" method="post">
+                    <input type="hidden" name="kategori" id="kategori" value="">
+                    <input type="hidden" name="user" id="user" value="">
+                    <input type="hidden" name="gambar-fitur" id="link-img" value="">
                     <div class="header">
                         <h2>EDIT POST</h2>
+
                         <div class="row clearfix">
                             <div class="col-sm-12">
                                 <div class="form-group form-group-lg">

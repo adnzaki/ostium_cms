@@ -84,12 +84,13 @@ class Posts_data extends CI_Model
      */
     public function insert_post()
     {
-        $judul    = $this->input->post('judul_post');
-        $kategori = $this->input->post('kategori');
-        $author   = $this->input->post('user');
-        $status   = "publik";
-        $isi_post = $this->input->post('isi_post');
-        $tanggal  = date('Y-m-d H:i:s');
+        $judul      = $this->input->post('judul_post');
+        $kategori   = $this->input->post('kategori');
+        $author     = $this->input->post('user');
+        $status     = "publik";
+        $isi_post   = $this->input->post('isi_post');
+        $tanggal    = date('Y-m-d H:i:s');
+        $gambar     = $this->input->post('gambar-fitur');
         if($judul === '')
         {
             $judul     = "Tanpa Judul";
@@ -101,7 +102,8 @@ class Posts_data extends CI_Model
             'penulis_post'    => $author,
             'status_post'     => $status,
             'isi_post'        => $isi_post,
-            'tanggal_post'    => $tanggal
+            'tanggal_post'    => $tanggal,
+            'gambar_fitur'    => $gambar
         );
         $this->db->insert('os_post', $data);
     }
@@ -118,13 +120,15 @@ class Posts_data extends CI_Model
         $status   = "draft";
         $isi_post = $this->input->post('isi_post');
         $tanggal  = date('Y-m-d H:i:s');
+        $gambar   = $this->input->post('gambar-fitur');
         $data     = array(
             'judul_post'      => $judul,
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'status_post'     => $status,
             'isi_post'        => $isi_post,
-            'tanggal_post'    => $tanggal
+            'tanggal_post'    => $tanggal,
+            'gambar_fitur'    => $gambar
         );
         $this->db->insert('os_post', $data);
     }
@@ -191,11 +195,13 @@ class Posts_data extends CI_Model
         $kategori = $this->input->post('kategori');
         $author   = $this->input->post('user');
         $isi_post = $this->input->post('isi_post');
+        $gambar   = $this->input->post('gambar-fitur');
         $data     = array(
             'judul_post'      => $judul,
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'isi_post'        => $isi_post,
+            'gambar_fitur'    => $gambar
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);

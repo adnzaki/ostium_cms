@@ -1,10 +1,10 @@
-<div class="menu">
-    <ul class="list">
+<div class="menu menu-custom">
+    <ul class="list-setting">
         <li class="header">KATEGORI</li>
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
-                    <select name="kategori" id="kategori" class="form-control show-tick">
+                    <select name="" id="kategori-sender" class="form-control show-tick">
                         <?php
                         $CI =& get_instance();
                         foreach ($kategori->result() as $kat)                                            {
@@ -26,16 +26,11 @@
 
             </div>
         </div>
-        <li class="header">GAMBAR FITUR</li>
-        <div class="setting-content">
-
-        </div>
         <li class="header">PENULIS</li>
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
-                    <select name="user" id="user" class="form-control show-tick">
-
+                    <select name="" id="user-sender" class="form-control show-tick">
                         <?php
                         foreach ($user->result() as $user)
                         {
@@ -53,6 +48,31 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <li class="header">GAMBAR FITUR</li>
+        <div class="setting-content">
+
+            <div class="col-xs-12">
+                <a href="javascript:void(0);" class="thumbnail">
+                    <?php
+                    $script = $_SERVER['PHP_SELF'];
+                    $arr = explode("/", $script);
+
+                    if(!in_array("edit", $arr))
+                    {
+                        echo "<img src='" . $asset . "images/no-image.png' class='img-responsive' id='prev-img'>";
+                    }
+                    else
+                    {
+                        foreach ($edit_post as $edit)
+                        {
+                            echo "<img src='$edit->gambar_fitur ?>' class='img-responsive' id='prev-img'>";
+                        }
+                    }
+                    ?>
+                </a>
+            </div>
+            <a href="#" class="btn btn-primary col-xs-12" data-toggle="modal" data-target="#largeModal">Tambahkan Sebuah Gambar Khusus</a>
         </div>
     </ul>
 </div>

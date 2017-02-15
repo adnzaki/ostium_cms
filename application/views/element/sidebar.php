@@ -12,13 +12,14 @@
             <?php $this->view('element/footer') ?>
         </div>
         <!-- #Footer -->
-    </aside>    
+    </aside>
     <!-- #END# Left Sidebar -->
 
     <!-- POST SETTING -->
-    <aside id="post-attribute" class="sidebar post-sidebar">       
+    <aside id="post-attribute" class="sidebar post-sidebar">
        <?php $this->view('element/post-setting') ?>
     </aside>
+    <?php $this->view('content/popup/filemanager') ?>
     <!-- #END POST SETTING -->
 
     <!-- Right Sidebar -->

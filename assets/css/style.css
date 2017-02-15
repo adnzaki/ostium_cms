@@ -7258,14 +7258,17 @@ fieldset[disabled] .form-control {
         color: #fff; }
   .sidebar .menu {
     position: relative;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     height: 90vh; }
-    .sidebar .menu .list {
+    .sidebar .menu .list,
+    /* Additional style */
+    .sidebar .menu .list-setting {
       list-style: none;
       padding-left: 0; }
       .sidebar .menu .list li.active > :first-child span {
         font-weight: bold; }
-      .sidebar .menu .list .header {
+      .sidebar .menu .list .header,
+      .sidebar .menu .list-setting .header {
         background: #eee;
         font-size: 12px;
         font-weight: 600;
@@ -7716,4 +7719,3 @@ html.ie11 .dropdown-menu ul.menu li a {
 
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
-
