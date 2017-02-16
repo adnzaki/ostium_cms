@@ -15,7 +15,7 @@ class Posts_data extends CI_Model
 {
     /**
      * Ambil data total baris dari tabel post
-     * @return void
+     * @return mixed
      */
     public function get_total_post()
     {
@@ -25,7 +25,7 @@ class Posts_data extends CI_Model
 
     /**
      * Ambil data total baris dari tabel komentar
-     * @return void
+     * @return mixed
      */
     public function get_total_comment()
     {
@@ -34,7 +34,7 @@ class Posts_data extends CI_Model
 
     /**
      * Ambil atribut post dari database
-     * @return void
+     * @return mixed
      */
     public function get_post_attribute($table)
     {
@@ -46,7 +46,7 @@ class Posts_data extends CI_Model
      * Ambil data post dan draft terbaru
      * @param int $limit
      * @param string $key
-     * @return void
+     * @return mixed
      */
     public function get_recent_post($limit, $key)
     {
@@ -64,7 +64,7 @@ class Posts_data extends CI_Model
     /**
      * Ambil data seluruh post dan draft
      * @param string $key
-     * @return void
+     * @return mixed
      */
     public function get_all_post($key)
     {
