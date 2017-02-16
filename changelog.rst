@@ -14,7 +14,8 @@ Improvements:
   - Update database structure
 
 Bugs known:
-  - slimscroll() does not work when resizing windows
+  - slimscroll() does not work when resizing the browser
 
 Notes:
-** This version comes with new database structure, so you must overwrite your existing database with the new one. **
+- This version comes with new database structure, so you must overwrite your existing database with the new one.
+- You may see images does not appear when you edit a post, it's because server port you are using is different 
