@@ -64,9 +64,11 @@ class Posts_data extends CI_Model
     /**
      * Ambil data seluruh post dan draft
      * @param string $key
+     * @param int $total
+     * @param int $offset
      * @return mixed
      */
-    public function get_all_post($key)
+    public function get_all_post($key, $total, $offset)
     {
         $this->db->select('*');
         $this->db->from('os_post');
@@ -74,6 +76,7 @@ class Posts_data extends CI_Model
         $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
         $this->db->where('status_post', $key); // Input parameter dari controller
         $this->db->order_by('os_post.id_post', 'DESC');
+        $this->db->limit($total, $offset);
         $get_data = $this->db->get();
         return $get_data;
     }
