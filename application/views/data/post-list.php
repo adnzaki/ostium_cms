@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $no = 0;
+                        $no = $this->uri->segment(3);
                         foreach($all_post->result() as $ap) {
                             $no++;
                             //$id = $ap->id;
@@ -58,6 +58,8 @@
                     </tbody>
                 </table>
             </div>
+            <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>
 </div>
+
