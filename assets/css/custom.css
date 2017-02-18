@@ -136,6 +136,16 @@ section.post-content {
     max-height: 200px;
 }
 
+.active-link {
+    /*color: #0e1a87 !important;*/
+    font-weight: 400 !important;
+    cursor: no-drop;
+}
+
+.os-paging {
+    height: 60px;
+}
+
 /*.list-setting {
     overflow-y: scroll;
 }*/
