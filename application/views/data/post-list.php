@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $no = $this->uri->segment(3);
+                        $no = $this->uri->segment(4);
                         foreach($all_post->result() as $ap) {
                             $no++;
                             //$id = $ap->id;
@@ -25,13 +25,20 @@
                             <td><?php echo $no ?></td>
                             <td>
                                 <?php
+                                $judul = $ap->judul_post;
+
+                                if($this->uri->segment(1) === 'post' && $ap->status_post === 'draft' OR $this->uri->segment(2) === 'index' && $ap->status_post === 'draft')
+                                {
+                                    $judul = $ap->judul_post . " - <b>Draft</b>";
+                                }
+
                                 if(strlen($ap->judul_post) <= 40 )
                                 {
-                                    echo $ap->judul_post;
+                                    echo $judul;
                                 }
                                 else
                                 {
-                                    echo substr($ap->judul_post, 0, 40)."...";
+                                    echo substr($judul, 0, 40)."...";
                                 }
                                 ?>
                             </td>
@@ -62,4 +69,3 @@
         </div>
     </div>
 </div>
-

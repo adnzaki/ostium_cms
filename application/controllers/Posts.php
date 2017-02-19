@@ -29,22 +29,72 @@ class Posts extends CI_Controller
      * @return void
      */
     public function index()
-    {        
+    {
         $data['asset']          = base_url()."assets/";
         $data['main_title']     = 'Ostium CMS | Post';
         $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
 
+        // Data posting keseluruhan
+        $data['total_semua']    = $this->Posts_data->get_total_post();
+        $data['total_post']     = $this->Posts_data->get_total_post('publik');
+        $data['total_draft']    = $this->Posts_data->get_total_post('draft');
+
         // Set pagination configuration
         $this->load->library('pagination');
-        $config['base_url']             = base_url() . 'posts/index/';
-        $config['total_rows']           = $this->Posts_data->get_total_post('publik');
-        $config['per_page']             = 5;
-        $from                           = $this->uri->segment(3);             
+        $config['base_url']     = base_url() . 'posts/index/';
+        $config['total_rows']   = $this->Posts_data->get_total_post();
+        $config['per_page']     = 5;
+        $from                   = $this->uri->segment(3);
 
         $this->pagination->initialize($config);
 
-        $data['all_post'] = $this->Posts_data->get_all_post('publik', $config['per_page'], $from);    
+        $data['all_post'] = $this->Posts_data->get_all_post('', $config['per_page'], $from);
+        $this->load->view('section/post', $data);
+    }
+
+    /**
+     * Post filtering
+     * @param string $status
+     *
+     * @return void
+     */
+    public function filter_post($status)
+    {
+        $data['asset']          = base_url()."assets/";
+        $data['main_title']     = 'Ostium CMS | Post';
+        $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
+        $data['user']           = $this->Posts_data->get_post_attribute('os_user');
+
+        // Data posting keseluruhan
+        $data['total_semua']    = $this->Posts_data->get_total_post();
+        $data['total_post']     = $this->Posts_data->get_total_post('publik');
+        $data['total_draft']    = $this->Posts_data->get_total_post('draft');
+
+        // Set pagination configuration
+        $this->load->library('pagination');
+        $config['base_url']     = base_url() . 'posts/filter_post/' . $status;
+
+        // Cek URL untuk menghitung jumlah baris data yang diambil
+        if($status === 'publik')
+        {
+            $config['total_rows']   = $this->Posts_data->get_total_post('publik');
+        }
+        elseif($status === 'draft')
+        {
+            $config['total_rows']   = $this->Posts_data->get_total_post('draft');
+        }
+        else
+        {
+            $config['total_rows']   = $this->Posts_data->get_total_post();
+        }
+
+        $config['per_page']     = 5;
+        $from                   = $this->uri->segment(4);
+
+        $this->pagination->initialize($config);
+
+        $data['all_post'] = $this->Posts_data->get_all_post($status, $config['per_page'], $from);
         $this->load->view('section/post', $data);
     }
 

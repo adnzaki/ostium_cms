@@ -146,6 +146,18 @@ section.post-content {
     height: 60px;
 }
 
-/*.list-setting {
-    overflow-y: scroll;
-}*/
+.os-body-paging {
+    float: right;
+}
+
+.line {
+    border: solid 1px;
+}
+
+.os-post-filter {
+    font-size: 14px;
+}
+
+.os-post-filter:hover {
+    text-decoration: none !important;
+}

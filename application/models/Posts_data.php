@@ -15,11 +15,16 @@ class Posts_data extends CI_Model
 {
     /**
      * Ambil data total baris dari tabel post
+     * @param string $status
      * @return mixed
      */
-    public function get_total_post()
+    public function get_total_post($status = '')
     {
-        $this->db->where('status_post', 'publik');
+        if($status !== '')
+        {
+            $this->db->where('status_post', $status);
+        }
+
         return $this->db->count_all_results('os_post');
     }
 
@@ -63,18 +68,23 @@ class Posts_data extends CI_Model
 
     /**
      * Ambil data seluruh post dan draft
-     * @param string $key
+     * @param string $status
      * @param int $total
      * @param int $offset
      * @return mixed
      */
-    public function get_all_post($key, $total, $offset)
+    public function get_all_post($status = '', $total, $offset)
     {
         $this->db->select('*');
         $this->db->from('os_post');
         $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
         $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
-        $this->db->where('status_post', $key); // Input parameter dari controller
+
+        if($status !== '')
+        {
+            $this->db->where('status_post', $status);
+        }
+
         $this->db->order_by('os_post.id_post', 'DESC');
         $this->db->limit($total, $offset);
         $get_data = $this->db->get();

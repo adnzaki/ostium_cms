@@ -22,6 +22,53 @@
               </div>
           </div>
       </div>
+
+      <div class="row clearfix">
+          <div class="col-xs-12">
+              <?php
+              $active = ["<b style=color:#000;>", "</b>"];
+              ?>
+              <a href="<?=base_url('post') ?>" class="os-post-filter">
+                  <?php
+                  if($this->uri->segment(1) === 'post' OR $this->uri->segment(2) === 'index')
+                  {
+                      echo $active[0] . "Semua (" . $total_semua . ")" . $active[1];
+                  }
+                  else
+                  {
+                      echo "Semua (" . $total_semua . ")";
+                  }
+
+                  ?>
+              </a> &nbsp | &nbsp
+              <a href="<?=base_url('posts/filter_post/publik') ?>" class="os-post-filter">
+                  <?php
+                  if($this->uri->segment(3) === 'publik')
+                  {
+                      echo $active[0] . "Published (" . $total_post . ")" . $active[1];
+                  }
+                  else
+                  {
+                      echo "Published (" . $total_post . ")";
+                  }
+
+                  ?>
+              </a> &nbsp | &nbsp
+              <a href="<?=base_url('posts/filter_post/draft') ?>" class="os-post-filter">
+                  <?php
+                  if($this->uri->segment(3) === 'draft')
+                  {
+                      echo $active[0] . "Draft (" . $total_draft . ")" . $active[1];
+                  }
+                  else
+                  {
+                      echo "Draft (" . $total_draft . ")";
+                  }
+
+                  ?>
+              </a>
+          </div>
+      </div>
       <!-- Success message for deleted post -->
       <?php $this->view('content/message/success-delete') ?>
       <!-- #END -->
