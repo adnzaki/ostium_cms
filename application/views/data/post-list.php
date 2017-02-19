@@ -15,7 +15,15 @@
                     </thead>
                     <tbody>
                         <?php
-                        $no = $this->uri->segment(4);
+                        if($this->uri->segment(1) === 'post' OR $this->uri->segment(2) === 'index')
+                        {
+                            $no = $this->uri->segment(3);
+                        }
+                        else
+                        {
+                            $no = $this->uri->segment(4);
+                        }
+
                         foreach($all_post->result() as $ap) {
                             $no++;
                             //$id = $ap->id;
