@@ -14,7 +14,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * OstiumCMS Link Filter Helpers
+ * OstiumCMS Filter Link Helpers
  *
  * @package		Application
  * @subpackage	Helpers
@@ -34,13 +34,13 @@ if(! function_exists('filter_link'))
      *
      * @param mixed $target
      * @param string $word
-     * @return string 
+     * @return string
      */
     function filter_link($target, $word)
     {
         // Get CodeIgniter instance object
         $CI =& get_instance();
-        
+
         // Style to mark active link
         $current_link = ['<b style=color:#000;>', '</b>'];
 
@@ -62,13 +62,13 @@ if(! function_exists('filter_link'))
                 $output = $inactive_link;
             }
         }
-        else 
+        else
         {
             if($CI->uri->segment(3) === $target)
             {
                 $output = $active_link;
             }
-            else 
+            else
             {
                 $output = $inactive_link;
             }
