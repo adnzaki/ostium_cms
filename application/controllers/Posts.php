@@ -22,6 +22,7 @@ class Posts extends CI_Controller
     {
         parent:: __construct();
         $this->load->model('Posts_data');
+        $this->load->helper('filter');
     }
 
     /**
