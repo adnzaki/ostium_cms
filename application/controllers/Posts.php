@@ -36,11 +36,6 @@ class Posts extends CI_Controller
         $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
 
-        // Data posting keseluruhan
-        $data['total_semua']    = $this->Posts_data->get_total_post();
-        $data['total_post']     = $this->Posts_data->get_total_post('publik');
-        $data['total_draft']    = $this->Posts_data->get_total_post('draft');
-
         // Set pagination configuration
         $this->load->library('pagination');
         $config['base_url']     = base_url() . 'posts/index/';
@@ -66,11 +61,6 @@ class Posts extends CI_Controller
         $data['main_title']     = 'Ostium CMS | Post';
         $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
-
-        // Data posting keseluruhan
-        $data['total_semua']    = $this->Posts_data->get_total_post();
-        $data['total_post']     = $this->Posts_data->get_total_post('publik');
-        $data['total_draft']    = $this->Posts_data->get_total_post('draft');
 
         // Set pagination configuration
         $this->load->library('pagination');
