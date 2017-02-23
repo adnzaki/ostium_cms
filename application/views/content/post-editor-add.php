@@ -45,10 +45,6 @@
                               <button type="submit" class="btn btn-lg btn-info waves-effect os-btn-custom os-btn-icon">
                                   <span class="icon os-icon-button"><i class="material-icons">visibility</i></span>PRATINJAU
                               </button>
-                              <!-- <input type="submit" class="btn btn-lg btn-primary waves-effect os-btn-custom" name="publish-post" value="Publikasikan">
-                              <input type="submit" class="btn btn-lg bg-orange waves-effect os-btn-custom" name="simpan-draft" value="Simpan Draft">
-                              <input type="submit" class="btn btn-lg btn-info waves-effect os-btn-custom" name="pratinjau" value="Pratinjau"> -->
-
                           </div>
                       </div>
                   </div>
