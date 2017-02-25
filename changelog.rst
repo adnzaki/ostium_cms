@@ -2,6 +2,15 @@
 Change Log
 ##########
 
+Version 0.1.0-dev
+=================
+What's new?
+    - Fixed bug: number of post list does not displayed correctly
+    - Fixed the total of published post on dashboard page
+    - Simplify filter uri(s)
+    - Fixed algorithms when displaying post to edit
+    - Fixed bug: unable to delete post
+
 Version 0.0.9-dev
 =================
 New features:
