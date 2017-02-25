@@ -54,4 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['post'] = 'Posts';
 $route['post/edit/(:num)'] = 'Posts/post_edit/$1';
-$route['post/del/(:num)'] = 'Posts/hapus_post/$1';
+$route['post/del/(:num)/(:any)'] = 'Posts/hapus_post/$1/$2';
