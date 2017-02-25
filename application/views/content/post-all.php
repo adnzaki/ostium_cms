@@ -34,9 +34,18 @@
       <?php $this->view('content/message/success-delete') ?>
       <!-- #END -->
 
-      <div class="row clearfix" id="post-list">
+      <div class="row clearfix">
           <!-- Display All Posts -->
-          <?php $this->view('data/post-list') ?>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="card">
+                  <div class="body">
+                      <div class="table-responsive" id="post-list">
+                          <?php $this->view('data/post-list') ?>
+                      </div>
+                      <?php echo $this->pagination->create_links(); ?>
+                  </div>
+              </div>
+          </div>
           <!-- #END Display post -->
       </div>
 
