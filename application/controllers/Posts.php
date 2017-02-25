@@ -23,6 +23,8 @@ class Posts extends CI_Controller
         parent:: __construct();
         $this->load->model('Posts_data');
         $this->load->helper('filter');
+        $this->load->library('pagination');
+        $this->load->config('pagination');
     }
 
     /**
@@ -37,15 +39,12 @@ class Posts extends CI_Controller
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
 
         // Set pagination configuration
-        $this->load->library('pagination');
         $config['base_url']     = base_url() . 'posts/index/';
         $config['total_rows']   = $this->Posts_data->get_total_post();
-        $config['per_page']     = 5;
         $from                   = $this->uri->segment(3);
-
         $this->pagination->initialize($config);
 
-        $data['all_post'] = $this->Posts_data->get_all_post('', $config['per_page'], $from);
+        $data['all_post'] = $this->Posts_data->get_all_post('', $this->config->item('per_page'), $from);
         $this->load->view('section/post', $data);
     }
 
@@ -63,7 +62,6 @@ class Posts extends CI_Controller
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
 
         // Set pagination configuration
-        $this->load->library('pagination');
         $config['base_url']     = base_url() . 'posts/filter_post/' . $status;
 
         // Cek URL untuk menghitung jumlah baris data yang diambil
@@ -75,17 +73,11 @@ class Posts extends CI_Controller
         {
             $config['total_rows']   = $this->Posts_data->get_total_post('draft');
         }
-        else
-        {
-            $config['total_rows']   = $this->Posts_data->get_total_post();
-        }
 
-        $config['per_page']     = 5;
-        $from                   = $this->uri->segment(4);
-
+        $from = $this->uri->segment(4);
         $this->pagination->initialize($config);
 
-        $data['all_post'] = $this->Posts_data->get_all_post($status, $config['per_page'], $from);
+        $data['all_post'] = $this->Posts_data->get_all_post($status, $this->config->item('per_page'), $from);
         $this->load->view('section/post', $data);
     }
 
@@ -148,13 +140,14 @@ class Posts extends CI_Controller
     /**
      * Eksekusi hapus post...
      * @param int $id
+     * @param string $uri_target
      * @return void
      */
-    public function hapus_post($id)
+    public function hapus_post($id, $uri_target)
     {
         $this->Posts_data->delete_post($id);
-        $data['all_post'] = $this->Posts_data->get_all_post('publik');
-        $this->load->view('data/post-list', $data);
+        $uri_target = str_replace("-", "/", $uri_target);
+        redirect($uri_target);
     }
 
 }

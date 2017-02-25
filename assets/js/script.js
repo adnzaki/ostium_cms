@@ -55,23 +55,11 @@ $(document).delegate('.post-delete', 'click', function() {
     var color = $(this).data('color');
     $('#mdModal .modal-content').removeAttr('class').addClass('modal-content modal-col-' + color);
     $('#mdModal').modal('show');
-    $(".btn-delete").attr('id', id);
-});
-
-// Confirm to delete post
-$(".btn-delete").on('click', function() {
-    var id = $(this).attr('id');
-    $.ajax({
-        url: baseUrl + 'post/del/' + id,
-        type: 'POST',
-        success: function(data) {
-            $('#mdModal').modal('hide');
-            $("#post-list").html(data);
-            $("#delete-msg").show(400, setTimeout(function() {
-                $("#delete-msg").hide();
-            }, 5000));
-        }
-    })
+    var path = window.location.pathname;
+    var arr = path.split("/").slice(2);
+    var status;
+    var uri_target = arr.join("-");
+    $("#delete-link").attr('href', baseUrl + 'post/del/' + id + '/' + uri_target);
 });
 
 var postAttribute = {

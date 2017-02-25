@@ -8,7 +8,9 @@
                 Apakah anda yakin ingin menghapus post ini?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect btn-delete">OK</button>
+                <a href="#" id="delete-link">
+                    <button type="submit" class="btn btn-link waves-effect btn-delete">OK</button>
+                </a>
                 <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Batal</button>
             </div>
         </div>
