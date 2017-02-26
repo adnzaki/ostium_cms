@@ -5,7 +5,7 @@
             <?php foreach($edit_post as $edit): ?>
             <div class="card">
                 <?="<input type='hidden' id='post-id' name='post-id' value='$edit->id_post'>"; ?>
-                <form action="<?php echo base_url()."posts/update_post/".$edit->id_post ?>" method="post">
+                <form action="<?= base_url('posts/update_post/') . $edit->id_post ?>" method="post">
                     <input type="hidden" name="kategori" id="kategori" value="">
                     <input type="hidden" name="user" id="user" value="">
                     <input type="hidden" name="gambar-fitur" id="link-img" value="">
