@@ -85,7 +85,7 @@ class Posts_data extends CI_Model
             $this->db->where('status_post', $status);
         }
 
-        $this->db->order_by('os_post.id_post', 'DESC');
+        $this->db->order_by('os_post.tanggal_post', 'DESC');
         $this->db->limit($total, $offset);
         $get_data = $this->db->get();
         return $get_data;
@@ -214,6 +214,38 @@ class Posts_data extends CI_Model
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'isi_post'        => $isi_post,
+            'gambar_fitur'    => $gambar
+        );
+        $this->db->where('id_post', $id);
+        $this->db->update('os_post', $data);
+    }
+
+    /**
+     * Publish draft
+     * @param int $id
+     * @return void
+     */
+    public function publish_draft($id)
+    {
+        $judul    = $this->input->post('judul_post');
+        $kategori = $this->input->post('kategori');
+        $author   = $this->input->post('user');
+        $status   = "publik";
+        $isi_post = $this->input->post('isi_post');
+        $tanggal  = date('Y-m-d H:i:s');
+        $gambar   = $this->input->post('gambar-fitur');
+        if($judul === '')
+        {
+            $judul     = "Tanpa Judul";
+            $status    = "draft";
+        }
+        $data     = array(
+            'judul_post'      => $judul,
+            'kategori_post'   => $kategori,
+            'penulis_post'    => $author,
+            'status_post'     => $status,
+            'isi_post'        => $isi_post,
+            'tanggal_post'    => $tanggal,
             'gambar_fitur'    => $gambar
         );
         $this->db->where('id_post', $id);

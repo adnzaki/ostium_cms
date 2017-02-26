@@ -49,6 +49,28 @@ $("#simpan-draft").on('click', function(e) {
     })
 });
 
+// Publish draft
+$("#publish-draft").on('click', function(e) {
+    e.preventDefault();
+    //alert("Setaan");
+    var id          = $("#post-id").val();
+    var judul       = $("#judul_post").val();
+    var kategori    = $("#kategori").val();
+    var penulis     = $("#user").val();
+    var konten      = tinymce.get('editor').getContent();
+    var gambar      = $("#link-img").val();
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar;
+    $.ajax({
+        url: baseUrl + 'posts/publish_draft/' + id,
+        type: 'POST',
+        dataType: 'html',
+        data: data,
+        success: function() {
+            window.location.href = baseUrl + 'post';
+        }
+    })
+})
+
 // Show confirmation box to delete post
 $(document).delegate('.post-delete', 'click', function() {
     var id = $(this).data('post');

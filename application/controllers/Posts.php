@@ -138,6 +138,16 @@ class Posts extends CI_Controller
     }
 
     /**
+     * Eksekusi update post
+     * @param int $id
+     * @return void
+     */
+    public function publish_draft($id)
+    {
+        $this->Posts_data->publish_draft($id);
+    }
+
+    /**
      * Eksekusi hapus post...
      * @param int $id
      * @param string $uri_target
