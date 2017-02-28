@@ -7,7 +7,7 @@
                     <select name="" id="kategori-sender" class="form-control show-tick">
                         <?php
                         $CI =& get_instance();
-                        foreach ($kategori->result() as $kat)                                            {
+                        foreach ($kategori->result() as $kat) {
 
                             $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, $post_id);
                             if($cek)
