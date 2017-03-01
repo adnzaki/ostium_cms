@@ -95,7 +95,7 @@ class OstiumDate
 
     /**
      * Set tanggal dengan tampilan lengkap
-     * Misalnya: 01 Oktober 2016
+     * Misalnya: Sabtu, 1 Oktober 2016
      *
      * @param int $date, $month, $year
      * @return string
@@ -243,7 +243,7 @@ class OstiumDate
     }
 
     /**
-     * Fungsi ini digunakan untk mengambil nama hari
+     * Fungsi ini berperan dalam menampilkan nama hari
      * berdasarkan input dari user.
      *
      * @param int $date, $month, $year
@@ -263,18 +263,19 @@ class OstiumDate
             case 'Saturday':    $day = $this->dayName[6]; break;
             default: 'Not a date'; break;
         }
+
         return $day;
     }
 
     /**
-     * Validasi inputan tanggal dan bulan
+     * Validasi input tanggal dan bulan
      *
      * @param int $date, $month, $year
-     * @return string
+     * @return bool
      */
     protected function dateValidation($date, $month, $year)
     {
-        if($month > 12 OR $date > $this->daysInMonth($month, $year))
+        if($month > 12 OR $month < 1 OR $date > $this->daysInMonth($month, $year) OR $date < 1)
         {
             return false;
         }
@@ -307,29 +308,11 @@ class OstiumDate
      * apakah berjumlah 28 hari atau 29 hari jika pada tahun kabisat
      *
      * @param int $year
-     * @return string
+     * @return int
      */
     protected function daysOfFebruary($year)
     {
-        return $this->isLeapYear($year) ? $days = 29 : $days = 28;
-    }
-
-    /**
-     * Mengecek apakah tahun yang diinput merupakan tahun kabisat atau bukan
-     *
-     * @param int $year
-     * @return bool
-     */
-    protected function isLeapYear($year)
-    {
-        if($year % 4 === 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return ($year % 4 === 0) ? $days = 29 : $days = 28;
     }
 
 }
