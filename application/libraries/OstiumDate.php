@@ -81,7 +81,7 @@ class OstiumDate
      * @param mixed $mon
      * @return string
      */
-    public function getMonthName($mon = '')
+    protected function getMonthName($mon = '')
     {
         if($mon === '')
         {
