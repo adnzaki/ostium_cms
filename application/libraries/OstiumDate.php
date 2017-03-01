@@ -54,7 +54,7 @@ class OstiumDate
     );
 
     /**
-     * Memanggil objek dari class DateTime
+     * Memanggil fungsi getdate()
      *
      * @return array
      */
@@ -165,6 +165,8 @@ class OstiumDate
      * Format tanggal khusus dengan pilihan format d, D, Dd, m, M, Mm, Y
      * Contoh: 'd' = 26, 'D' = Sen, 26, 'Dd' = Senin, 26
      *         'm' = 12, 'M' = Des, Mm = Desember, Y = 2016
+     * Contoh eksekusi: format('D-M-Y', '1-9-2016', '-')
+     * => argumen ke-3 akan menghasilkan spasi jika dikosongkan
      *
      * @param string $pattern
      * @param string $date
@@ -174,7 +176,7 @@ class OstiumDate
     public function format($pattern, $date, $separator = " ")
     {
         $date = explode("-", $date);
-        if(! $this->dateValidation($date[0], $date[1], $date[2]))
+        if(! $this->dateValidation($date[0], $date[1], $date[2]) OR !strpos($pattern, '-'))
         {
             return "Invalid Date Input";
         }
@@ -201,6 +203,10 @@ class OstiumDate
                 $dayName = $this->setDay($day, $month, $year);
                 $output = $dayName . ", " . $day;
             }
+            else
+            {
+                return "Invalid pattern";
+            }
 
             if($pattern[1] === 'm')
             {
@@ -218,10 +224,18 @@ class OstiumDate
                 $month = $this->getMonthName($month);
                 $output .= $separator . $month;
             }
+            else
+            {
+                return "Invalid pattern";
+            }
 
             if($pattern[2] === 'y' OR $pattern[2] === 'Y')
             {
                 $output .= $separator . $year;
+            }
+            else
+            {
+                return "Invalid pattern";
             }
         }
 
