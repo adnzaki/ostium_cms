@@ -168,6 +168,7 @@ class OstiumDate
      *
      * @param string $pattern
      * @param string $date
+     * @param string $separator
      * @return string
      */
     public function format($pattern, $date, $separator = " ")
