@@ -47,14 +47,16 @@ class OstiumDate
      * @var array()
      */
     protected $monthName = array(
-        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desemver',
+        1 => 'Januari', 2 => 'Februari',    3 => 'Maret',
+        4 => 'April',   5 => 'Mei',         6 => 'Juni',
+        7 => 'Juli',    8 => 'Agustus',     9 => 'September',
+        10 => 'Oktober', 11 => 'November',  12 => 'Desember',
     );
 
     /**
      * Memanggil objek dari class DateTime
      *
-     * @return object | array
+     * @return array
      */
     public function __construct()
     {
@@ -62,7 +64,7 @@ class OstiumDate
     }
 
     /**
-     * Mengambil nama hari
+     * Mengambil nama hari ini
      *
      * @return string
      */
@@ -76,69 +78,51 @@ class OstiumDate
     /**
      * Mengambil nama bulan
      *
+     * @param mixed $mon
      * @return string
      */
-    protected function getMonthName()
+    public function getMonthName($mon = '')
     {
-        $mon = $this->date['mon'] - 1;
+        if($mon === '')
+        {
+            $mon = $this->date['mon'];
+        }
 
         return $this->monthName[$mon];
     }
 
-    /**
-     * Mengambil tanggal dalam bulan saat ini
-     *
-     * @return int
-     */
-    protected function getMonthDay()
-    {
-        $mon = $this->date['mday'];
-
-        return $mon;
-    }
+    // --------------------------- DATE SETTER ----------------------------------------
 
     /**
-     * Menampilkan tanggal lengkap hari ini
-     * Misalnya: Senin, 26 Desember 2016
+     * Set tanggal dengan tampilan lengkap
+     * Misalnya: 01 Oktober 2016
      *
+     * @param int $date, $month, $year
      * @return string
      */
-    public function getFullDate()
+    public function fullDate($date = '', $month = '', $year ='')
     {
-        $day = $this->getDayName();
-        $date = $this->getMonthDay();
-        $month = $this->getMonthName();
-        $year = $this->date['year'];
-
-        return $day . ', ' . $date . ' ' . $month . ' ' . $year;
-    }
-
-    /**
-     * Menampilkan bulan dan tahun
-     * Misalnya: Desember 2016
-     *
-     * @return string
-     */
-    public function getMonthYear()
-    {
-        return $this->getMonthName() . ' ' . $this->date['year'];
-    }
-
-    /**
-     * Menampilkan tanggal singkat
-     * Misalnya: 26-12-2016
-     *
-     * @return string
-     */
-    public function getShortDate($separator = '-')
-    {
-        $mon = $this->date['mon'];
-        if ($mon < 10)
+        if(empty($date) && empty($month) && empty($year))
         {
-            $mon = "0" . $mon;
+            $day = $this->getDayName();
+            $date = $this->date['mday'];
+            $month = $this->getMonthName();
+            $year = $this->date['year'];
+        }
+        else
+        {
+            if(! $this->dateValidation($date, $month, $year))
+            {
+                return "Invalid Date Input";
+            }
+            else
+            {
+                $day = $this->setDay($date, $month, $year);
+                $month = $this->getMonthName($month);
+            }
         }
 
-        return $this->getMonthDay() . $separator . $mon . $separator . $this->date['year'];
+        return $day . ", " . $date . " " . $month . " " . $year;
     }
 
     /**
@@ -149,19 +133,122 @@ class OstiumDate
      * @param string $separator
      * @return string
      */
-    public function setShortDate($date, $month, $year, $separator = '-')
+    public function shortDate($date = '', $month = '', $year = '', $separator = '-')
     {
-        if(! $this->dateValidation($date, $month, $year))
+        if(empty($date) && empty($month) && empty($year))
+        {
+            $mon = $this->date['mon'];
+            $mon < 10 ? $mon = '0' . $mon : $mon = $mon;
+
+            $monthDay = $this->date['mday'];
+            $monthDay < 10 ? $monthDay = '0' . $monthDay : $monthDay = $monthDay;
+
+            return $monthDay . $separator . $mon . $separator . $this->date['year'];
+        }
+        else
+        {
+            if(! $this->dateValidation($date, $month, $year))
+            {
+                return "Invalid Date Input";
+            }
+            else
+            {
+                $date < 10 ? $date = 0 . $date : $date = $date;
+                $month < 10 ? $month = 0 . $month : $month = $month;
+            }
+
+            return $date . $separator . $month . $separator . $year;
+        }
+    }
+
+    /**
+     * Format tanggal khusus dengan pilihan format d, D, Dd, m, M, Mm, Y
+     * Contoh: 'd' = 26, 'D' = Sen, 26, 'Dd' = Senin, 26
+     *         'm' = 12, 'M' = Des, Mm = Desember, Y = 2016
+     *
+     * @param string $pattern
+     * @param string $date
+     * @return string
+     */
+    public function format($pattern, $date, $separator = " ")
+    {
+        $date = explode("-", $date);
+        if(! $this->dateValidation($date[0], $date[1], $date[2]))
         {
             return "Invalid Date Input";
         }
         else
         {
-            $date < 10 ? $date = 0 . $date : $date = $date;
-            $month < 10 ? $month = 0 . $month : $month = $month;
+            $pattern = explode("-", $pattern);
+            $day    = $date[0];
+            $month  = $date[1];
+            $year   = $date[2];
+
+            if($pattern[0] === 'd')
+            {
+                $day < 10 ? $day = 0 . $day : $day = $day;
+                $output = $day;
+            }
+            elseif($pattern[0] === 'D')
+            {
+                $dayName = $this->setDay($day, $month, $year);
+                $dayName = substr($dayName, 0, 3);
+                $output = $dayName . ", " . $day;
+            }
+            elseif($pattern[0] === 'Dd')
+            {
+                $dayName = $this->setDay($day, $month, $year);
+                $output = $dayName . ", " . $day;
+            }
+
+            if($pattern[1] === 'm')
+            {
+                $month < 10 ? $month = '0' . $month : $month = $month;
+                $output .= $separator . $month;
+            }
+            elseif($pattern[1] === 'M')
+            {
+                $month = $this->getMonthName($month);
+                $month = substr($month, 0, 3);
+                $output .= $separator . $month;
+            }
+            elseif($pattern[1] === 'Mm')
+            {
+                $month = $this->getMonthName($month);
+                $output .= $separator . $month;
+            }
+
+            if($pattern[2] === 'y' OR $pattern[2] === 'Y')
+            {
+                $output .= $separator . $year;
+            }
         }
 
-        return $date . $separator . $month . $separator . $year;
+        return $output;
+    }
+
+    /**
+     * Fungsi ini digunakan untk mengambil nama hari
+     * berdasarkan input dari user.
+     *
+     * @param int $date, $month, $year
+     * @return string
+     */
+    protected function setDay($date, $month, $year)
+    {
+        $day = date("l", mktime(0,0,0, $month, $date, $year));
+        switch($day)
+        {
+            case 'Sunday':      $day = $this->dayName[0]; break;
+            case 'Monday':      $day = $this->dayName[1]; break;
+            case 'Tuesday':     $day = $this->dayName[2]; break;
+            case 'Wednesday':   $day = $this->dayName[3]; break;
+            case 'Thursday':    $day = $this->dayName[4]; break;
+            case 'Friday':      $day = $this->dayName[5]; break;
+            case 'Saturday':    $day = $this->dayName[6]; break;
+            default: 'Not a date'; break;
+        }
+        return $day;
     }
 
     /**
