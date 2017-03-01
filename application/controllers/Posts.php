@@ -25,6 +25,7 @@ class Posts extends CI_Controller
         $this->load->helper('filter');
         $this->load->library('pagination');
         $this->load->config('pagination');
+        $this->load->library('ostiumdate');
     }
 
     /**

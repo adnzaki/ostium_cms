@@ -2,6 +2,13 @@
 Change Log
 ##########
 
+Version 0.1.1-dev
+=================
+What's new?
+    - Added publish button for draft editing
+    - Added Indonesia Date library
+    - Fixed some bugs
+
 Version 0.1.0-dev
 =================
 What's new?
