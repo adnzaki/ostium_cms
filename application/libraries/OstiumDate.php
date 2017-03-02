@@ -54,6 +54,16 @@ class OstiumDate
     );
 
     /**
+     * Pesan error untuk kesalahan input tanggal atau format
+     *
+     * @var array()
+     */
+     protected $error = array(
+         'date'     => "Invalid date input",
+         'format'   => "Invalid date format",
+     );
+
+    /**
      * Memanggil fungsi getdate()
      *
      * @return array
@@ -83,7 +93,10 @@ class OstiumDate
      */
     protected function getMonthName($mon = '')
     {
-        ($mon === '') ? $mon = $this->date['mon'] : $mon = $mon;
+        if(empty($mon))
+        {
+            $mon = $this->date['mon'];
+        }
 
         return $this->monthName[$mon];
     }
@@ -110,7 +123,7 @@ class OstiumDate
         {
             if(! $this->dateValidation($date, $month, $year))
             {
-                return "Invalid Date Input";
+                return $this->error['date'];
             }
             else
             {
@@ -146,7 +159,7 @@ class OstiumDate
         {
             if(! $this->dateValidation($date, $month, $year))
             {
-                return "Invalid Date Input";
+                return $this->error['date'];
             }
             else
             {
@@ -172,18 +185,17 @@ class OstiumDate
      */
     public function format($pattern, $date, $separator = " ")
     {
-        $date = explode("-", $date);
-        if(! $this->dateValidation($date[0], $date[1], $date[2]) OR !strpos($pattern, '-'))
+        $date   = explode("-", $date);
+        $day    = $date[0];
+        $month  = $date[1];
+        $year   = $date[2];
+        if(! $this->dateValidation($day, $month, $year) OR !strpos($pattern, '-'))
         {
-            return "Invalid Date Input";
+            return $this->error['date'];
         }
         else
         {
             $pattern = explode("-", $pattern);
-            $day    = $date[0];
-            $month  = $date[1];
-            $year   = $date[2];
-
             if($pattern[0] === 'd')
             {
                 $day < 10 ? $day = 0 . $day : $day = $day;
@@ -202,7 +214,7 @@ class OstiumDate
             }
             else
             {
-                return "Invalid pattern";
+                return $this->error['format'];
             }
 
             if($pattern[1] === 'm')
@@ -223,7 +235,7 @@ class OstiumDate
             }
             else
             {
-                return "Invalid pattern";
+                return $this->error['format'];
             }
 
             if($pattern[2] === 'y' OR $pattern[2] === 'Y')
@@ -232,7 +244,7 @@ class OstiumDate
             }
             else
             {
-                return "Invalid pattern";
+                return $this->error['format'];
             }
         }
 
