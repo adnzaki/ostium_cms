@@ -92,6 +92,19 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Mengambil tanggal yang ada pada tabel post
+     *
+     * @return array
+     */
+    public function get_post_date()
+    {
+        $this->db->distinct();
+        $this->db->order_by('tanggal_post', 'DESC');
+        $get = $this->db->get('os_post');
+        return $get->result();
+    }
+
+    /**
      * Simpan data ke database
      * @return void
      */
