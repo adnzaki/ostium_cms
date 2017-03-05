@@ -54,16 +54,6 @@ class OstiumDate
     );
 
     /**
-     * Pesan error untuk kesalahan input tanggal atau format
-     *
-     * @var array()
-     */
-     protected $error = array(
-         'date'     => "Invalid date input",
-         'format'   => "Invalid date format",
-     );
-
-    /**
      * Memanggil fungsi getdate()
      *
      * @return array
@@ -101,6 +91,16 @@ class OstiumDate
         return $this->monthName[$mon];
     }
 
+    protected function error($option, $hint)
+    {
+        $error = [
+            'date' => "Invalid date input: <b>" . $hint . "</b>",
+            'format' => "Invalid date format: <b>" . $hint . "</b",
+        ];
+
+        return $error[$option];
+    }
+
     // --------------------------- DATE SETTER ----------------------------------------
 
     /**
@@ -123,10 +123,13 @@ class OstiumDate
         {
             if(! $this->dateValidation($date, $month, $year))
             {
-                return $this->error['date'];
+                $hint = $date . "-" . $month . "-" . $year;
+                return $this->error('date', $hint);
             }
             else
             {
+                $date = intval($date);
+                $month = intval($month);
                 $day = $this->setDay($date, $month, $year);
                 $month = $this->getMonthName($month);
             }
@@ -159,10 +162,13 @@ class OstiumDate
         {
             if(! $this->dateValidation($date, $month, $year))
             {
-                return $this->error['date'];
+                $hint = $date . "-" . $month . "-" . $year;
+                return $this->error('date', $hint);
             }
             else
             {
+                $date   = intval($date);
+                $month  = intval($month);
                 $date < 10 ? $date = 0 . $date : $date = $date;
                 $month < 10 ? $month = 0 . $month : $month = $month;
             }
@@ -186,16 +192,32 @@ class OstiumDate
     public function format($pattern, $date, $separator = " ")
     {
         $date   = explode("-", $date);
-        $day    = $date[0];
-        $month  = $date[1];
+        $day    = intval($date[0]);
+        $month  = intval($date[1]);
         $year   = $date[2];
-        if(! $this->dateValidation($day, $month, $year) OR !strpos($pattern, '-'))
+        // $day    = intval($day);
+        // $month  = intval($month);
+        if(! $this->dateValidation($day, $month, $year))
         {
-            return $this->error['date'];
+            $hint = $day . "-" . $month . "-" . $year;
+            return $this->error('date', $hint);
+        }
+        elseif(! strpos($pattern, '-'))
+        {
+            return $this->error('format', $pattern);
         }
         else
         {
             $pattern = explode("-", $pattern);
+            if(sizeof($pattern) < 3)
+            {
+                $hint = $pattern[0];
+            }
+            else
+            {
+                $hint = $pattern[0] . "-" . $pattern[1] . "-" . $pattern[2];
+            }
+
             if($pattern[0] === 'd')
             {
                 $day < 10 ? $day = 0 . $day : $day = $day;
@@ -214,7 +236,7 @@ class OstiumDate
             }
             else
             {
-                return $this->error['format'];
+                return $this->error('format', $hint);
             }
 
             if($pattern[1] === 'm')
@@ -235,7 +257,7 @@ class OstiumDate
             }
             else
             {
-                return $this->error['format'];
+                return $this->error('format', $hint);
             }
 
             if($pattern[2] === 'y' OR $pattern[2] === 'Y')
@@ -244,7 +266,7 @@ class OstiumDate
             }
             else
             {
-                return $this->error['format'];
+                return $this->error('format', $hint);
             }
         }
 
