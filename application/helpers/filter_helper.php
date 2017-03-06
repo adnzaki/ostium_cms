@@ -77,3 +77,35 @@ if(! function_exists('filter_link'))
         return $output;
     }
 }
+
+if(! function_exists('multidimensional_array_unique'))
+{
+    /**
+     * Multidimensional Array Unique
+     * This function was taken from http://php.net/manual/en/function.array-unique.php
+     * Thanks to Ghanshyam Katriya for creating this simple-but-cool function
+     * It's used to get unique values of a multidimensional array
+     *
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    function multidimensional_array_unique($array, $key)
+    {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+
+        foreach($array as $val)
+        {
+            if (!in_array($val[$key], $key_array))
+            {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+
+        return $temp_array;
+    }
+}
