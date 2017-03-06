@@ -79,7 +79,6 @@ $(document).delegate('.post-delete', 'click', function() {
     $('#mdModal').modal('show');
     var path = window.location.pathname;
     var arr = path.split("/").slice(2);
-    var status;
     var uri_target = arr.join("-");
     $("#delete-link").attr('href', baseUrl + 'post/del/' + id + '/' + uri_target);
 });
@@ -111,6 +110,16 @@ var postAttribute = {
         $("#link-img").val(gambar);
     }
 }
+
+// generate URL from the date selector option
+$("#date-selector").change(function() {
+    var value = $(this).find(":selected").val();
+    var path = window.location.pathname;
+    var arr = path.split("/").slice(2);
+    var url = arr.join("/");
+    $("#go-filter").attr('href', baseUrl + url + '/' + value);
+})
+
 // scripts running when the page is loaded
 $(window).load(function() {
     runTinyMCE();
