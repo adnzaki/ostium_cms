@@ -53,7 +53,7 @@ if(! function_exists('filter_link'))
 
         if(is_array($target))
         {
-            if($CI->uri->segment(1) === $target[0] OR $CI->uri->segment(2) === $target[1])
+            if($CI->uri->segment(1) === $target[0] OR $CI->uri->segment(2) === $target[1] OR $CI->uri->segment(3) === $target[2])
             {
                 $output = $active_link;
             }
