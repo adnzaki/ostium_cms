@@ -17,12 +17,19 @@
         }
         else
         {
-            $no = $this->uri->segment(4);
+            $uri_length = $this->uri->total_segments();
+            if($uri_length === 3)
+            {
+                $no = $this->uri->segment(4);
+            }
+            elseif($uri_length > 3)
+            {
+                $no = $this->uri->segment(5);
+            }
         }
 
         foreach($all_post->result() as $ap) {
             $no++;
-            //$id = $ap->id;
         ?>
         <tr>
 
@@ -31,7 +38,9 @@
                 <?php
                 $judul = $ap->judul_post;
 
-                if($this->uri->segment(1) === 'post' && $ap->status_post === 'draft' OR $this->uri->segment(2) === 'index' && $ap->status_post === 'draft')
+                if($this->uri->segment(1) === 'post' && $ap->status_post === 'draft'
+                    OR $this->uri->segment(2) === 'index' && $ap->status_post === 'draft'
+                    OR $this->uri->segment(3) === 'all' && $ap->status_post === 'draft')
                 {
                     $judul = $ap->judul_post . " - <b>Draft</b>";
                 }

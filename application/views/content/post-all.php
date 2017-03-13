@@ -25,9 +25,51 @@
 
       <div class="row clearfix">
           <div class="col-xs-12">
-              <a href="<?=base_url('post') ?>" class="os-post-filter"><?= filter_link(['post', 'index'], 'Semua'); ?></a> &nbsp | &nbsp
+              <a href="<?=base_url('post') ?>" class="os-post-filter"><?= filter_link(['post', 'index', 'all'], 'Semua'); ?></a> &nbsp | &nbsp
               <a href="<?=base_url('posts/filter_post/publik') ?>" class="os-post-filter"><?= filter_link('publik', 'Published') ?></a> &nbsp | &nbsp
               <a href="<?=base_url('posts/filter_post/draft') ?>" class="os-post-filter"><?= filter_link('draft', 'Draft') ?></a>
+          </div>
+      </div>
+      <div class="row clearfix">
+          <div class="col-sm-3 col-xs-12">
+              <select class="form-control show-tick">
+                  <option value="">-- Semua Kategori --</option>
+                  <?php
+                  foreach ($kategori->result() as $kat) {
+                      echo '<option value=' . $kat->id_kategori . '>' . $kat->nama_kategori . '</option>';
+                  }
+                  ?>
+              </select>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+              <select class="form-control show-tick" id="date-selector">
+                  <option value="">-- Semua Tanggal --</option>
+                  <?php
+                  $arr = [];
+                  foreach ($tanggal as $tgl) {
+                      $date = explode(" ", $tgl->tanggal_post);
+                      $date_to_set = $date[0];
+                      $set_date = explode("-", $date_to_set);
+                      $print_date = $this->ostiumdate->format('d-Mm-y', $set_date[2].'-'.$set_date[1].'-'.$set_date[0]);
+                      $escape_day = explode(" ", $print_date);
+                      $date_value = array(
+                          'month' => $escape_day[1] . ' ' . $escape_day[2],
+                          'value' => $set_date[0].$set_date[1]
+                      );
+                      array_push($arr, $date_value);
+                  }
+
+                  $get_month = multidimensional_array_unique($arr, 'month');
+                  foreach ($get_month as $bulan => $mon) {
+                      echo '<option value="'.$mon['value'].'">'.$mon['month'].'</option>';
+                  }
+                  ?>
+              </select>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+              <a href="" id="go-filter">
+                  <button type="button" class="btn btn-primary" name="button">Filter</button>
+              </a>
           </div>
       </div>
       <!-- Success message for deleted post -->

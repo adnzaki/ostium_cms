@@ -44,43 +44,66 @@ class Posts extends CI_Controller
         $config['base_url']     = base_url() . 'posts/index/';
         $config['total_rows']   = $this->Posts_data->get_total_post();
         $from                   = $this->uri->segment(3);
+        $data['from'] = $from;
         $this->pagination->initialize($config);
 
-        $data['all_post'] = $this->Posts_data->get_all_post('', $this->config->item('per_page'), $from);
+        $data['baris'] = $config['total_rows'];
+        $data['all_post'] = $this->Posts_data->get_all_post('', 0, $this->config->item('per_page'), $from);
         $this->load->view('section/post', $data);
     }
 
     /**
      * Post filtering
      * @param string $status
+     * @param int $date
      *
      * @return void
      */
-    public function filter_post($status)
+    public function filter_post($status, $date = 0)
     {
         $data['asset']          = base_url()."assets/";
         $data['main_title']     = 'Ostium CMS | Post';
         $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
         $data['user']           = $this->Posts_data->get_post_attribute('os_user');
         $data['tanggal']        = $this->Posts_data->get_post_date();
+        $uri_length             = $this->uri->total_segments();
 
-        // Set pagination configuration
-        $config['base_url']     = base_url() . 'posts/filter_post/' . $status;
+        // Passing value untuk tanggal
+        (empty($date) OR $date === 0) ? $date = 0 : $date = $date;
+
+        // BaseURL untuk pagination
+        $config['base_url']     = base_url() . 'posts/filter_post/' . $status . '/' . $date;
 
         // Cek URL untuk menghitung jumlah baris data yang diambil
         if($status === 'publik')
         {
-            $config['total_rows']   = $this->Posts_data->get_total_post('publik');
+            $config['total_rows']   = $this->Posts_data->get_total_post('publik', $date);
         }
         elseif($status === 'draft')
         {
-            $config['total_rows']   = $this->Posts_data->get_total_post('draft');
+            $config['total_rows']   = $this->Posts_data->get_total_post('draft', $date);
+        }
+        elseif($status === 'all')
+        {
+            $config['total_rows']   = $this->Posts_data->get_total_post('', $date);
+            $status                 = '';
         }
 
-        $from = $this->uri->segment(4);
-        $this->pagination->initialize($config);
+        $data['baris'] = $config['total_rows'];
 
-        $data['all_post'] = $this->Posts_data->get_all_post($status, $this->config->item('per_page'), $from);
+        if($uri_length === 3)
+        {
+            $from = $this->uri->segment(4);
+        }
+        elseif($uri_length > 3)
+        {
+            $from = $this->uri->segment(5);
+        }
+
+        $data['from'] = $from;
+        $this->pagination->initialize($config);
+        $data['all_post'] = $this->Posts_data->get_all_post($status, $date, $this->config->item('per_page'), $from);
+
         $this->load->view('section/post', $data);
     }
 
@@ -164,5 +187,3 @@ class Posts extends CI_Controller
     }
 
 }
-
-?>

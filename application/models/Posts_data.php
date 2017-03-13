@@ -16,13 +16,21 @@ class Posts_data extends CI_Model
     /**
      * Ambil data total baris dari tabel post
      * @param string $status
+     * @param int $date
      * @return mixed
      */
-    public function get_total_post($status = '')
+    public function get_total_post($status = '', $date = 0)
     {
         if($status !== '')
         {
             $this->db->where('status_post', $status);
+        }
+
+        if($date !== 0)
+        {
+            $year = substr($date, 0, 4);
+            $month = substr($date, 4, 2);
+            $this->db->like('tanggal_post', $year . '-' . $month, 'after');
         }
 
         return $this->db->count_all_results('os_post');
@@ -69,11 +77,12 @@ class Posts_data extends CI_Model
     /**
      * Ambil data seluruh post dan draft
      * @param string $status
+     * @param int $date
      * @param int $total
      * @param int $offset
      * @return mixed
      */
-    public function get_all_post($status = '', $total, $offset)
+    public function get_all_post($status = '', $date = 0, $total, $offset)
     {
         $this->db->select('*');
         $this->db->from('os_post');
@@ -83,6 +92,13 @@ class Posts_data extends CI_Model
         if($status !== '')
         {
             $this->db->where('status_post', $status);
+        }
+
+        if($date !== 0)
+        {
+            $year = substr($date, 0, 4);
+            $month = substr($date, 4, 2);
+            $this->db->like('tanggal_post', $year . '-' . $month, 'after');
         }
 
         $this->db->order_by('os_post.tanggal_post', 'DESC');
