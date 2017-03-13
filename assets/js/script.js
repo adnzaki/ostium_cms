@@ -83,6 +83,7 @@ $(document).delegate('.post-delete', 'click', function() {
     $("#delete-link").attr('href', baseUrl + 'post/del/' + id + '/' + uri_target);
 });
 
+// Post Attribute Setting
 var postAttribute = {
     kategori: "#kategori-sender",
     user: "#user-sender",
@@ -114,10 +115,25 @@ var postAttribute = {
 // generate URL from the date selector option
 $("#date-selector").change(function() {
     var value = $(this).find(":selected").val();
+    var garing = $(this).val();
     var path = window.location.pathname;
     var arr = path.split("/").slice(2);
-    var url = arr.join("/");
-    $("#go-filter").attr('href', baseUrl + url + '/' + value);
+    var uri, offset;
+
+    if(garing === '') {
+        garing = 0 + '/';
+    } else {
+        garing = '/';
+    }
+    console.log(arr);
+    if(arr[0] === 'post' || arr[1] === 'index') {
+        uri = 'posts/filter_post/all/' + value + "/0";
+    } else {
+        uri = arr.splice(0, 3).join("/") + garing + value + "/0";
+    }   
+
+    console.log(path);
+    $("#go-filter").attr('href', baseUrl + uri);
 })
 
 // scripts running when the page is loaded
