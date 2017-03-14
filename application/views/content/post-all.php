@@ -61,7 +61,16 @@
 
                   $get_month = multidimensional_array_unique($arr, 'month');
                   foreach ($get_month as $bulan => $mon) {
-                      echo '<option value="'.$mon['value'].'">'.$mon['month'].'</option>';
+                      $val = $mon['value'];
+                      if($this->uri->segment(4) === $val)
+                      {
+                          echo '<option value="'. $val .'" selected="selected">'.$mon['month'].'</option>';
+                      }
+                      else
+                      {
+                          echo '<option value="'. $val .'">'.$mon['month'].'</option>';
+                      }
+
                   }
                   ?>
               </select>
@@ -70,6 +79,9 @@
               <a href="" id="go-filter">
                   <button type="button" class="btn btn-primary" name="button">Filter</button>
               </a>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+              <center>Total: <?= $baris ?> item</center>.
           </div>
       </div>
       <!-- Success message for deleted post -->
