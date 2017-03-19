@@ -22,7 +22,7 @@
                         $CI =& get_instance();
                         foreach ($kategori->result() as $kat) {
 
-                            $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, $post_id);
+                            $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, isset($post_id));
                             if($cek)
                             {
                                 echo "<option value='$kat->id_kategori' id='$kat->id_kategori' selected='selected'>$kat->nama_kategori</option>";
@@ -45,7 +45,7 @@
                         <?php
                         foreach ($user->result() as $user)
                         {
-                            $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, $post_id);
+                            $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, isset($post_id));
                             if($cek)
                             {
                                 echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";
