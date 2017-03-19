@@ -107,7 +107,9 @@ class OstiumDate
      * Set tanggal dengan tampilan lengkap
      * Misalnya: Sabtu, 1 Oktober 2016
      *
-     * @param int $date, $month, $year
+     * @param mixed $date 
+     * @param mixed $month 
+     * @param mixed $year
      * @return string
      */
     public function fullDate($date = '', $month = '', $year ='')
@@ -142,8 +144,10 @@ class OstiumDate
      * Set tanggal dengan tampilan ringkas
      * Misalnya: 26-12-2016
      *
-     * @param int $date, $month, $year
-     * @param string $separator
+     * @param mixed $date
+     * @param mixed $month
+     * @param mixed $year
+     * @param mixed $separator
      * @return string
      */
     public function shortDate($date = '', $month = '', $year = '', $separator = '-')
@@ -277,7 +281,9 @@ class OstiumDate
      * Fungsi ini berperan dalam menampilkan nama hari
      * berdasarkan input dari user.
      *
-     * @param int $date, $month, $year
+     * @param int $date
+     * @param int $month
+     * @param int $year
      * @return string
      */
     protected function setDay($date, $month, $year)
@@ -301,7 +307,9 @@ class OstiumDate
     /**
      * Validasi input tanggal dan bulan
      *
-     * @param int $date, $month, $year
+     * @param int $date
+     * @param int $month
+     * @param int $year
      * @return bool
      */
     protected function dateValidation($date, $month, $year)
@@ -320,7 +328,8 @@ class OstiumDate
      * Fungsi yang digunakan untuk mengambil jumlah hari dalam bulan
      * yang diinput untuk divalidasi oleh fungsi dateValidation()
      *
-     * @param int $month, $year
+     * @param int $month
+     * @param int $year
      * @return int
      */
     protected function daysInMonth($month, $year)
