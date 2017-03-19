@@ -130,11 +130,42 @@ $("#date-selector").change(function() {
         uri = 'posts/filter_post/all/' + value + "/0";
     } else {
         uri = arr.splice(0, 3).join("/") + garing + value + "/0";
-    }   
+    }
 
     console.log(path);
     $("#go-filter").attr('href', baseUrl + uri);
 })
+
+// Create permalink
+$("#judul_post").keyup(function () {
+    createLink("#judul_post");
+    var getLink = $("#permalink").text();
+    var getSeo = getLink.split(" ");
+    var seo = getSeo.slice(1);
+    seo = seo.toString().split("/").slice(5);
+    $("#permalink-input").val(seo);
+});
+
+// edit permalink
+$("#permalink-input").keyup(function () {
+    var teks = $(this).val();
+    teks = teks.replace(/\W+/g, "-").toLowerCase();
+    $(this).val(teks);
+    createLink("#permalink-input");
+})
+
+function createLink(input) {
+    var postLink = $(input).val(),
+        baseLink = baseUrl + 'read/';
+
+    var permalink = baseLink + postLink.replace(/\W+/g, "-").toLowerCase();
+    var lastChar = permalink.substr(permalink.length - 1);
+
+    if (lastChar.search(/\W/) === 0) {
+        permalink = permalink.substring(0, permalink.length - 1);
+    }
+    $("#permalink").html("<b>Permalink: </b><br>" + permalink);
+}
 
 // scripts running when the page is loaded
 $(window).load(function() {

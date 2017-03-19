@@ -1,5 +1,18 @@
 <div class="menu menu-custom">
     <ul class="list-setting">
+    <li class="header">PERMALINK</li>
+        <div class="setting-content">
+            <div class="row clearfix">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="permalink" id="permalink-input" class="form-control" placeholder="Permalink" />
+                        </div>
+                        <div id="permalink"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <li class="header">KATEGORI</li>
         <div class="setting-content">
             <div class="row clearfix">
@@ -21,9 +34,7 @@
                         }
                         ?>
                     </select>
-
                 </div>
-
             </div>
         </div>
         <li class="header">PENULIS</li>
