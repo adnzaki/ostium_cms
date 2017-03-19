@@ -49,3 +49,5 @@ assets/plugins/tinymce/plugins/responsive_filemanager.zip
 *.trash
 .vs/config/applicationhost.config
 *.suo
+*.sln
+OstiumCMS.phpproj
