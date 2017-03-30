@@ -15,8 +15,7 @@ class Posts extends CI_Controller
 {
 
     /**
-     * Models loader
-     * @return void
+     * The Constructor!
      */
     public function __construct()
     {
@@ -28,6 +27,11 @@ class Posts extends CI_Controller
         $this->load->library('ostiumdate');
     }
 
+    /**
+     * Data loader
+     *
+     * @return array
+     */
     protected function common_data()
     {
         $data = [
@@ -35,7 +39,6 @@ class Posts extends CI_Controller
             'main_title'    => 'Ostium CMS | Post',
             'kategori'      => $this->Posts_data->get_post_attribute('os_kategori'),
             'user'          => $this->Posts_data->get_post_attribute('os_user'),
-            'permalink'     => $this->Posts_data->get_post_attribute('os_post'),
             'tanggal'       => $this->Posts_data->get_post_date()
         ];
 
@@ -146,6 +149,7 @@ class Posts extends CI_Controller
         {
             $data['edit_post']      = $this->Posts_data->post_to_edit($id);
             $data['post_id']        = $id;
+            $data['cek_link']       = $this->Posts_data->check_permalink($id);
             $this->load->view('section/post-edit', $data);
         }
         else

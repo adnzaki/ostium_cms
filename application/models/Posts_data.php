@@ -133,6 +133,7 @@ class Posts_data extends CI_Model
         $isi_post   = $this->input->post('isi_post');
         $tanggal    = date('Y-m-d H:i:s');
         $gambar     = $this->input->post('gambar-fitur');
+        $permalink  = $this->input->post('permalink');
         if($judul === '')
         {
             $judul     = "Tanpa Judul";
@@ -145,7 +146,8 @@ class Posts_data extends CI_Model
             'status_post'     => $status,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
-            'gambar_fitur'    => $gambar
+            'gambar_fitur'    => $gambar,
+            'permalink'       => $permalink
         );
         $this->db->insert('os_post', $data);
     }
@@ -163,6 +165,7 @@ class Posts_data extends CI_Model
         $isi_post = $this->input->post('isi_post');
         $tanggal  = date('Y-m-d H:i:s');
         $gambar   = $this->input->post('gambar-fitur');
+        $permalink  = $this->input->post('permalink');
         $data     = array(
             'judul_post'      => $judul,
             'kategori_post'   => $kategori,
@@ -170,7 +173,8 @@ class Posts_data extends CI_Model
             'status_post'     => $status,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
-            'gambar_fitur'    => $gambar
+            'gambar_fitur'    => $gambar,
+            'permalink'       => $permalink
         );
         $this->db->insert('os_post', $data);
     }
@@ -227,6 +231,26 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Mengecek apakah permalink ada atau tidak
+     * @param int $id_post
+     * @return bool
+     */
+    public function check_permalink($id_post)
+    {
+        $this->db->select('permalink')->from('os_post');
+        $this->db->where('id_post', $id_post);
+        $get = $this->db->get();
+        if($get->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    /**
      * Update data posting
      * @param int $id
      * @return void
@@ -238,12 +262,14 @@ class Posts_data extends CI_Model
         $author   = $this->input->post('user');
         $isi_post = $this->input->post('isi_post');
         $gambar   = $this->input->post('gambar-fitur');
+        $permalink  = $this->input->post('permalink');
         $data     = array(
             'judul_post'      => $judul,
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'isi_post'        => $isi_post,
-            'gambar_fitur'    => $gambar
+            'gambar_fitur'    => $gambar,
+            'permalink'       => $permalink
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
@@ -263,6 +289,7 @@ class Posts_data extends CI_Model
         $isi_post = $this->input->post('isi_post');
         $tanggal  = date('Y-m-d H:i:s');
         $gambar   = $this->input->post('gambar-fitur');
+        $permalink  = $this->input->post('permalink');
         if($judul === '')
         {
             $judul     = "Tanpa Judul";
@@ -275,7 +302,8 @@ class Posts_data extends CI_Model
             'status_post'     => $status,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
-            'gambar_fitur'    => $gambar
+            'gambar_fitur'    => $gambar,
+            'permalink'       => $permalink
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);

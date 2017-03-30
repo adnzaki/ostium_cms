@@ -6,9 +6,26 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" name="permalink" id="permalink-input" class="form-control" placeholder="Permalink" />
+                            <?php
+                            $CI =& get_instance();
+                            //$cek_link = $CI->Posts_data->check_permalink(isset($post_id));
+                            if(isset($cek_link))
+                            {
+                                foreach ($edit_post as $link)
+                                {
+                                    $link = explode("/", $link->permalink);
+
+                                    echo '<input type="text" id="permalink-input" value="'.$link[5].'" class="form-control" placeholder="Permalink" />';
+                                }
+                            }
+                            else
+                            {
+                                echo '<input type="text" id="permalink-input" value="" class="form-control" placeholder="Permalink" />';
+                            }
+                            ?>
+
                         </div>
-                        <div id="permalink"></div>
+                        <div id="permalink-text"></div>
                     </div>
                 </div>
             </div>
@@ -19,7 +36,7 @@
                 <div class="col-xs-12">
                     <select name="" id="kategori-sender" class="form-control show-tick">
                         <?php
-                        $CI =& get_instance();
+
                         foreach ($kategori->result() as $kat) {
 
                             $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, isset($post_id));

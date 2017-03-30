@@ -37,7 +37,8 @@ $("#simpan-draft").on('click', function(e) {
     var penulis     = $("#user").val();
     var konten      = tinymce.get('editor').getContent();
     var gambar      = $("#link-img").val();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar;
+    var permalink   = $("#permalink").val();
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
     $.ajax({
         url: baseUrl + 'posts/add_draft',
         type: 'POST',
@@ -59,7 +60,8 @@ $("#publish-draft").on('click', function(e) {
     var penulis     = $("#user").val();
     var konten      = tinymce.get('editor').getContent();
     var gambar      = $("#link-img").val();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar;
+    var permalink   = $("#permalink").val();
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
     $.ajax({
         url: baseUrl + 'posts/publish_draft/' + id,
         type: 'POST',
@@ -105,10 +107,12 @@ var postAttribute = {
     defaultAttribute: function() {
         var kategori    = $(this.kategori).find(":selected").attr('id'),
             user        = $(this.user).find(":selected").attr('id'),
-            gambar      = $("#prev-img").attr('src');
+            gambar      = $("#prev-img").attr('src'),
+            permalink   = $("#permalink").val();
         $("#kategori").val(kategori);
         $("#user").val(user);
         $("#link-img").val(gambar);
+        $("#permalink-text").text(permalink);
     }
 }
 
@@ -139,7 +143,7 @@ $("#date-selector").change(function() {
 // Create permalink
 $("#judul_post").keyup(function () {
     createLink("#judul_post");
-    var getLink = $("#permalink").text();
+    var getLink = $("#permalink-text").text();
     var getSeo = getLink.split(" ");
     var seo = getSeo.slice(1);
     seo = seo.toString().split("/").slice(5);
@@ -164,7 +168,8 @@ function createLink(input) {
     if (lastChar.search(/\W/) === 0) {
         permalink = permalink.substring(0, permalink.length - 1);
     }
-    $("#permalink").html("<b>Permalink: </b><br>" + permalink);
+    $("#permalink-text").html("<b>Permalink: </b><br>" + permalink);
+    $("#permalink").val(permalink);
 }
 
 // scripts running when the page is loaded
@@ -174,6 +179,7 @@ $(window).load(function() {
     postAttribute.setKategori();
     postAttribute.setUser();
     postAttribute.defaultAttribute();
+    //$("#permalink-input").val($("#permalink").val());
 });
 
 $(window).resize(function () {

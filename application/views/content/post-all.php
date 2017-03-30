@@ -70,7 +70,6 @@
                       {
                           echo '<option value="'. $val .'">'.$mon['month'].'</option>';
                       }
-
                   }
                   ?>
               </select>
