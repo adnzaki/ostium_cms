@@ -28,17 +28,27 @@ class Posts extends CI_Controller
         $this->load->library('ostiumdate');
     }
 
+    protected function common_data()
+    {
+        $data = [
+            'asset'         => base_url()."assets/",
+            'main_title'    => 'Ostium CMS | Post',
+            'kategori'      => $this->Posts_data->get_post_attribute('os_kategori'),
+            'user'          => $this->Posts_data->get_post_attribute('os_user'),
+            'permalink'     => $this->Posts_data->get_post_attribute('os_post'),
+            'tanggal'       => $this->Posts_data->get_post_date()
+        ];
+
+        return $data;
+    }
+
     /**
      * Halaman utama untuk posting
      * @return void
      */
     public function index()
     {
-        $data['asset']          = base_url()."assets/";
-        $data['main_title']     = 'Ostium CMS | Post';
-        $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
-        $data['user']           = $this->Posts_data->get_post_attribute('os_user');
-        $data['tanggal']        = $this->Posts_data->get_post_date();
+        $data = $this->common_data();
 
         // Set pagination configuration
         $config['base_url']     = base_url() . 'posts/index/';
@@ -61,18 +71,14 @@ class Posts extends CI_Controller
      */
     public function filter_post($status, $date = 0)
     {
-        $data['asset']          = base_url()."assets/";
-        $data['main_title']     = 'Ostium CMS | Post';
-        $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
-        $data['user']           = $this->Posts_data->get_post_attribute('os_user');
-        $data['tanggal']        = $this->Posts_data->get_post_date();
-        $uri_length             = $this->uri->total_segments();
+        $data       = $this->common_data();
+        $uri_length = $this->uri->total_segments();
 
         // Passing value untuk tanggal
         (empty($date) OR $date === 0) ? $date = 0 : $date = $date;
 
         // BaseURL untuk pagination
-        $config['base_url']     = base_url() . 'posts/filter_post/' . $status . '/' . $date;
+        $config['base_url']         = base_url() . 'posts/filter_post/' . $status . '/' . $date;
 
         // Cek URL untuk menghitung jumlah baris data yang diambil
         if($status === 'publik')
@@ -133,14 +139,11 @@ class Posts extends CI_Controller
      */
     public function post_edit($id)
     {
-        $data['asset']          = base_url()."assets/";
-        $data['main_title']     = 'Ostium CMS | Post';
+        $data = $this->common_data();
 
         // check whether the post is exist or not
         if($this->Posts_data->post_exists($id))
         {
-            $data['user']           = $this->Posts_data->get_post_attribute('os_user');
-            $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
             $data['edit_post']      = $this->Posts_data->post_to_edit($id);
             $data['post_id']        = $id;
             $this->load->view('section/post-edit', $data);
