@@ -132,7 +132,7 @@ function filterLinkGenerator() {
         path = window.location.pathname,
         arr = path.split('/').slice(2),
         postUri = 'posts/filter_post/',
-        uri, status;
+        status;
     dateValue === '' ? dateValue = 0 : dateValue = dateValue;
     catID === '' ? catID = 0 : catID = catID;
 
@@ -142,16 +142,7 @@ function filterLinkGenerator() {
         status = arr[2];
     }
 
-    if(dateValue === '' && catID === '') {
-        uri = postUri + status + '/0/0';
-    } else if(dateValue !== '' && catID === '') {
-        uri = postUri + status + '/' + dateValue + '/0';
-    } else if(dateValue === '' && catID !== '') {
-        uri = postUri + status + '0/' + catID;
-    } else {
-        uri = postUri + status + '/' + dateValue + '/' + catID;
-    }
-
+    var uri = postUri + status + '/' + dateValue + '/' + catID;
     $("#go-filter").attr('href', baseUrl + uri);
 }
 
