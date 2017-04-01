@@ -69,6 +69,7 @@ class Posts extends CI_Controller
      * Post filtering
      * @param string $status
      * @param int $date
+     * @param int $category
      *
      * @return void
      */
