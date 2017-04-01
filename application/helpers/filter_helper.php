@@ -109,3 +109,34 @@ if(! function_exists('multidimensional_array_unique'))
         return $temp_array;
     }
 }
+
+if(! function_exists('offset_generator'))
+{
+    /**
+     * Offset Generator
+     * Well, it's a little bit confusing to give the name of this function
+     * But because it's related to offset, and return a number, I named it 'Offset Generator'
+     *
+     * @return int
+     */
+     function offset_generator()
+     {
+         $CI =& get_instance();
+         $uri_length = $CI->uri->total_segments();
+
+         if($uri_length === 3)
+         {
+             $offset = $CI->uri->segment(4);
+         }
+         elseif($uri_length === 4)
+         {
+             $offset = $CI->uri->segment(5);
+         }
+         elseif($uri_length > 4)
+         {
+             $offset = $CI->uri->segment(6);
+         }
+
+         return $offset;
+     }
+}
