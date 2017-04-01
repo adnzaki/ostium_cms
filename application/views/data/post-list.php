@@ -17,15 +17,7 @@
         }
         else
         {
-            $uri_length = $this->uri->total_segments();
-            if($uri_length === 3)
-            {
-                $no = $this->uri->segment(4);
-            }
-            elseif($uri_length > 3)
-            {
-                $no = $this->uri->segment(5);
-            }
+            $no = offset_generator();
         }
 
         foreach($all_post->result() as $ap) {

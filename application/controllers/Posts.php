@@ -61,7 +61,7 @@ class Posts extends CI_Controller
         $this->pagination->initialize($config);
 
         $data['baris'] = $config['total_rows'];
-        $data['all_post'] = $this->Posts_data->get_all_post('', 0, $this->config->item('per_page'), $from);
+        $data['all_post'] = $this->Posts_data->get_all_post('', 0, 0, $this->config->item('per_page'), $from);
         $this->load->view('section/post', $data);
     }
 
@@ -72,46 +72,39 @@ class Posts extends CI_Controller
      *
      * @return void
      */
-    public function filter_post($status, $date = 0)
+    public function filter_post($status, $date = 0, $category = 0)
     {
         $data       = $this->common_data();
-        $uri_length = $this->uri->total_segments();
+        //$uri_length = $this->uri->total_segments();
 
         // Passing value untuk tanggal
         (empty($date) OR $date === 0) ? $date = 0 : $date = $date;
 
+        (empty($category) OR $category === 0) ? $category = 0 : $category = $category;
+
         // BaseURL untuk pagination
-        $config['base_url']         = base_url() . 'posts/filter_post/' . $status . '/' . $date;
+        $config['base_url']         = base_url() . 'posts/filter_post/' . $status . '/' . $date . '/' . $category;
 
         // Cek URL untuk menghitung jumlah baris data yang diambil
         if($status === 'publik')
         {
-            $config['total_rows']   = $this->Posts_data->get_total_post('publik', $date);
+            $config['total_rows']   = $this->Posts_data->get_total_post('publik', $date, $category);
         }
         elseif($status === 'draft')
         {
-            $config['total_rows']   = $this->Posts_data->get_total_post('draft', $date);
+            $config['total_rows']   = $this->Posts_data->get_total_post('draft', $date, $category);
         }
         elseif($status === 'all')
         {
-            $config['total_rows']   = $this->Posts_data->get_total_post('', $date);
+            $config['total_rows']   = $this->Posts_data->get_total_post('', $date, $category);
             $status                 = '';
         }
 
         $data['baris'] = $config['total_rows'];
+        $from = offset_generator();
 
-        if($uri_length === 3)
-        {
-            $from = $this->uri->segment(4);
-        }
-        elseif($uri_length > 3)
-        {
-            $from = $this->uri->segment(5);
-        }
-
-        $data['from'] = $from;
         $this->pagination->initialize($config);
-        $data['all_post'] = $this->Posts_data->get_all_post($status, $date, $this->config->item('per_page'), $from);
+        $data['all_post'] = $this->Posts_data->get_all_post($status, $date, $category, $this->config->item('per_page'), $from);
 
         $this->load->view('section/post', $data);
     }

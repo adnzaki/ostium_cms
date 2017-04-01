@@ -32,11 +32,19 @@
       </div>
       <div class="row clearfix">
           <div class="col-sm-3 col-xs-12">
-              <select class="form-control show-tick">
+              <select class="form-control show-tick" id="cat-selector">
                   <option value="">-- Semua Kategori --</option>
                   <?php
                   foreach ($kategori->result() as $kat) {
-                      echo '<option value=' . $kat->id_kategori . '>' . $kat->nama_kategori . '</option>';
+                      $id = $kat->id_kategori;
+                      if($this->uri->segment(5) === $id)
+                      {
+                          echo '<option value="' . $id . '" selected="selected">' . $kat->nama_kategori . '</option>';
+                      }
+                      else
+                      {
+                          echo '<option value="' . $id . '">' . $kat->nama_kategori . '</option>';
+                      }
                   }
                   ?>
               </select>
@@ -75,8 +83,8 @@
               </select>
           </div>
           <div class="col-sm-3 col-xs-12">
-              <a href="" id="go-filter">
-                  <button type="button" class="btn btn-primary" name="button">Filter</button>
+              <a href="" id="go-filter" class="btn btn-primary">Filter
+                  <!-- <button type="button"  name="button">Filter</button> -->
               </a>
           </div>
           <div class="col-sm-3 col-xs-12">

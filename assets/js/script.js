@@ -118,27 +118,42 @@ var postAttribute = {
 
 // generate URL from the date selector option
 $("#date-selector").change(function() {
-    var value = $(this).find(":selected").val();
-    var garing = $(this).val();
-    var path = window.location.pathname;
-    var arr = path.split("/").slice(2);
-    var uri, offset;
-
-    if(garing === '') {
-        garing = 0 + '/';
-    } else {
-        garing = '/';
-    }
-    console.log(arr);
-    if(arr[0] === 'post' || arr[1] === 'index') {
-        uri = 'posts/filter_post/all/' + value + "/0";
-    } else {
-        uri = arr.splice(0, 3).join("/") + garing + value + "/0";
-    }
-
-    console.log(path);
-    $("#go-filter").attr('href', baseUrl + uri);
+    filterLinkGenerator();
 })
+
+//generate URL from category selector
+$("#cat-selector").change(function() {
+    filterLinkGenerator();
+})
+
+function filterLinkGenerator() {
+    var dateValue = $("#date-selector").find(":selected").val(),
+        catID = $("#cat-selector").find(":selected").val(),
+        path = window.location.pathname,
+        arr = path.split('/').slice(2),
+        postUri = 'posts/filter_post/',
+        uri, status;
+    dateValue === '' ? dateValue = 0 : dateValue = dateValue;
+    catID === '' ? catID = 0 : catID = catID;
+
+    if(arr[0] === 'post' || arr[1] === 'index') {
+        status = 'all';
+    } else {
+        status = arr[2];
+    }
+
+    if(dateValue === '' && catID === '') {
+        uri = postUri + status + '/0/0';
+    } else if(dateValue !== '' && catID === '') {
+        uri = postUri + status + '/' + dateValue + '/0';
+    } else if(dateValue === '' && catID !== '') {
+        uri = postUri + status + '0/' + catID;
+    } else {
+        uri = postUri + status + '/' + dateValue + '/' + catID;
+    }
+
+    $("#go-filter").attr('href', baseUrl + uri);
+}
 
 // Create permalink
 $("#judul_post").keyup(function () {
@@ -179,7 +194,6 @@ $(window).load(function() {
     postAttribute.setKategori();
     postAttribute.setUser();
     postAttribute.defaultAttribute();
-    //$("#permalink-input").val($("#permalink").val());
 });
 
 $(window).resize(function () {

@@ -19,7 +19,7 @@ class Posts_data extends CI_Model
      * @param int $date
      * @return mixed
      */
-    public function get_total_post($status = '', $date = 0)
+    public function get_total_post($status = '', $date = 0, $category = 0)
     {
         if($status !== '')
         {
@@ -31,6 +31,11 @@ class Posts_data extends CI_Model
             $year = substr($date, 0, 4);
             $month = substr($date, 4, 2);
             $this->db->like('tanggal_post', $year . '-' . $month, 'after');
+        }
+
+        if($category !== 0)
+        {
+            $this->db->where('kategori_post', $category);
         }
 
         return $this->db->count_all_results('os_post');
@@ -78,18 +83,19 @@ class Posts_data extends CI_Model
      * Ambil data seluruh post dan draft
      * @param string $status
      * @param int $date
+     * @param int $category
      * @param int $total
      * @param int $offset
      * @return mixed
      */
-    public function get_all_post($status = '', $date = 0, $total, $offset)
+    public function get_all_post($status = '', $date = 0, $category = 0, $total, $offset)
     {
         $this->db->select('*');
         $this->db->from('os_post');
         $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
         $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
 
-        if($status !== '')
+        if(! empty($status))
         {
             $this->db->where('status_post', $status);
         }
@@ -99,6 +105,11 @@ class Posts_data extends CI_Model
             $year = substr($date, 0, 4);
             $month = substr($date, 4, 2);
             $this->db->like('tanggal_post', $year . '-' . $month, 'after');
+        }
+
+        if($category !== 0)
+        {
+            $this->db->where('kategori_post', $category);
         }
 
         $this->db->order_by('os_post.tanggal_post', 'DESC');
