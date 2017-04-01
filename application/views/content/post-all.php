@@ -83,9 +83,7 @@
               </select>
           </div>
           <div class="col-sm-3 col-xs-12">
-              <a href="" id="go-filter" class="btn btn-primary">Filter
-                  <!-- <button type="button"  name="button">Filter</button> -->
-              </a>
+              <a href="" id="go-filter" class="btn btn-primary">Filter</a>
           </div>
           <div class="col-sm-3 col-xs-12">
               <center>Total: <?= $baris ?> item</center>.
