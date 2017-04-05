@@ -75,12 +75,10 @@ class Posts extends CI_Controller
      */
     public function filter_post($status, $date = 0, $category = 0)
     {
-        $data       = $this->common_data();
+        $data = $this->common_data();
         //$uri_length = $this->uri->total_segments();
 
-        // Passing value untuk tanggal
         (empty($date) OR $date === 0) ? $date = 0 : $date = $date;
-
         (empty($category) OR $category === 0) ? $category = 0 : $category = $category;
 
         // BaseURL untuk pagination
