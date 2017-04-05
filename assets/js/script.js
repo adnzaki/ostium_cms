@@ -121,7 +121,7 @@ $("#date-selector").change(function() {
     filterLinkGenerator();
 })
 
-//generate URL from category selector
+// generate URL from category selector
 $("#cat-selector").change(function() {
     filterLinkGenerator();
 })
@@ -142,8 +142,8 @@ function filterLinkGenerator() {
         status = arr[2];
     }
 
-    var uri = postUri + status + '/' + dateValue + '/' + catID;
-    $("#go-filter").attr('href', baseUrl + uri);
+    var uri = baseUrl + postUri + status + '/' + dateValue + '/' + catID;
+    $("#go-filter").attr('href', uri);
 }
 
 // Create permalink
