@@ -113,7 +113,6 @@ class Posts_data extends CI_Model
 
         if($category !== 0)
         {
-            $category = $this->input->get('cari-post');
             $this->db->where('kategori_post', $category);
         }
 
