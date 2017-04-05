@@ -15,7 +15,7 @@
                                 {
                                     $link = explode("/", $link->permalink);
 
-                                    echo '<input type="text" id="permalink-input" value="'.$link[5].'" class="form-control" placeholder="Permalink" />';
+                                    echo '<input type="text" id="permalink-input" value="'.isset($link[5]).'" class="form-control" placeholder="Permalink" />';
                                 }
                             }
                             else
