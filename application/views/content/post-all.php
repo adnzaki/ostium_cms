@@ -8,18 +8,21 @@
               <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 os-p-l-0">
                   <button type="button" class="btn btn-primary btn-lg waves-effect m-l-0 buat-post">Tambah Post</button>
               </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
-                      <div class="form-group">
-                          <div class="form-line">
-                              <input type="text" class="form-control os-p-l-10" placeholder="Cari post...">
-                          </div>
+              <form class="form-group" id="form-cari-post" action="<?= base_url('post') ?>" method="get">
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
+
+                              <div class="form-line">
+                                  <input type="text" name="cari-post" class="form-control os-p-l-10" id="cari-post" placeholder="Cari post...">
+                              </div>
+
+                      </div>
+                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                          <!-- <a href="" class="btn btn-primary btn-lg waves-effect" id="btn-cari-post">Cari</a> -->
+                          <button type="submit" class="btn btn-primary btn-lg waves-effect">Cari</button>
                       </div>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                      <button type="button" class="btn btn-primary btn-lg waves-effect">Cari</button>
-                  </div>
-              </div>
+              </form>
           </div>
       </div>
 

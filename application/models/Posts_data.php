@@ -17,11 +17,12 @@ class Posts_data extends CI_Model
      * Ambil data total baris dari tabel post
      * @param string $status
      * @param int $date
+     * @param int $category
      * @return mixed
      */
     public function get_total_post($status = '', $date = 0, $category = 0)
     {
-        if($status !== '')
+        if(! empty($status))
         {
             $this->db->where('status_post', $status);
         }
@@ -37,6 +38,9 @@ class Posts_data extends CI_Model
         {
             $this->db->where('kategori_post', $category);
         }
+
+        $keyword = $this->input->get('cari-post');
+        $this->db->like('judul_post', $keyword);
 
         return $this->db->count_all_results('os_post');
     }
@@ -109,12 +113,16 @@ class Posts_data extends CI_Model
 
         if($category !== 0)
         {
+            $category = $this->input->get('cari-post');
             $this->db->where('kategori_post', $category);
         }
 
+        $keyword = $this->input->get('cari-post');
+        $this->db->like('judul_post', $keyword);
         $this->db->order_by('os_post.tanggal_post', 'DESC');
         $this->db->limit($total, $offset);
         $get_data = $this->db->get();
+
         return $get_data;
     }
 
