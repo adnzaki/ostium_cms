@@ -249,26 +249,6 @@ class Posts_data extends CI_Model
     }
 
     /**
-     * Mengecek apakah permalink ada atau tidak
-     * @param int $id_post
-     * @return bool
-     */
-    public function check_permalink($id_post)
-    {
-        $this->db->select('permalink')->from('os_post');
-        $this->db->where('id_post', $id_post);
-        $get = $this->db->get();
-        if($get->num_rows() > 0)
-        {
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
-    }
-
-    /**
      * Update data posting
      * @param int $id
      * @return void

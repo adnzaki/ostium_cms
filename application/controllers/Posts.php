@@ -141,7 +141,6 @@ class Posts extends CI_Controller
         {
             $data['edit_post']      = $this->Posts_data->post_to_edit($id);
             $data['post_id']        = $id;
-            $data['cek_link']       = $this->Posts_data->check_permalink($id);
             $this->load->view('section/post-edit', $data);
         }
         else
