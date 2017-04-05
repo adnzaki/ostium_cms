@@ -8,21 +8,27 @@
                         <div class="form-line">
                             <?php
                             $CI =& get_instance();
-                            //$cek_link = $CI->Posts_data->check_permalink(isset($post_id));
-                            foreach ($edit_post as $link)
+                            if(! isset($edit_post))
                             {
-                                $link = explode("/", $link->permalink);
-                                if(isset($link[5]))
+                                echo '<input type="text" id="permalink-input" value="" class="form-control" placeholder="Permalink" />';
+                            }
+                            else
+                            {
+                                foreach ($edit_post as $link)
                                 {
-                                    echo '<input type="text" id="permalink-input" value="'.$link[5].'" class="form-control" placeholder="Permalink" />';
-                                }
-                                else
-                                {
-                                    echo '<input type="text" id="permalink-input" value="" class="form-control" placeholder="Permalink" />';
+                                    $link = explode("/", $link->permalink);
+                                    if(isset($link[5]))
+                                    {
+                                        echo '<input type="text" id="permalink-input" value="'.$link[5].'" class="form-control" placeholder="Permalink" />';
+                                    }
+                                    else
+                                    {
+                                        echo '<input type="text" id="permalink-input" value="" class="form-control" placeholder="Permalink" />';
+                                    }
                                 }
                             }
-                            ?>
 
+                            ?>
                         </div>
                         <div id="permalink-text"></div>
                     </div>
