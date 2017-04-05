@@ -9,18 +9,17 @@
                             <?php
                             $CI =& get_instance();
                             //$cek_link = $CI->Posts_data->check_permalink(isset($post_id));
-                            if(isset($cek_link))
+                            foreach ($edit_post as $link)
                             {
-                                foreach ($edit_post as $link)
+                                $link = explode("/", $link->permalink);
+                                if(isset($link[5]))
                                 {
-                                    $link = explode("/", $link->permalink);
-
-                                    echo '<input type="text" id="permalink-input" value="'.isset($link[5]).'" class="form-control" placeholder="Permalink" />';
+                                    echo '<input type="text" id="permalink-input" value="'.$link[5].'" class="form-control" placeholder="Permalink" />';
                                 }
-                            }
-                            else
-                            {
-                                echo '<input type="text" id="permalink-input" value="" class="form-control" placeholder="Permalink" />';
+                                else
+                                {
+                                    echo '<input type="text" id="permalink-input" value="" class="form-control" placeholder="Permalink" />';
+                                }
                             }
                             ?>
 
