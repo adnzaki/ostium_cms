@@ -8,7 +8,7 @@
               <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 os-p-l-0">
                   <button type="button" class="btn btn-primary btn-lg waves-effect m-l-0 buat-post">Tambah Post</button>
               </div>
-              <form class="form-group" id="form-cari-post" action="<?= base_url('post') ?>" method="get">
+              <form class="form-group" id="form-cari-post" action="<?= base_url() . $this->uri->uri_string() ?>" method="get">
                   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
 
