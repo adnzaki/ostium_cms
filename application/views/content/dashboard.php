@@ -63,7 +63,7 @@
                               </a>
                               <ul class="dropdown-menu pull-right">
                                   <li class="buat-post"><a href="javascript:void(0);">Buat Post Baru</a></li>
-                                  <li><a href="<?php echo base_url() ?>post">Lihat Semua Post</a></li>
+                                  <li><a href="<?= base_url("posts/filter_post/publik")?>">Lihat Semua Post</a></li>
                               </ul>
                           </li>
                       </ul>
@@ -85,7 +85,7 @@
                                   <i class="material-icons">more_vert</i>
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="javascript:void(0);">Lihat semua draft</a></li>
+                                  <li><a href="<?= base_url("posts/filter_post/draft")?>">Lihat semua draft</a></li>
                               </ul>
                           </li>
                       </ul>
