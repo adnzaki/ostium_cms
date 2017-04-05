@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['per_page'] = 5;
+$config['reuse_query_string'] = TRUE;
 
 // Set pagination container style
 $config['full_tag_open']        = '<div class="row os-paging"><div class="col-sm-5 col-xs-12 col-sm-push-7"><ul class="pagination os-body-paging">';
