@@ -132,7 +132,7 @@ if(! function_exists('offset_generator'))
          {
              $offset = $CI->uri->segment(5);
          }
-         elseif($uri_length === 5)
+         elseif($uri_length === 5 OR $uri_length > 5)
          {
              $offset = $CI->uri->segment(6);
          }
