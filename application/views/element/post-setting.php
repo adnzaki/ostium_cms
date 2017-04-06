@@ -42,7 +42,7 @@
                     <p>Terlihat di publik</p>
                     <div class="switch" id="visibility">
                         <label>OFF<input id="post-visible" type="checkbox" checked><span class="lever"></span>ON</label>
-                    </div>                    
+                    </div>
                     <div id="status-post-wrapper">
                         <p>Status Post</p>
                         <input name="status-post-input" class="status-post-input" type="radio" id="post-publik" value="publik" />
@@ -60,25 +60,31 @@
                 <div class="col-xs-12">
                     <select name="" id="kategori-sender" class="form-control show-tick">
                         <?php
-
-                        foreach ($kategori->result() as $kat) {
-
-                            $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, isset($post_id));
-                            if($cek)
-                            {
-                                echo "<option value='$kat->id_kategori' id='$kat->id_kategori' selected='selected'>$kat->nama_kategori</option>";
-                            }
-                            else
+                        foreach ($kategori->result() as $kat)
+                        {
+                            if(! isset($post_id))
                             {
                                 echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
                             }
+                            else
+                            {
+                                $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, $post_id);
+                                if($cek)
+                                {
+                                    echo "<option value='$kat->id_kategori' id='$kat->id_kategori' selected='selected'>$kat->nama_kategori</option>";
+                                }
+                                else
+                                {
+                                    echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
+                                }
+                            }
                         }
                         ?>
-                    </select>
+                    </select>                        
                 </div>
             </div>
         </div>
-        <li class="header">PENULIS</li>
+        <li class="header">PENULIS<?= $CI->Posts_data->is_author(2, 87) ?></li>
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
@@ -86,17 +92,24 @@
                         <?php
                         foreach ($user->result() as $user)
                         {
-                            $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, isset($post_id));
-                            if($cek)
-                            {
-                                echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";
-                            }
-                            else
+                            if(! isset($post_id))
                             {
                                 echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
                             }
-
-                        } ?>
+                            else
+                            {
+                                $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, $post_id);
+                                if($cek)
+                                {
+                                    echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";
+                                }
+                                else
+                                {
+                                    echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
+                                }
+                            }
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
