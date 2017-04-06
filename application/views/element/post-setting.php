@@ -1,6 +1,6 @@
 <div class="menu menu-custom">
     <ul class="list-setting">
-    <li class="header">PERMALINK</li>
+        <li class="header">PERMALINK</li>
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
@@ -32,6 +32,25 @@
                         </div>
                         <div id="permalink-text"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <li class="header">TAMPILAN POST</li>
+        <div class="setting-content">
+            <div class="row clearfix">
+                <div class="col-xs-12">
+                    <p>Terlihat di publik</p>
+                    <div class="switch" id="visibility">
+                        <label>OFF<input id="post-visible" type="checkbox" checked><span class="lever"></span>ON</label>
+                    </div>                    
+                    <div id="status-post-wrapper">
+                        <p>Status Post</p>
+                        <input name="status-post-input" class="status-post-input" type="radio" id="post-publik" value="publik" />
+                        <label for="post-publik">Dipublikasikan</label>
+                        <input name="status-post-input" class="status-post-input" type="radio" id="post-draft" value="draft" />
+                        <label for="post-draft">Draft</label>
+                    </div>
+
                 </div>
             </div>
         </div>

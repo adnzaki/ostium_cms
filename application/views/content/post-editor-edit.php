@@ -10,6 +10,8 @@
                     <input type="hidden" name="kategori" id="kategori" value="">
                     <input type="hidden" name="user" id="user" value="">
                     <input type="hidden" name="gambar-fitur" id="link-img" value="">
+                    <input type="hidden" name="visibilitas" id="visibilitas" value="<?= $edit->visibilitas_post ?>">
+                    <input type="hidden" name="status-post" id="status-post" value="<?= $edit->status_post ?>">
                     <div class="header">
                         <h2>EDIT POST</h2>
                         <div class="row clearfix">

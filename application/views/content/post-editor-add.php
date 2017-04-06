@@ -7,6 +7,8 @@
                   <input type="hidden" name="kategori" id="kategori" value="">
                   <input type="hidden" name="user" id="user" value="">
                   <input type="hidden" name="gambar-fitur" id="link-img" value="">
+                  <input type="hidden" name="visibilitas" id="visibilitas" value="">
+                  <input type="hidden" name="status-post" id="status-post" value="">
                   <div class="header">
                       <h2>
                           BUAT POST BARU

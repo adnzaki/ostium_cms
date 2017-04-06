@@ -38,7 +38,9 @@ $("#simpan-draft").on('click', function(e) {
     var konten      = tinymce.get('editor').getContent();
     var gambar      = $("#link-img").val();
     var permalink   = $("#permalink").val();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
+    var visibilitas = $("#visibilitas").val();
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' +
+                        '&visibilitas=' + visibilitas + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
     $.ajax({
         url: baseUrl + 'posts/add_draft',
         type: 'POST',
@@ -109,10 +111,14 @@ var postAttribute = {
             user        = $(this.user).find(":selected").attr('id'),
             gambar      = $("#prev-img").attr('src'),
             permalink   = $("#permalink").val();
+
         $("#kategori").val(kategori);
         $("#user").val(user);
         $("#link-img").val(gambar);
         $("#permalink-text").text(permalink);
+        postVisibility();
+        postStatus();
+        isEditedPost();
     }
 }
 
@@ -176,6 +182,47 @@ function createLink(input) {
     }
     $("#permalink-text").html("<b>Permalink: </b><br>" + permalink);
     $("#permalink").val(permalink);
+}
+
+$("input.status-post-input").on('click', function() {
+    $("#status-post").val($(".status-post-input:checked").val())
+})
+
+function postVisibility() {
+    var visibilitas = $("#visibilitas").val();
+    if(visibilitas === 'show' || visibilitas === '') {
+        $("#post-visible").prop('checked', true);
+        $("#visibilitas").val('show')
+    } else {
+        $("#post-visible").prop('checked', false);
+    }
+}
+
+function postStatus() {
+    var statusPost  = $("#status-post").val();
+    if(statusPost === 'publik' || statusPost === '') {
+        $("#post-publik").prop('checked', true);
+    } else {
+        $("#post-draft").prop('checked', true);
+    }
+    $("#status-post").val($(".status-post-input:checked").val())
+}
+
+$("#post-visible").change(function() {
+    if(this.checked) {
+        $("#visibilitas").val('show');
+    } else {
+        $("#visibilitas").val('hide');
+    }
+})
+
+function isEditedPost() {
+    var path = window.location.pathname;
+    if(path.indexOf('edit') === -1 || $("#status-post").val() === 'draft') {
+        $("#status-post-wrapper").hide();
+    } else {
+        $("#status-post-wrapper").show();
+    }
 }
 
 // scripts running when the page is loaded

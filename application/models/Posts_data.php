@@ -152,6 +152,7 @@ class Posts_data extends CI_Model
         $tanggal    = date('Y-m-d H:i:s');
         $gambar     = $this->input->post('gambar-fitur');
         $permalink  = $this->input->post('permalink');
+        $visibilitas = $this->input->post('visibilitas');
         if($judul === '')
         {
             $judul     = "Tanpa Judul";
@@ -162,6 +163,7 @@ class Posts_data extends CI_Model
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'status_post'     => $status,
+            'visibilitas_post' => $visibilitas,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
             'gambar_fitur'    => $gambar,
@@ -184,11 +186,13 @@ class Posts_data extends CI_Model
         $tanggal  = date('Y-m-d H:i:s');
         $gambar   = $this->input->post('gambar-fitur');
         $permalink  = $this->input->post('permalink');
+        $visibilitas = $this->input->post('visibilitas');
         $data     = array(
             'judul_post'      => $judul,
             'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'status_post'     => $status,
+            'visibilitas_post' => $visibilitas,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
             'gambar_fitur'    => $gambar,
@@ -255,19 +259,23 @@ class Posts_data extends CI_Model
      */
     public function edit_post($id)
     {
-        $judul    = $this->input->post('judul_post');
-        $kategori = $this->input->post('kategori');
-        $author   = $this->input->post('user');
-        $isi_post = $this->input->post('isi_post');
-        $gambar   = $this->input->post('gambar-fitur');
+        $judul      = $this->input->post('judul_post');
+        $kategori   = $this->input->post('kategori');
+        $author     = $this->input->post('user');
+        $status     = $this->input->post('status-post');
+        $visibilitas = $this->input->post('visibilitas');
+        $isi_post   = $this->input->post('isi_post');
+        $gambar     = $this->input->post('gambar-fitur');
         $permalink  = $this->input->post('permalink');
         $data     = array(
-            'judul_post'      => $judul,
-            'kategori_post'   => $kategori,
-            'penulis_post'    => $author,
-            'isi_post'        => $isi_post,
-            'gambar_fitur'    => $gambar,
-            'permalink'       => $permalink
+            'judul_post'        => $judul,
+            'kategori_post'     => $kategori,
+            'penulis_post'      => $author,
+            'status_post'       => $status,
+            'visibilitas_post'  => $visibilitas,
+            'isi_post'          => $isi_post,
+            'gambar_fitur'      => $gambar,
+            'permalink'         => $permalink
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
