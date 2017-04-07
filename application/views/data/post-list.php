@@ -47,7 +47,16 @@
                 }
                 ?>
             </td>
-            <td><span class="label bg-green"><?php echo $ap->nama_kategori ?></span></td>
+            <td>
+                <?php
+                $CI =& get_instance();
+                $get_kategori = $CI->Posts_data->get_category($ap->id_post);
+                foreach ($get_kategori->result() as $kategori)
+                {
+                    echo '<span class="label bg-green">'. $kategori->nama_kategori.'</span> ';
+                }
+                ?>
+            </td>
             <td><?php echo $ap->user_name ?></td>
             <td>
                 <?php

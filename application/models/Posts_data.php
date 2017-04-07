@@ -36,7 +36,8 @@ class Posts_data extends CI_Model
 
         if($category !== 0)
         {
-            $this->db->where('kategori_post', $category);
+            $this->db->join('os_kategori_post', 'os_post.id_post = os_kategori_post.id_post');
+            $this->db->where('id_kategori', $category);
         }
 
         $keyword = $this->input->get('cari-post');
@@ -74,9 +75,8 @@ class Posts_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('os_post');
-        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
         $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
-        $this->db->where('status_post', $key); // Input parameter dari controller
+        $this->db->where('status_post', $key);
         $this->db->order_by('os_post.id_post', 'DESC');
         $this->db->limit($limit, 0);
         $get_data = $this->db->get();
@@ -96,7 +96,6 @@ class Posts_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('os_post');
-        $this->db->join('os_kategori', 'os_post.kategori_post = os_kategori.id_kategori');
         $this->db->join('os_user', 'os_post.penulis_post = os_user.id_user');
 
         if(! empty($status))
@@ -113,7 +112,8 @@ class Posts_data extends CI_Model
 
         if($category !== 0)
         {
-            $this->db->where('kategori_post', $category);
+            $this->db->join('os_kategori_post', 'os_post.id_post = os_kategori_post.id_post');
+            $this->db->where('id_kategori', $category);
         }
 
         $keyword = $this->input->get('cari-post');
@@ -123,6 +123,21 @@ class Posts_data extends CI_Model
         $get_data = $this->db->get();
 
         return $get_data;
+    }
+
+    /**
+     * Ambil kategori untuk ditampilkan bersama daftar post
+     *
+     * @param int $id_post
+     * @return void
+     */
+    public function get_category($id_post)
+    {
+        $this->db->select('nama_kategori')->from('os_kategori_post')
+            ->join('os_kategori', 'os_kategori_post.id_kategori = os_kategori.id_kategori')
+            ->join('os_post', 'os_kategori_post.id_post = os_post.id_post')
+            ->where('os_post.id_post', $id_post);
+        return $this->db->get();
     }
 
     /**
@@ -145,7 +160,6 @@ class Posts_data extends CI_Model
     public function insert_post()
     {
         $judul      = $this->input->post('judul_post');
-        $kategori   = $this->input->post('kategori');
         $author     = $this->input->post('user');
         $status     = "publik";
         $isi_post   = $this->input->post('isi_post');
@@ -160,7 +174,6 @@ class Posts_data extends CI_Model
         }
         $data = array(
             'judul_post'      => $judul,
-            'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'status_post'     => $status,
             'visibilitas_post' => $visibilitas,
@@ -169,7 +182,9 @@ class Posts_data extends CI_Model
             'gambar_fitur'    => $gambar,
             'permalink'       => $permalink
         );
+
         $this->db->insert('os_post', $data);
+        $this->insert_category($this->db->insert_id());
     }
 
     /**
@@ -179,7 +194,6 @@ class Posts_data extends CI_Model
     public function insert_draft()
     {
         $judul    = $this->input->post('judul_post');
-        $kategori = $this->input->post('kategori');
         $author   = $this->input->post('user');
         $status   = "draft";
         $isi_post = $this->input->post('isi_post');
@@ -189,7 +203,6 @@ class Posts_data extends CI_Model
         $visibilitas = $this->input->post('visibilitas');
         $data     = array(
             'judul_post'      => $judul,
-            'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'status_post'     => $status,
             'visibilitas_post' => $visibilitas,
@@ -199,6 +212,7 @@ class Posts_data extends CI_Model
             'permalink'       => $permalink
         );
         $this->db->insert('os_post', $data);
+        $this->insert_category($this->db->insert_id());
     }
 
     /**
@@ -231,28 +245,6 @@ class Posts_data extends CI_Model
     }
 
     /**
-     * Mengecek kategori yang ada di post yang akan diedit
-     * @param string $col
-     * @param string $col_id
-     * @param int $post_id
-     * @return bool
-     */
-    public function check_attribute($col, $col_id, $post_id)
-    {
-        $this->db->where($col, $col_id);
-        $this->db->where('id_post', $post_id);
-        $query = $this->db->get('os_post');
-        if($query->num_rows() > 0)
-        {
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
-    }
-
-    /**
      * Update data posting
      * @param int $id
      * @return void
@@ -260,7 +252,6 @@ class Posts_data extends CI_Model
     public function edit_post($id)
     {
         $judul      = $this->input->post('judul_post');
-        $kategori   = $this->input->post('kategori');
         $author     = $this->input->post('user');
         $status     = $this->input->post('status-post');
         $visibilitas = $this->input->post('visibilitas');
@@ -269,7 +260,6 @@ class Posts_data extends CI_Model
         $permalink  = $this->input->post('permalink');
         $data     = array(
             'judul_post'        => $judul,
-            'kategori_post'     => $kategori,
             'penulis_post'      => $author,
             'status_post'       => $status,
             'visibilitas_post'  => $visibilitas,
@@ -279,6 +269,7 @@ class Posts_data extends CI_Model
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
+        $this->update_category($id);
     }
 
     /**
@@ -289,7 +280,6 @@ class Posts_data extends CI_Model
     public function publish_draft($id)
     {
         $judul    = $this->input->post('judul_post');
-        $kategori = $this->input->post('kategori');
         $author   = $this->input->post('user');
         $status   = "publik";
         $isi_post = $this->input->post('isi_post');
@@ -301,9 +291,8 @@ class Posts_data extends CI_Model
             $judul     = "Tanpa Judul";
             $status    = "draft";
         }
-        $data     = array(
+        $data = array(
             'judul_post'      => $judul,
-            'kategori_post'   => $kategori,
             'penulis_post'    => $author,
             'status_post'     => $status,
             'isi_post'        => $isi_post,
@@ -313,6 +302,39 @@ class Posts_data extends CI_Model
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
+        $this->update_category($id);
+    }
+
+    /**
+     * Update kategori
+     *
+     * @param int $id
+     * @return void
+     */
+    protected function update_category($id)
+    {
+        $this->db->delete('os_kategori_post', ['id_post' => $id]);
+        $this->insert_category($id);
+    }
+
+    /**
+     * Fungsi untuk menyimpan kategori post
+     *
+     * @param int $id
+     * @return void
+     */
+    protected function insert_category($id)
+    {
+        $value = $this->input->post('kategori');
+        $kat_array = explode(",", $value);
+        for($i = 0; $i < sizeof($kat_array); $i++)
+        {
+            $data = [
+                'id_post'       => $id,
+                'id_kategori'   => $kat_array[$i]
+            ];
+            $this->db->insert('os_kategori_post', $data);
+        }
     }
 
     /**
@@ -323,8 +345,58 @@ class Posts_data extends CI_Model
     public function delete_post($id)
     {
         $this->db->delete('os_post', ['id_post' => $id]);
+        $this->db->delete('os_kategori_post', ['id_post' => $id]);
+    }
+
+    /**
+     * Fungsi untuk mengecek apakah kategori
+     * yang ada pada list checkbox merupakan kategori yang ada di
+     * tabel os_kategori_post atau bukan
+     *
+     * @param int $post
+     * @param int $kategori     *
+     * @return bool
+     */
+    public function is_post_category($post, $kategori)
+    {
+        $clause = [
+            'id_post'       => $post,
+            'id_kategori'   => $kategori
+        ];
+        $get = $this->db->get_where('os_kategori_post', $clause);
+        if($get->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    /**
+     * Fungsi yang digunakan untuk mengecek apakah penulis
+     * yang ada pada opsi "Penulis" merupakan pemilik post atau bukan
+     *
+     * @param int $user_id
+     * @param int $post_id
+     * @return bool
+     */
+    public function is_author($user_id, $post_id)
+    {
+        $this->db->select('id_user')->from('os_user');
+        $this->db->join('os_post', 'os_post.penulis_post = os_user.id_user');
+        $data = ['id_user' => $user_id, 'id_post' => $post_id];
+        $this->db->where($data);
+        $get = $this->db->get();
+        if($get->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
 
 }
-
-?>

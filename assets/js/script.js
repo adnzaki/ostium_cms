@@ -55,7 +55,6 @@ $("#simpan-draft").on('click', function(e) {
 // Publish draft
 $("#publish-draft").on('click', function(e) {
     e.preventDefault();
-    //alert("Setaan");
     var id          = $("#post-id").val();
     var judul       = $("#judul_post").val();
     var kategori    = $("#kategori").val();
@@ -63,7 +62,8 @@ $("#publish-draft").on('click', function(e) {
     var konten      = tinymce.get('editor').getContent();
     var gambar      = $("#link-img").val();
     var permalink   = $("#permalink").val();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis +
+                        '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
     $.ajax({
         url: baseUrl + 'posts/publish_draft/' + id,
         type: 'POST',
@@ -89,15 +89,7 @@ $(document).delegate('.post-delete', 'click', function() {
 
 // Post Attribute Setting
 var postAttribute = {
-    kategori: "#kategori-sender",
     user: "#user-sender",
-    // send category id to form input
-    setKategori: function() {
-        $(this.kategori).on('change', function() {
-            var id = $(this).find(":selected").attr('id');
-            $("#kategori").val(id);
-        })
-    },
     // send user id to form input
     setUser: function() {
         $(this.user).on('change', function() {
@@ -107,18 +99,17 @@ var postAttribute = {
     },
     // default attribute selected when the page is loaded
     defaultAttribute: function() {
-        var kategori    = $(this.kategori).find(":selected").attr('id'),
-            user        = $(this.user).find(":selected").attr('id'),
+        var user        = $(this.user).find(":selected").attr('id'),
             gambar      = $("#prev-img").attr('src'),
             permalink   = $("#permalink").val();
 
-        $("#kategori").val(kategori);
         $("#user").val(user);
         $("#link-img").val(gambar);
         $("#permalink-text").text(permalink);
         postVisibility();
         postStatus();
         isEditedPost();
+        getKategori($kats);
     }
 }
 
@@ -225,11 +216,22 @@ function isEditedPost() {
     }
 }
 
+var $kats = $("input:checkbox.filled-in");
+$kats.on('change', function() {
+    getKategori($kats);
+})
+
+function getKategori(target) {
+    var string = target.filter(":checked").map(function(i,v) {
+        return this.value;
+    }).get().join(",");
+    $('#kategori').val(string);
+}
+
 // scripts running when the page is loaded
 $(window).load(function() {
     runTinyMCE();
     activateScroll();
-    postAttribute.setKategori();
     postAttribute.setUser();
     postAttribute.defaultAttribute();
 });

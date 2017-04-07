@@ -33,7 +33,16 @@
                         ?>
                     </a>
                 </td>
-                <td><span class="label bg-green"><?php echo $rp->nama_kategori ?></span></td>
+                <td>
+                    <?php
+                    $CI =& get_instance();
+                    $get_kategori = $CI->Posts_data->get_category($rp->id_post);
+                    foreach ($get_kategori->result() as $kategori)
+                    {
+                        echo '<span class="label bg-green">'. $kategori->nama_kategori.'</span> ';
+                    }
+                    ?>
+                </td>
                 <td><?php echo $rp->user_name ?></td>
             </tr>
             <?php } ?>

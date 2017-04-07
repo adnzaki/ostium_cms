@@ -58,33 +58,32 @@
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
-                    <select name="" id="kategori-sender" class="form-control show-tick">
-                        <?php
-                        foreach ($kategori->result() as $kat)
+                    <?php
+                    foreach($kategori->result() as $kat)
+                    {
+                        if(! isset($post_id))
                         {
-                            if(! isset($post_id))
+                            echo '<input type="checkbox" id="basic_checkbox_'.$kat->id_kategori.'" class="filled-in" value="'.$kat->id_kategori.'" />';
+                        }
+                        else
+                        {
+                            $cek = $CI->Posts_data->is_post_category($post_id, $kat->id_kategori);
+                            if($cek)
                             {
-                                echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
+                                echo '<input type="checkbox" id="basic_checkbox_'.$kat->id_kategori.'" class="filled-in" value="'.$kat->id_kategori.'" checked />';
                             }
                             else
                             {
-                                $cek = $CI->Posts_data->check_attribute('kategori_post', $kat->id_kategori, $post_id);
-                                if($cek)
-                                {
-                                    echo "<option value='$kat->id_kategori' id='$kat->id_kategori' selected='selected'>$kat->nama_kategori</option>";
-                                }
-                                else
-                                {
-                                    echo "<option value='$kat->id_kategori' id='$kat->id_kategori'>$kat->nama_kategori</option>";
-                                }
+                                echo '<input type="checkbox" id="basic_checkbox_'.$kat->id_kategori.'" class="filled-in" value="'.$kat->id_kategori.'" />';
                             }
                         }
-                        ?>
-                    </select>                        
+                        echo '<label for="basic_checkbox_'.$kat->id_kategori.'">' . $kat->nama_kategori . '</label><br>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
-        <li class="header">PENULIS<?= $CI->Posts_data->is_author(2, 87) ?></li>
+        <li class="header">PENULIS</li>
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
@@ -98,7 +97,7 @@
                             }
                             else
                             {
-                                $cek = $CI->Posts_data->check_attribute('penulis_post', $user->id_user, $post_id);
+                                $cek = $CI->Posts_data->is_author($user->id_user, $post_id);
                                 if($cek)
                                 {
                                     echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";

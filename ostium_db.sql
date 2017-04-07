@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 06 Apr 2017 pada 07.43
+-- Generation Time: 07 Apr 2017 pada 21.16
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -37,7 +37,44 @@ CREATE TABLE `os_kategori` (
 
 INSERT INTO `os_kategori` (`id_kategori`, `nama_kategori`) VALUES
 (1, 'Tidak berkategori'),
-(2, 'Artikel');
+(2, 'Artikel'),
+(3, 'Berita');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `os_kategori_post`
+--
+
+CREATE TABLE `os_kategori_post` (
+  `id_kategori_post` bigint(20) NOT NULL,
+  `id_post` bigint(20) NOT NULL,
+  `id_kategori` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `os_kategori_post`
+--
+
+INSERT INTO `os_kategori_post` (`id_kategori_post`, `id_post`, `id_kategori`) VALUES
+(16, 105, 2),
+(17, 105, 3),
+(18, 106, 1),
+(19, 106, 2),
+(20, 106, 3),
+(21, 107, 0),
+(24, 109, 1),
+(25, 109, 2),
+(45, 110, 1),
+(46, 110, 2),
+(47, 110, 3),
+(53, 114, 1),
+(54, 114, 2),
+(57, 115, 2),
+(63, 116, 1),
+(64, 116, 3),
+(67, 117, 2),
+(68, 117, 3);
 
 -- --------------------------------------------------------
 
@@ -63,7 +100,6 @@ CREATE TABLE `os_komentar` (
 CREATE TABLE `os_post` (
   `id_post` bigint(20) NOT NULL,
   `judul_post` varchar(250) DEFAULT NULL,
-  `kategori_post` int(11) DEFAULT NULL,
   `penulis_post` int(11) DEFAULT NULL,
   `status_post` varchar(50) DEFAULT NULL,
   `visibilitas_post` varchar(20) DEFAULT NULL,
@@ -78,34 +114,54 @@ CREATE TABLE `os_post` (
 -- Dumping data untuk tabel `os_post`
 --
 
-INSERT INTO `os_post` (`id_post`, `judul_post`, `kategori_post`, `penulis_post`, `status_post`, `visibilitas_post`, `isi_post`, `tanggal_post`, `last_edit_post`, `gambar_fitur`, `permalink`) VALUES
-(21, 'Tanpa Judul', 1, 1, 'draft', NULL, '', '2017-01-08 19:58:08', NULL, NULL, NULL),
-(22, 'Tanpa Judul', 1, 1, 'draft', NULL, '', '2017-01-08 19:58:48', NULL, NULL, NULL),
-(23, 'simpan draft ajax', 2, 1, 'draft', NULL, '<p>bismillah....</p>', '2017-01-08 20:28:43', NULL, NULL, NULL),
-(24, 'coba ajax lagi ah', 1, 1, 'draft', NULL, '<p>alhamdulillah</p>', '2017-01-08 20:30:27', NULL, ' ?>', ''),
-(25, 'alhamdulillah', 1, 1, 'draft', NULL, '<p>akhirnya bisa juga..//</p>', '2017-01-08 20:31:33', NULL, NULL, NULL),
-(26, 'heheheh senengnya kita orang ini.. hihi', 2, 1, 'draft', NULL, '<p>yeeaaay!!!</p>', '2017-01-08 20:34:32', NULL, NULL, NULL),
-(37, 'anak ayaaam', 1, 1, 'draft', NULL, '', '2017-01-28 09:36:09', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/My%20Start%20Wallpapers%209090333782.jpg', ''),
-(39, 'busukkk jadi publik', 1, 1, 'publik', NULL, '', '2017-02-26 13:58:05', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/gahar1.png', NULL),
-(47, 'Bismillah', 1, 1, 'publik', NULL, '<p>Allahu akbar!</p>', '2017-02-04 23:00:29', NULL, NULL, NULL),
-(49, 'Coba XSS', 1, 1, 'publik', NULL, '<p>nih coba bro...</p>', '2017-02-11 13:22:45', NULL, NULL, NULL),
-(50, 'Akhirnya bug berhasil diperbaiki', 2, 1, 'publik', NULL, '<p><span xss=removed>Bug horor yaitu tidak bisa upload gambar saat mengedit post akhirnya berhasil diperbaiki. Mantaaappp!!!dfdf</span></p>\r\n<p><span xss=removed>dfdfdffddfdfdfdf</span></p>\r\n<p><span xss=removed><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WhatsApp Image 2016-11-28 at 13.42.42.jpg" alt="" width="299" height="299"></span></p>', '2017-02-12 13:01:35', NULL, NULL, NULL),
-(54, 'test fitur baru', 2, 1, 'publik', NULL, '<p>sdfsdfsdfsdfsd</p>', '2017-02-15 17:00:54', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WhatsApp%20Image%202016-11-28%20at%2013.42.42.jpg', NULL),
-(57, 'coba brok', 1, 1, 'publik', NULL, '', '2017-02-15 17:39:28', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
-(59, 'Cerita kita bro...', 2, 2, 'publik', NULL, '<ul style="list-style-type: circle;">\r\n<li>hai saya zaki</li>\r\n<li>kamu siapa?</li>\r\n<li>aku zaki</li>\r\n<li>eh kita sama dong</li>\r\n<li>iya dund</li>\r\n<li>ok</li>\r\n<li>sip</li>\r\n</ul>\r\n<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161226_133145.jpg" width="600" height="338" /></p>\r\n<p>Inilah cerita kita di kiluan....</p>', '2017-02-16 15:27:12', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161226_133145.jpg ?>', NULL),
-(61, 'Pagination berhasil', 1, 1, 'publik', NULL, '<p>Takbirrr!!!</p>', '2017-02-18 12:35:27', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/bunga%204.jpg', NULL),
-(64, 'Tampilan dirapikan lagi...', 2, 1, 'publik', 'show', '<p>oke deh..</p>', '2017-02-18 12:36:45', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
-(75, 'setan', 1, 1, 'publik', 'show', '', '2017-02-25 23:48:46', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
-(76, 'selamat malam temanku..', 1, 1, 'publik', 'show', '<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161225_22425.jpg" width="1000" height="563" /></p>', '2017-03-01 23:47:24', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161225_22312.jpg', NULL),
-(78, 'Tanpa Judul', 1, 1, 'draft', 'show', '', '2017-03-16 00:00:22', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
-(79, 'hai aku zaki', 1, 1, 'publik', 'show', '', '2017-03-19 10:50:41', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/hai-aku-zakis'),
-(80, 'sekarang kita edit', 1, 1, 'publik', 'show', '', '2017-03-30 23:05:36', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/gahar1.png ?>', 'http://localhost:70/ostium_cms/read/sekarang-kita-edit'),
-(82, 'Draft permalink dipublish!', 2, 2, 'publik', 'show', '<p>kukuuk</p>', '2017-03-30 23:11:33', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WhatsApp%20Image%202016-11-28%20at%2013.42.42.jpg', 'http://localhost:70/ostium_cms/read/draft-permalink-dipublish'),
-(83, 'Bapakmu lahir dimana?', 1, 1, 'publik', 'show', '<p>Selamat sore anak-anak....</p>', '2017-04-05 19:49:46', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WP_20160311_15_32_28_Pro.jpg ?>', 'http://localhost:70/ostium_cms/read/bapak-bapak'),
-(84, 'Terima kasih ya Allah...', 1, 1, 'publik', 'show', '<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WP_20160311_15_32_28_Pro.jpg" alt="" width="800" height="450" /></p>', '2017-04-06 12:32:29', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WP_20160311_15_32_28_Pro.jpg ?> ?>', 'http://localhost:70/ostium_cms/read/terima-kasih-ya-allah'),
-(85, 'coba visibilitasnya', 1, 1, 'draft', 'hide', '<p>jdgjdkfhg</p>', '2017-04-06 11:05:27', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?>', 'http://localhost:70/ostium_cms/read/coba-visibilitasnya'),
-(86, 'coba dulu ini draftnya', 1, 1, 'draft', 'show', '', '2017-04-06 12:28:54', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/coba-dulu-ini-draftnya'),
-(87, 'badai kali inii brokkk', 1, 1, 'publik', 'hide', '', '2017-04-06 12:35:13', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?> ?> ?> ?>', 'http://localhost:70/ostium_cms/read/badai-kali-inii-brokkk');
+INSERT INTO `os_post` (`id_post`, `judul_post`, `penulis_post`, `status_post`, `visibilitas_post`, `isi_post`, `tanggal_post`, `last_edit_post`, `gambar_fitur`, `permalink`) VALUES
+(21, 'Tanpa Judul', 1, 'draft', NULL, '', '2017-01-08 19:58:08', NULL, NULL, NULL),
+(22, 'Tanpa Judul', 1, 'draft', NULL, '', '2017-01-08 19:58:48', NULL, NULL, NULL),
+(23, 'simpan draft ajax', 1, 'draft', NULL, '<p>bismillah....</p>', '2017-01-08 20:28:43', NULL, NULL, NULL),
+(24, 'coba ajax lagi ah', 1, 'draft', NULL, '<p>alhamdulillah</p>', '2017-01-08 20:30:27', NULL, ' ?>', ''),
+(25, 'alhamdulillah', 1, 'draft', NULL, '<p>akhirnya bisa juga..//</p>', '2017-01-08 20:31:33', NULL, NULL, NULL),
+(26, 'heheheh senengnya kita orang ini.. hihi', 1, 'draft', NULL, '<p>yeeaaay!!!</p>', '2017-01-08 20:34:32', NULL, NULL, NULL),
+(37, 'anak ayaaam', 1, 'draft', NULL, '', '2017-01-28 09:36:09', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/My%20Start%20Wallpapers%209090333782.jpg', ''),
+(39, 'busukkk jadi publik', 1, 'publik', NULL, '', '2017-02-26 13:58:05', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/gahar1.png', NULL),
+(47, 'Bismillah', 1, 'publik', NULL, '<p>Allahu akbar!</p>', '2017-02-04 23:00:29', NULL, NULL, NULL),
+(49, 'Coba XSS', 1, 'publik', NULL, '<p>nih coba bro...</p>', '2017-02-11 13:22:45', NULL, NULL, NULL),
+(50, 'Akhirnya bug berhasil diperbaiki', 1, 'publik', NULL, '<p><span xss=removed>Bug horor yaitu tidak bisa upload gambar saat mengedit post akhirnya berhasil diperbaiki. Mantaaappp!!!dfdf</span></p>\r\n<p><span xss=removed>dfdfdffddfdfdfdf</span></p>\r\n<p><span xss=removed><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WhatsApp Image 2016-11-28 at 13.42.42.jpg" alt="" width="299" height="299"></span></p>', '2017-02-12 13:01:35', NULL, NULL, NULL),
+(54, 'test fitur baru', 1, 'publik', NULL, '<p>sdfsdfsdfsdfsd</p>', '2017-02-15 17:00:54', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WhatsApp%20Image%202016-11-28%20at%2013.42.42.jpg', NULL),
+(57, 'coba brok', 1, 'publik', NULL, '', '2017-02-15 17:39:28', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
+(59, 'Cerita kita bro...', 2, 'publik', NULL, '<ul style="list-style-type: circle;">\r\n<li>hai saya zaki</li>\r\n<li>kamu siapa?</li>\r\n<li>aku zaki</li>\r\n<li>eh kita sama dong</li>\r\n<li>iya dund</li>\r\n<li>ok</li>\r\n<li>sip</li>\r\n</ul>\r\n<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161226_133145.jpg" width="600" height="338" /></p>\r\n<p>Inilah cerita kita di kiluan....</p>', '2017-02-16 15:27:12', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161226_133145.jpg ?>', NULL),
+(61, 'Pagination berhasil', 1, 'publik', NULL, '<p>Takbirrr!!!</p>', '2017-02-18 12:35:27', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/bunga%204.jpg', NULL),
+(64, 'Tampilan dirapikan lagi...', 1, 'publik', 'show', '<p>oke deh..</p>', '2017-02-18 12:36:45', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
+(75, 'setan', 1, 'publik', 'show', '', '2017-02-25 23:48:46', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
+(76, 'selamat malam temanku..', 1, 'publik', 'show', '<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161225_22425.jpg" width="1000" height="563" /></p>', '2017-03-01 23:47:24', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/ProShot_20161225_22312.jpg', NULL),
+(78, 'Tanpa Judul', 1, 'draft', 'show', '', '2017-03-16 00:00:22', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', NULL),
+(79, 'hai aku zaki', 1, 'publik', 'show', '', '2017-03-19 10:50:41', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/hai-aku-zakis'),
+(80, 'sekarang kita edit', 1, 'publik', 'show', '', '2017-03-30 23:05:36', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/gahar1.png ?>', 'http://localhost:70/ostium_cms/read/sekarang-kita-edit'),
+(82, 'Draft permalink dipublish!', 2, 'publik', 'show', '<p>kukuuk</p>', '2017-03-30 23:11:33', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WhatsApp%20Image%202016-11-28%20at%2013.42.42.jpg', 'http://localhost:70/ostium_cms/read/draft-permalink-dipublish'),
+(83, 'Bapakmu lahir dimana?', 1, 'publik', 'show', '<p>Selamat sore anak-anak....</p>', '2017-04-05 19:49:46', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WP_20160311_15_32_28_Pro.jpg ?>', 'http://localhost:70/ostium_cms/read/bapak-bapak'),
+(84, 'Terima kasih ya Allah...', 2, 'publik', 'show', '<p><img src="http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WP_20160311_15_32_28_Pro.jpg" alt="" width="800" height="450" /></p>', '2017-04-06 12:32:29', NULL, 'http://localhost:70/ostium_cms/assets/plugins/tinymce/plugins/filemanager/source/WP_20160311_15_32_28_Pro.jpg ?> ?> ?> ?> ?> ?> ?>', 'http://localhost:70/ostium_cms/read/terima-kasih-ya-allah'),
+(85, 'coba visibilitasnya', 1, 'draft', 'hide', '<p>jdgjdkfhg</p>', '2017-04-06 11:05:27', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?>', 'http://localhost:70/ostium_cms/read/coba-visibilitasnya'),
+(86, 'coba dulu ini draftnya', 1, 'draft', 'show', '', '2017-04-06 12:28:54', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/coba-dulu-ini-draftnya'),
+(87, 'badai kali inii brokkk', 1, 'publik', 'hide', '', '2017-04-06 12:35:13', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?> ?> ?> ?> ?>', 'http://localhost:70/ostium_cms/read/badai-kali-inii-brokkk'),
+(89, 'deg degan euuy ', 1, 'publik', 'show', '', '2017-04-07 00:30:29', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/deg-degan-euuy'),
+(90, 'zakikuu', 1, 'publik', 'show', '', '2017-04-07 13:19:03', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/zakikuu'),
+(91, 'slkadlksnds', 1, 'publik', 'show', '', '2017-04-07 13:23:00', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/slkadlksnds'),
+(92, 'kukuk', 1, 'publik', 'show', '', '2017-04-07 13:30:56', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/kukuk'),
+(93, 'fakfak lah', 1, 'publik', 'show', '', '2017-04-07 13:41:21', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/fakfak-lah'),
+(94, 'kaprete', 1, 'publik', 'show', '', '2017-04-07 13:42:08', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/kaprete'),
+(95, 'afafsfsdfds', 1, 'publik', 'show', '', '2017-04-07 13:43:36', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/afafsfsdfds'),
+(96, 'sssss', 1, 'publik', 'show', '', '2017-04-07 13:46:12', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/sssss'),
+(97, 'aaaaaaaaaaaaaa', 1, 'publik', 'show', '', '2017-04-07 13:53:01', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/aaaaaaaaaaaaaa'),
+(102, 'hada', 1, 'publik', 'show', '', '2017-04-07 14:14:17', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/hada'),
+(104, 'hadk', 1, 'publik', 'show', '', '2017-04-07 14:57:39', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/hadk'),
+(105, 'asd', 1, 'publik', 'show', '', '2017-04-07 14:58:12', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/asd'),
+(106, 'gedek', 1, 'publik', 'show', '', '2017-04-07 14:59:37', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/gedek'),
+(107, 'draft kategori', 1, 'draft', 'show', '', '2017-04-07 15:04:46', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/draft-kategori'),
+(109, 'sssssssssssss', 1, 'publik', 'show', '', '2017-04-07 15:09:49', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png', 'http://localhost:70/ostium_cms/read/sssssssssssss'),
+(110, 'apalah ini', 1, 'publik', 'show', '', '2017-04-08 00:18:43', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?> ?> ?> ?> ?>', 'http://localhost:70/ostium_cms/read/apalah-ini'),
+(114, 'babam', 2, 'publik', 'show', '', '2017-04-08 00:25:42', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?> ?> ?>', 'http://localhost:70/ostium_cms/read/babam'),
+(115, 'percobaan terakhir', 2, 'publik', 'show', '', '2017-04-08 02:02:47', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?>', 'http://localhost:70/ostium_cms/read/percobaan-terakhir'),
+(116, 'kukek draft', 1, 'publik', 'show', '', '2017-04-08 02:03:26', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?> ?> ?>', 'http://localhost:70/ostium_cms/read/kukek-draft'),
+(117, 'dudu;sdlfkhs', 1, 'publik', 'show', '', '2017-04-08 02:13:07', NULL, 'http://localhost:70/ostium_cms/assets/images/no-image.png ?>', 'http://localhost:70/ostium_cms/read/dudu-sdlfkhs');
 
 -- --------------------------------------------------------
 
@@ -141,6 +197,12 @@ ALTER TABLE `os_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
+-- Indexes for table `os_kategori_post`
+--
+ALTER TABLE `os_kategori_post`
+  ADD PRIMARY KEY (`id_kategori_post`);
+
+--
 -- Indexes for table `os_komentar`
 --
 ALTER TABLE `os_komentar`
@@ -166,7 +228,12 @@ ALTER TABLE `os_user`
 -- AUTO_INCREMENT for table `os_kategori`
 --
 ALTER TABLE `os_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `os_kategori_post`
+--
+ALTER TABLE `os_kategori_post`
+  MODIFY `id_kategori_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `os_komentar`
 --
@@ -176,7 +243,7 @@ ALTER TABLE `os_komentar`
 -- AUTO_INCREMENT for table `os_post`
 --
 ALTER TABLE `os_post`
-  MODIFY `id_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id_post` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 --
 -- AUTO_INCREMENT for table `os_user`
 --
