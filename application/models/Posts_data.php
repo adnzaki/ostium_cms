@@ -244,6 +244,17 @@ class Posts_data extends CI_Model
         return $get_data->result();
     }
 
+    public function get_latest_id()
+    {
+        $this->db->select('id_post')->from('os_post')
+            ->order_by('id_post', 'DESC')->limit(1);
+        $result = $this->db->get()->result();
+        foreach ($result as $res)
+        {
+            return $res->id_post;
+        }
+    }
+
     /**
      * Update data posting
      * @param int $id

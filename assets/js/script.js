@@ -47,7 +47,7 @@ $("#simpan-draft").on('click', function(e) {
         dataType: 'html',
         data: data,
         success: function() {
-            window.location.href = baseUrl + 'post';
+            window.location.href = baseUrl + 'posts/edit_saved_draft/';            
         }
     })
 });
@@ -70,7 +70,7 @@ $("#publish-draft").on('click', function(e) {
         dataType: 'html',
         data: data,
         success: function() {
-            window.location.href = baseUrl + 'post';
+            window.location.href = baseUrl + 'post/edit/' + id;
         }
     })
 })

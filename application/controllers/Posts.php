@@ -115,7 +115,8 @@ class Posts extends CI_Controller
     public function add_post()
     {
         $this->Posts_data->insert_post();
-        redirect('post');
+        $id = $this->Posts_data->get_latest_id();
+        redirect('post/edit/' . $id);
     }
 
     /**
@@ -125,6 +126,17 @@ class Posts extends CI_Controller
     public function add_draft()
     {
         $this->Posts_data->insert_draft();
+    }
+
+    /**
+     * Alihkan ke halaman edit post setelah menyimpan draft
+     *
+     * @return void
+     */
+    public function edit_saved_draft()
+    {
+        $id = $this->Posts_data->get_latest_id();
+        redirect('post/edit/' . $id);
     }
 
     /**
@@ -158,7 +170,7 @@ class Posts extends CI_Controller
     public function update_post($id)
     {
         $this->Posts_data->edit_post($id);
-        redirect('post');
+        redirect('post/edit/' . $id);
     }
 
     /**
