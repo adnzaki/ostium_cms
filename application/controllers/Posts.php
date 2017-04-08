@@ -115,8 +115,9 @@ class Posts extends CI_Controller
     public function add_post()
     {
         $this->Posts_data->insert_post();
-        $id = $this->Posts_data->get_latest_id();
-        redirect('post/edit/' . $id);
+        $data = $this->Posts_data->get_simple_data();
+        $this->session->set_flashdata('success_msg', $this->success_msg('publik', 'insert'));
+        redirect('post/edit/' . $data['id']);
     }
 
     /**
@@ -135,8 +136,65 @@ class Posts extends CI_Controller
      */
     public function edit_saved_draft()
     {
-        $id = $this->Posts_data->get_latest_id();
-        redirect('post/edit/' . $id);
+        $data = $this->Posts_data->get_simple_data();
+        $this->session->set_flashdata('success_msg', $this->success_msg('draft', 'insert'));
+        redirect('post/edit/' . $data['id']);
+    }
+
+    /**
+     * Fungsi untuk menampilkan pesan status/info
+     * Dijalankan saat pembuatan flashdata
+     *
+     * @param string $status
+     * @param string $event
+     * @return string
+     */
+    protected function success_msg($status, $event)
+    {
+        $data = $this->Posts_data->get_simple_data();
+        if($status === 'publik')
+        {
+            $msg = [
+                'view' => 'Lihat post anda',
+                'link' => $data['permalink']
+            ];
+
+            if($event === 'insert')
+            {
+                $msg['info'] = 'Post anda telah berhasil diterbitkan.';
+            }
+            elseif($event === 'update')
+            {
+                $msg['info'] = 'Post anda telah diperbarui.';
+            }
+        }
+        elseif($status)
+        {
+            $msg = [
+                'view' => 'Pratinjau draft anda',
+                'link' => 'javascript:void(0);'
+            ];
+
+            if($event === 'insert')
+            {
+                $msg['info'] = 'Draft anda telah berhasil dibuat.';
+            }
+            elseif($event === 'update')
+            {
+                $msg['info'] = 'Draft anda telah diperbarui.';
+            }
+        }
+        $html =
+        '<div class="row clearfix">
+            <div class="col-sm-12">
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    '. $msg['info'] .' <a href="'.$msg['link'].'" class="alert-link">'. $msg['view'] .'</a>.
+                </div>
+            </div>
+        </div>';
+
+        return $html;
     }
 
     /**
@@ -170,6 +228,9 @@ class Posts extends CI_Controller
     public function update_post($id)
     {
         $this->Posts_data->edit_post($id);
+        $data = $this->Posts_data->get_simple_data();
+        $data['status'] === 'publik' ? $status = 'publik' : $status = 'draft';
+        $this->session->set_flashdata('success_msg', $this->success_msg($status, 'update'));
         redirect('post/edit/' . $id);
     }
 
@@ -181,6 +242,7 @@ class Posts extends CI_Controller
     public function publish_draft($id)
     {
         $this->Posts_data->publish_draft($id);
+        $this->session->set_flashdata('success_msg', $this->success_msg('publik', 'insert'));
     }
 
     /**

@@ -23,6 +23,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- SUCCESS MESSAGE HERE -->
+                        <?php echo $this->session->flashdata('success_msg') ?>
+                        <!-- #END -->
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

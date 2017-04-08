@@ -244,15 +244,27 @@ class Posts_data extends CI_Model
         return $get_data->result();
     }
 
-    public function get_latest_id()
+    /**
+     * Ambil beberapa data dari post yang baru saja dibuat
+     *
+     * @return array
+     */
+    public function get_simple_data()
     {
-        $this->db->select('id_post')->from('os_post')
+        $this->db->select('id_post, status_post, permalink')->from('os_post')
             ->order_by('id_post', 'DESC')->limit(1);
         $result = $this->db->get()->result();
+        $data = [];
         foreach ($result as $res)
         {
-            return $res->id_post;
+            $data = [
+                'id' => $res->id_post,
+                'status' => $res->status_post,
+                'permalink' => $res->permalink
+            ];
         }
+
+        return $data;
     }
 
     /**
