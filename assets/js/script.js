@@ -109,6 +109,7 @@ var postAttribute = {
         postVisibility();
         postStatus();
         isEditedPost();
+        defaultCategory();
         getKategori($kats);
     }
 }
@@ -226,6 +227,14 @@ function getKategori(target) {
         return this.value;
     }).get().join(",");
     $('#kategori').val(string);
+}
+
+function defaultCategory() {
+    if($("#kategori").val() === '') {
+        var length = $kats.length;
+        //$("input:checkbox#basic_checkbox_1").prop('checked', true);
+        $("input:checkbox.filled-in").first().prop('checked', true);
+    }
 }
 
 // scripts running when the page is loaded
