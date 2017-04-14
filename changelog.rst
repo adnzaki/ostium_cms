@@ -2,6 +2,22 @@
 Change Log
 ##########
 
+Version 0.2.0-dev
+=================
+What's new in this version?
+    - Added support for SEO friendly URL (permalink)
+    - Improve post filtering with filter by date and category
+    - Allow user to change post status that has been published
+    - Added "Search Post" feature
+    - Added post visibility (public or private) feature
+    - Added support for multiple category
+    - Added post tagging feature
+    - Added "View Post" button after insert or update a post
+    - Improved logic and performance
+    - Fixed some bugs
+Notes:
+    - Please update your database structure by importing ostium_db.sql included in this repo
+
 Version 0.1.1-dev
 =================
 What's new?
