@@ -39,6 +39,7 @@ class Posts extends CI_Controller
             'main_title'    => 'Ostium CMS | Post',
             'kategori'      => $this->Posts_data->get_post_attribute('os_kategori'),
             'user'          => $this->Posts_data->get_post_attribute('os_user'),
+            'tag'           => $this->Posts_data->get_post_attribute('os_tag'),
             'tanggal'       => $this->Posts_data->get_post_date()
         ];
 

@@ -14,7 +14,10 @@
 <link href="<?php echo $asset ?>plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <!-- Bootstrap Select Css -->
-<link href="<?php echo $asset ?>plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<link href="<?php echo $asset ?>plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+
+<!-- jQuery UI Css -->
+<link href="<?php echo $asset ?>plugins/jquery/jquery-ui.min.css" rel="stylesheet" />
 
 <!-- Waves Effect Css -->
 <link href="<?php echo $asset ?>plugins/node-waves/waves.css" rel="stylesheet" />

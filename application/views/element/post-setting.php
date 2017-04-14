@@ -30,7 +30,6 @@
 
                             ?>
                         </div>
-                        <div id="permalink-text"></div>
                     </div>
                 </div>
             </div>
@@ -59,7 +58,7 @@
             <div class="row clearfix">
                 <div class="col-xs-12">
                     <?php
-                    foreach($kategori->result() as $kat)
+                    foreach($kategori as $kat)
                     {
                         if(! isset($post_id))
                         {
@@ -83,13 +82,34 @@
                 </div>
             </div>
         </div>
+        <li class="header">TAG</li>
+        <div class="setting-content" id="tag-control">
+            <div class="row clearfix">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control" @keyup.enter="addTag"
+                            id="tag-input" placeholder="Ketik dan enter untuk menambah tag" />
+                        </div>
+                        <template v-for="(tag, index) in tags">
+                            <span class="label label-info tag-list">
+                                {{ tag.nama_tag }}
+                                <span>
+                                    <button type="button" class="btn bg-info btn-xs waves-effect remove-tag-btn" name="button" @click="removeTag(index)">x</button>
+                                </span>
+                            </span>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
         <li class="header">PENULIS</li>
         <div class="setting-content">
             <div class="row clearfix">
                 <div class="col-xs-12">
                     <select name="" id="user-sender" class="form-control show-tick">
                         <?php
-                        foreach ($user->result() as $user)
+                        foreach ($user as $user)
                         {
                             if(! isset($post_id))
                             {

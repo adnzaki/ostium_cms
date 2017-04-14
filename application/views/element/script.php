@@ -1,9 +1,19 @@
 <script type="text/javascript">
     var baseUrl = "<?php echo base_url() ?>";
+    var ostags = <?= json_encode($tag) ?>;
 </script>
+
+<!-- Vue Js -->
+<script src="<?php echo $asset ?>js/vue.min.js"></script>
+
+<!-- Vue App -->
+<script src="<?php echo $asset ?>js/vue-app.js"></script>
 
 <!-- Jquery Core Js -->
 <script src="<?php echo $asset ?>plugins/jquery/jquery.min.js"></script>
+
+<!-- JqueryUI Js -->
+<script src="<?php echo $asset ?>plugins/jquery/jquery-ui.min.js"></script>
 
 <!-- Bootstrap Core Js -->
 <script src="<?php echo $asset ?>plugins/bootstrap/js/bootstrap.js"></script>

@@ -34,20 +34,23 @@ $("#simpan-draft").on('click', function(e) {
     e.preventDefault();
     var judul       = $("#judul_post").val();
     var kategori    = $("#kategori").val();
+    var tagname     = $("#tag-name").val();
+    var tagslug     = $("#tag-slug").val();
     var penulis     = $("#user").val();
     var konten      = tinymce.get('editor').getContent();
     var gambar      = $("#link-img").val();
     var permalink   = $("#permalink").val();
     var visibilitas = $("#visibilitas").val();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis + '&isi_post=' +
-                        '&visibilitas=' + visibilitas + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&tag-name=' + tagname + '&tag-slug=' + tagslug +
+                        '&user=' + penulis + '&isi_post=' + konten +
+                        '&visibilitas=' + visibilitas + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
     $.ajax({
         url: baseUrl + 'posts/add_draft',
         type: 'POST',
         dataType: 'html',
         data: data,
         success: function() {
-            window.location.href = baseUrl + 'posts/edit_saved_draft/';            
+            window.location.href = baseUrl + 'posts/edit_saved_draft/';
         }
     })
 });
@@ -58,12 +61,14 @@ $("#publish-draft").on('click', function(e) {
     var id          = $("#post-id").val();
     var judul       = $("#judul_post").val();
     var kategori    = $("#kategori").val();
+    var tagname     = $("#tag-name").val();
+    var tagslug     = $("#tag-slug").val();
     var penulis     = $("#user").val();
     var konten      = tinymce.get('editor').getContent();
     var gambar      = $("#link-img").val();
     var permalink   = $("#permalink").val();
-    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&user=' + penulis +
-                        '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
+    var data        = 'judul_post=' + judul + '&kategori=' + kategori + '&tag-name=' + tagname + '&tag-slug=' + tagslug +
+                        '&user=' + penulis + '&isi_post=' + konten + '&gambar-fitur=' + gambar + '&permalink=' + permalink;
     $.ajax({
         url: baseUrl + 'posts/publish_draft/' + id,
         type: 'POST',
@@ -148,10 +153,7 @@ function filterLinkGenerator() {
 $("#judul_post").keyup(function () {
     createLink("#judul_post");
     var getLink = $("#permalink-text").text();
-    var getSeo = getLink.split(" ");
-    var seo = getSeo.slice(1);
-    seo = seo.toString().split("/").slice(5);
-    $("#permalink-input").val(seo);
+    $("#permalink-input").val(getLink.split("/").slice(5));
 });
 
 // edit permalink
@@ -172,7 +174,7 @@ function createLink(input) {
     if (lastChar.search(/\W/) === 0) {
         permalink = permalink.substring(0, permalink.length - 1);
     }
-    $("#permalink-text").html("<b>Permalink: </b><br>" + permalink);
+    $("#permalink-text").html(permalink);
     $("#permalink").val(permalink);
 }
 
@@ -232,9 +234,55 @@ function getKategori(target) {
 function defaultCategory() {
     if($("#kategori").val() === '') {
         var length = $kats.length;
-        //$("input:checkbox#basic_checkbox_1").prop('checked', true);
         $("input:checkbox.filled-in").first().prop('checked', true);
     }
+}
+
+
+function tagSuggestion() {
+    var data = $.map(ostags, function(el) {
+        return {
+            label: el.nama_tag,
+            value: el.id_tag
+        };
+    })
+
+    function split(val) {
+        return val.split(/,\s*/);
+    }
+
+    function extractLast(term) {
+        return split(term).pop();
+    }
+    $("#tag-input").on('keydown', function(event) {
+        if(event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
+            event.preventDefault();
+        }
+    })
+    .autocomplete({
+        minLength: 0,
+        source: function(request, response) {
+            response($.ui.autocomplete.filter(data, extractLast(request.term)));
+        },
+        focus: function(event, ui) {
+            //$("#tag-input").val(ui.item.label);
+            return false;
+        },
+        select: function(event, ui) {
+            //$("tag-input").val(ui.item.label);
+            var terms = split(this.value);
+            terms.pop();
+            terms.push(ui.item.label)
+            terms.push("");
+            this.value = terms.join(", ");
+            return false;
+        }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+        .append( "<div class='tag-suggestion'>" + item.label + "</div>" )
+        .appendTo( ul );
+    };
 }
 
 // scripts running when the page is loaded
@@ -243,6 +291,8 @@ $(window).load(function() {
     activateScroll();
     postAttribute.setUser();
     postAttribute.defaultAttribute();
+    tag.existTag();
+    tagSuggestion();
 });
 
 $(window).resize(function () {

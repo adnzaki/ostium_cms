@@ -9,6 +9,8 @@
                   <input type="hidden" name="gambar-fitur" id="link-img" value="">
                   <input type="hidden" name="visibilitas" id="visibilitas" value="">
                   <input type="hidden" name="status-post" id="status-post" value="">
+                  <input type="hidden" id="tag-name" name="tag-name" value="">
+                  <input type="hidden" id="tag-slug" name="tag-slug" value="">
                   <div class="header">
                       <h2>
                           BUAT POST BARU
@@ -20,6 +22,12 @@
                                       <input type="text" id="judul_post" name="judul_post" class="form-control" placeholder="Judul" />
                                   </div>
                               </div>
+                          </div>
+                      </div>
+                      <div class="row clearfix">
+                          <div class="col-sm-12">
+                              <b>Permalink: </b><br>
+                              <div id="permalink-text"></div>
                           </div>
                       </div>
                       <ul class="header-dropdown m-r--5">

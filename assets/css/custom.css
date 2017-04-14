@@ -161,3 +161,21 @@ section.post-content {
 .os-post-filter:hover {
     text-decoration: none !important;
 }
+
+.tag-list {
+    margin: 5px 5px 5px 0;
+    float: left;
+}
+
+.remove-tag-btn {
+    background-color: rgba(0,0,0,0) !important;
+    box-shadow: none !important;
+    margin: -3px -3px 0 2px;
+}
+.close-small {
+    background-color: #fff;
+}
+
+.tag-suggestion {
+    font-family: "Roboto", sans-serif;
+}

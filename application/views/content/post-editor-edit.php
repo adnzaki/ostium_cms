@@ -12,6 +12,8 @@
                     <input type="hidden" name="gambar-fitur" id="link-img" value="">
                     <input type="hidden" name="visibilitas" id="visibilitas" value="<?= $edit->visibilitas_post ?>">
                     <input type="hidden" name="status-post" id="status-post" value="<?= $edit->status_post ?>">
+                    <input type="hidden" id="tag-name" name="tag-name" value="<?= $edit->tag_post ?>">
+                    <input type="hidden" id="tag-slug" name="tag-slug" value="<?= $edit->tag_slug ?>">
                     <div class="header">
                         <h2>EDIT POST</h2>
                         <div class="row clearfix">
@@ -26,6 +28,12 @@
                         <!-- SUCCESS MESSAGE HERE -->
                         <?php echo $this->session->flashdata('success_msg') ?>
                         <!-- #END -->
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <b>Permalink: </b><br>
+                                <div id="permalink-text"></div>
+                            </div>
+                        </div>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

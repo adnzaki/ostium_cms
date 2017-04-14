@@ -38,7 +38,7 @@
               <select class="form-control show-tick" id="cat-selector">
                   <option value="">-- Semua Kategori --</option>
                   <?php
-                  foreach ($kategori->result() as $kat) {
+                  foreach ($kategori as $kat) {
                       $id = $kat->id_kategori;
                       if($this->uri->segment(5) === $id)
                       {

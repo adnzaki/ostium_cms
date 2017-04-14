@@ -62,7 +62,7 @@ class Posts_data extends CI_Model
     public function get_post_attribute($table)
     {
         $get_data = $this->db->get($table);
-        return $get_data;
+        return $get_data->result();
     }
 
     /**
@@ -162,6 +162,8 @@ class Posts_data extends CI_Model
         $judul      = $this->input->post('judul_post');
         $author     = $this->input->post('user');
         $status     = "publik";
+        $tag_name   = $this->input->post('tag-name');
+        $tag_slug   = $this->input->post('tag-slug');
         $isi_post   = $this->input->post('isi_post');
         $tanggal    = date('Y-m-d H:i:s');
         $gambar     = $this->input->post('gambar-fitur');
@@ -176,6 +178,8 @@ class Posts_data extends CI_Model
             'judul_post'      => $judul,
             'penulis_post'    => $author,
             'status_post'     => $status,
+            'tag_post'        => $tag_name,
+            'tag_slug'        => $tag_slug,
             'visibilitas_post' => $visibilitas,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
@@ -185,6 +189,7 @@ class Posts_data extends CI_Model
 
         $this->db->insert('os_post', $data);
         $this->insert_category($this->db->insert_id());
+        $this->insert_tag();
     }
 
     /**
@@ -196,6 +201,8 @@ class Posts_data extends CI_Model
         $judul    = $this->input->post('judul_post');
         $author   = $this->input->post('user');
         $status   = "draft";
+        $tag_name = $this->input->post('tag-name');
+        $tag_slug = $this->input->post('tag-slug');
         $isi_post = $this->input->post('isi_post');
         $tanggal  = date('Y-m-d H:i:s');
         $gambar   = $this->input->post('gambar-fitur');
@@ -205,6 +212,8 @@ class Posts_data extends CI_Model
             'judul_post'      => $judul,
             'penulis_post'    => $author,
             'status_post'     => $status,
+            'tag_post'        => $tag_name,
+            'tag_slug'        => $tag_slug,
             'visibilitas_post' => $visibilitas,
             'isi_post'        => $isi_post,
             'tanggal_post'    => $tanggal,
@@ -213,6 +222,7 @@ class Posts_data extends CI_Model
         );
         $this->db->insert('os_post', $data);
         $this->insert_category($this->db->insert_id());
+        $this->insert_tag();
     }
 
     /**
@@ -277,6 +287,8 @@ class Posts_data extends CI_Model
         $judul      = $this->input->post('judul_post');
         $author     = $this->input->post('user');
         $status     = $this->input->post('status-post');
+        $tag_name   = $this->input->post('tag-name');
+        $tag_slug   = $this->input->post('tag-slug');
         $visibilitas = $this->input->post('visibilitas');
         $isi_post   = $this->input->post('isi_post');
         $gambar     = $this->input->post('gambar-fitur');
@@ -285,6 +297,8 @@ class Posts_data extends CI_Model
             'judul_post'        => $judul,
             'penulis_post'      => $author,
             'status_post'       => $status,
+            'tag_post'          => $tag_name,
+            'tag_slug'          => $tag_slug,
             'visibilitas_post'  => $visibilitas,
             'isi_post'          => $isi_post,
             'gambar_fitur'      => $gambar,
@@ -293,6 +307,7 @@ class Posts_data extends CI_Model
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
         $this->update_category($id);
+        $this->insert_tag();
     }
 
     /**
@@ -305,6 +320,8 @@ class Posts_data extends CI_Model
         $judul    = $this->input->post('judul_post');
         $author   = $this->input->post('user');
         $status   = "publik";
+        $tag_name = $this->input->post('tag-name');
+        $tag_slug = $this->input->post('tag-slug');
         $isi_post = $this->input->post('isi_post');
         $tanggal  = date('Y-m-d H:i:s');
         $gambar   = $this->input->post('gambar-fitur');
@@ -315,17 +332,20 @@ class Posts_data extends CI_Model
             $status    = "draft";
         }
         $data = array(
-            'judul_post'      => $judul,
-            'penulis_post'    => $author,
-            'status_post'     => $status,
-            'isi_post'        => $isi_post,
-            'tanggal_post'    => $tanggal,
-            'gambar_fitur'    => $gambar,
-            'permalink'       => $permalink
+            'judul_post'    => $judul,
+            'penulis_post'  => $author,
+            'status_post'   => $status,
+            'tag_post'      => $tag_name,
+            'tag_slug'      => $tag_slug,
+            'isi_post'      => $isi_post,
+            'tanggal_post'  => $tanggal,
+            'gambar_fitur'  => $gambar,
+            'permalink'     => $permalink
         );
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
         $this->update_category($id);
+        $this->insert_tag();
     }
 
     /**
@@ -357,6 +377,50 @@ class Posts_data extends CI_Model
                 'id_kategori'   => $kat_array[$i]
             ];
             $this->db->insert('os_kategori_post', $data);
+        }
+    }
+
+    /**
+     * Tambah tag ke dalam tabel os_tag
+     * jika tag yang diinput belum ada
+     *
+     * @return void
+     */
+    public function insert_tag()
+    {
+        $tag_name = $this->input->post('tag-name');
+        $tag_slug = $this->input->post('tag-slug');
+        $name_array = explode(", ", $tag_name);
+        $slug_array = explode(", ", $tag_slug);
+        for($i = 0; $i < sizeof($name_array); $i++)
+        {
+            if(! $this->tag_exists($slug_array[$i]))
+            {
+                $data = [
+                    'nama_tag'  => $name_array[$i],
+                    'slug_tag'  => $slug_array[$i]
+                ];
+                $this->db->insert('os_tag', $data);
+            }
+        }
+    }
+
+    /**
+     * Mengecek apakah tag sudah ada atau belum
+     *
+     * @oaram string $slug
+     * @return bool
+     */
+    protected function tag_exists($slug)
+    {
+        $get = $this->db->get_where('os_tag', ['slug_tag' => $slug]);
+        if($get->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
         }
     }
 
