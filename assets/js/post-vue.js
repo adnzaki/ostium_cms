@@ -37,8 +37,8 @@ var tag = new Vue({
         },
         addTag: function() {
             this.tagLoader($("#tag-input"));
-            let input = $("#tag-input").val();
-            if(input.indexOf(", ") !== -1) {
+            let lastItem = this.tags[this.tags.length - 1].nama_tag;
+            if(lastItem === "") {
                 this.tags.pop();
             }
             $("#tag-input").val("");
