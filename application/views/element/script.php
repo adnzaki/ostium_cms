@@ -6,9 +6,6 @@
 <!-- Vue Js -->
 <script src="<?php echo $asset ?>js/vue.min.js"></script>
 
-<!-- Vue App -->
-<script src="<?php echo $asset ?>js/vue-app.js"></script>
-
 <!-- Jquery Core Js -->
 <script src="<?php echo $asset ?>plugins/jquery/jquery.min.js"></script>
 
@@ -55,7 +52,8 @@
 <script src="<?php echo $asset ?>js/pages/index.js"></script>
 
 <!-- Main Script file -->
-<script src="<?php echo $asset ?>js/script.js"></script>
+<script src="<?php echo $asset ?>js/post.js"></script>
+<script src="<?php echo $asset ?>js/post-vue.js"></script>
 
 <!-- Demo Js -->
 <script src="<?php echo $asset ?>js/demo.js"></script>
