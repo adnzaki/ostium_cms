@@ -114,8 +114,8 @@ var postAttribute = {
         postVisibility();
         postStatus();
         isEditedPost();
-        defaultCategory();
         getKategori($kats);
+        defaultCategory();
     }
 }
 
@@ -233,11 +233,10 @@ function getKategori(target) {
 
 function defaultCategory() {
     if($("#kategori").val() === '') {
-        var length = $kats.length;
         $("input:checkbox.filled-in").first().prop('checked', true);
+        getKategori($kats);
     }
 }
-
 
 function tagSuggestion() {
     var data = $.map(ostags, function(el) {
