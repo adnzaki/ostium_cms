@@ -210,7 +210,7 @@ class Posts extends CI_Controller
         // check whether the post is exist or not
         if($this->Posts_data->post_exists($id))
         {
-            $data['edit_post']      = $this->Posts_data->post_to_edit($id);
+            $data['edit_post']      = $this->Posts_data->edit_post($id);
             $data['post_id']        = $id;
             $this->load->view('section/post-edit', $data);
         }
@@ -228,7 +228,7 @@ class Posts extends CI_Controller
      */
     public function update_post($id)
     {
-        $this->Posts_data->edit_post($id);
+        $this->Posts_data->update_post($id);
         $data = $this->Posts_data->get_simple_data();
         $data['status'] === 'publik' ? $status = 'publik' : $status = 'draft';
         $this->session->set_flashdata('success_msg', $this->success_msg($status, 'update'));

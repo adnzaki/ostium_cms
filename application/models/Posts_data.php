@@ -154,39 +154,85 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Ambil beberapa data dari post yang baru saja dibuat
+     *
+     * @return array
+     */
+    public function get_simple_data()
+    {
+        $this->db->select('id_post, status_post, permalink')->from('os_post')
+            ->order_by('id_post', 'DESC')->limit(1);
+        $result = $this->db->get()->result();
+        $data = [];
+        foreach ($result as $res)
+        {
+            $data = [
+                'id' => $res->id_post,
+                'status' => $res->status_post,
+                'permalink' => $res->permalink
+            ];
+        }
+
+        return $data;
+    }
+
+    /**
+     * Mengambil data dari form
+     * @return array
+     */
+    protected function common_data()
+    {
+        $data = [
+            'judul'     => $this->input->post('judul_post'),
+            'author'    => $this->input->post('user'),
+            'tag_name'  => $this->input->post('tag-name'),
+            'tag_slug'  => $this->input->post('tag-slug'),
+            'isi_post'  => $this->input->post('isi_post'),
+            'tanggal'   => date('Y-m-d H:i:s'),
+            'gambar'    => $this->input->post('gambar-fitur'),
+            'permalink' => $this->input->post('permalink'),
+            'visibilitas' => $this->input->post('visibilitas')
+        ];
+
+        return $data;
+    }
+
+    /**
+     * Data yang selalu diinput ke database
+     * @return array
+     */
+    protected function insert_value()
+    {
+        $input = $this->common_data();
+        $data = [
+            'judul_post'      => $input['judul'],
+            'penulis_post'    => $input['author'],
+            'tag_post'        => $input['tag_name'],
+            'tag_slug'        => $input['tag_slug'],
+            'isi_post'        => $input['isi_post'],
+            'gambar_fitur'    => $input['gambar'],
+            'permalink'       => $input['permalink']
+        ];
+
+        return $data;
+    }
+
+    /**
      * Simpan data ke database
      * @return void
      */
     public function insert_post()
     {
-        $judul      = $this->input->post('judul_post');
-        $author     = $this->input->post('user');
-        $status     = "publik";
-        $tag_name   = $this->input->post('tag-name');
-        $tag_slug   = $this->input->post('tag-slug');
-        $isi_post   = $this->input->post('isi_post');
-        $tanggal    = date('Y-m-d H:i:s');
-        $gambar     = $this->input->post('gambar-fitur');
-        $permalink  = $this->input->post('permalink');
-        $visibilitas = $this->input->post('visibilitas');
+        $input  = $this->common_data();
+        $data   = $this->insert_value();
         if($judul === '')
         {
             $judul     = "Tanpa Judul";
             $status    = "draft";
         }
-        $data = array(
-            'judul_post'      => $judul,
-            'penulis_post'    => $author,
-            'status_post'     => $status,
-            'tag_post'        => $tag_name,
-            'tag_slug'        => $tag_slug,
-            'visibilitas_post' => $visibilitas,
-            'isi_post'        => $isi_post,
-            'tanggal_post'    => $tanggal,
-            'gambar_fitur'    => $gambar,
-            'permalink'       => $permalink
-        );
-
+        $data['status_post']        = "publik";
+        $data['visibilitas_post']   = $input['visibilitas'];
+        $data['tanggal_post']       = $input['tanggal'];
         $this->db->insert('os_post', $data);
         $this->insert_category($this->db->insert_id());
         $this->insert_tag();
@@ -198,28 +244,11 @@ class Posts_data extends CI_Model
      */
     public function insert_draft()
     {
-        $judul    = $this->input->post('judul_post');
-        $author   = $this->input->post('user');
-        $status   = "draft";
-        $tag_name = $this->input->post('tag-name');
-        $tag_slug = $this->input->post('tag-slug');
-        $isi_post = $this->input->post('isi_post');
-        $tanggal  = date('Y-m-d H:i:s');
-        $gambar   = $this->input->post('gambar-fitur');
-        $permalink  = $this->input->post('permalink');
-        $visibilitas = $this->input->post('visibilitas');
-        $data     = array(
-            'judul_post'      => $judul,
-            'penulis_post'    => $author,
-            'status_post'     => $status,
-            'tag_post'        => $tag_name,
-            'tag_slug'        => $tag_slug,
-            'visibilitas_post' => $visibilitas,
-            'isi_post'        => $isi_post,
-            'tanggal_post'    => $tanggal,
-            'gambar_fitur'    => $gambar,
-            'permalink'       => $permalink
-        );
+        $input  = $this->common_data();
+        $data   = $this->insert_value();
+        $data['status_post']        = "draft";
+        $data['visibilitas_post']   = $input['visibilitas'];
+        $data['tanggal_post']       = $input['tanggal'];
         $this->db->insert('os_post', $data);
         $this->insert_category($this->db->insert_id());
         $this->insert_tag();
@@ -248,33 +277,10 @@ class Posts_data extends CI_Model
      * @param int $id
      * @return array()
      */
-    public function post_to_edit($id)
+    public function edit_post($id)
     {
         $get_data = $this->db->get_where('os_post', array('id_post' => $id));
         return $get_data->result();
-    }
-
-    /**
-     * Ambil beberapa data dari post yang baru saja dibuat
-     *
-     * @return array
-     */
-    public function get_simple_data()
-    {
-        $this->db->select('id_post, status_post, permalink')->from('os_post')
-            ->order_by('id_post', 'DESC')->limit(1);
-        $result = $this->db->get()->result();
-        $data = [];
-        foreach ($result as $res)
-        {
-            $data = [
-                'id' => $res->id_post,
-                'status' => $res->status_post,
-                'permalink' => $res->permalink
-            ];
-        }
-
-        return $data;
     }
 
     /**
@@ -282,28 +288,12 @@ class Posts_data extends CI_Model
      * @param int $id
      * @return void
      */
-    public function edit_post($id)
+    public function update_post($id)
     {
-        $judul      = $this->input->post('judul_post');
-        $author     = $this->input->post('user');
-        $status     = $this->input->post('status-post');
-        $tag_name   = $this->input->post('tag-name');
-        $tag_slug   = $this->input->post('tag-slug');
-        $visibilitas = $this->input->post('visibilitas');
-        $isi_post   = $this->input->post('isi_post');
-        $gambar     = $this->input->post('gambar-fitur');
-        $permalink  = $this->input->post('permalink');
-        $data     = array(
-            'judul_post'        => $judul,
-            'penulis_post'      => $author,
-            'status_post'       => $status,
-            'tag_post'          => $tag_name,
-            'tag_slug'          => $tag_slug,
-            'visibilitas_post'  => $visibilitas,
-            'isi_post'          => $isi_post,
-            'gambar_fitur'      => $gambar,
-            'permalink'         => $permalink
-        );
+        $input  = $this->common_data();
+        $data   = $this->insert_value();
+        $data['status_post']      = $this->input->post('status-post');
+        $data['visibilitas_post'] = $input['visibilitas'];
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
         $this->update_category($id);
@@ -317,31 +307,15 @@ class Posts_data extends CI_Model
      */
     public function publish_draft($id)
     {
-        $judul    = $this->input->post('judul_post');
-        $author   = $this->input->post('user');
-        $status   = "publik";
-        $tag_name = $this->input->post('tag-name');
-        $tag_slug = $this->input->post('tag-slug');
-        $isi_post = $this->input->post('isi_post');
-        $tanggal  = date('Y-m-d H:i:s');
-        $gambar   = $this->input->post('gambar-fitur');
-        $permalink  = $this->input->post('permalink');
+        $input  = $this->common_data();
+        $data   = $this->insert_value();
         if($judul === '')
         {
             $judul     = "Tanpa Judul";
             $status    = "draft";
         }
-        $data = array(
-            'judul_post'    => $judul,
-            'penulis_post'  => $author,
-            'status_post'   => $status,
-            'tag_post'      => $tag_name,
-            'tag_slug'      => $tag_slug,
-            'isi_post'      => $isi_post,
-            'tanggal_post'  => $tanggal,
-            'gambar_fitur'  => $gambar,
-            'permalink'     => $permalink
-        );
+        $data['status_post']    = "publik";
+        $data['tanggal_post']   = $input['tanggal'];
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
         $this->update_category($id);
