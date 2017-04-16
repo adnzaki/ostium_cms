@@ -21,6 +21,11 @@ class Home extends CI_Controller
     {
         parent:: __construct();
         $this->load->model('Posts_data');
+        $this->load->helper('ostium');
+        if(! check_session())
+        {
+            redirect('login');
+        }
     }
 
     /**
@@ -40,7 +45,4 @@ class Home extends CI_Controller
         $data['total_comment']  = $this->Posts_data->get_total_comment();
         $this->load->view('main', $data);
     }
-
 }
-
-?>

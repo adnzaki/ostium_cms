@@ -21,10 +21,14 @@ class Posts extends CI_Controller
     {
         parent:: __construct();
         $this->load->model('Posts_data');
-        $this->load->helper('filter');
+        $this->load->helper('ostium');
         $this->load->library('pagination');
         $this->load->config('pagination');
         $this->load->library('ostiumdate');
+        if(! check_session())
+        {
+            redirect('login');
+        }
     }
 
     /**

@@ -140,3 +140,26 @@ if(! function_exists('offset_generator'))
          return $offset;
      }
 }
+
+if(! function_exists('check_session'))
+{
+    /**
+     * Check Session
+     * A function to check whether the session is exist or not
+     *
+     * @return bool
+     */
+     function check_session()
+     {
+         $CI =& get_instance();
+         $session_data = ['username', 'logged_in'];
+         if($CI->session->has_userdata('username'))
+         {
+             return TRUE;
+         }
+         else
+         {
+             return FALSE;
+         }
+     }
+}
