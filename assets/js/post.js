@@ -1,6 +1,6 @@
 /**
  * OstiumCMS
- * A simple, fast and fully customizable Content Management System
+ * A simple, fast and extensible Content Management System
  * for website made by Wolestech (Software Development Agency)
  *
  * @copyright   Copyright (c) 2016-2017, Wolestech | Adnan Zaki

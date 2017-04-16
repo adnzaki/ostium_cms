@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+<?php
+/**
+ * OstiumCMS
+ * A simple, fast and extensible Content Management System
+ * for website made by Wolestech (Software Development Agency)
+ *
+ * @copyright   Copyright (c) 2016-2017, Wolestech | Adnan Zaki
+ * @license     MIT License | https://github.com/adnzaki/ostium_cms/blob/master/LICENSE
+ * @author      Adnan Zaki
+ * @link        http://wolestech.com
+ */
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
