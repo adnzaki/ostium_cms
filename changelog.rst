@@ -2,6 +2,17 @@
 Change Log
 ##########
 
+
+Version 0.2.1-dev
+=================
+What's new in this version?
+    - Fixed bug when loading category in post editor
+    - Fixed bug last tag item cannot be inserted to tag list if it does not have comma and space after it
+    - Refactoring post model (improve logic)
+    - Added login page for security
+Notes:
+    - Please update your database structure by importing ostium_db.sql included in this repo
+
 Version 0.2.0-dev
 =================
 What's new in this version?
