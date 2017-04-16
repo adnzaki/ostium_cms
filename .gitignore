@@ -53,3 +53,4 @@ assets/plugins/tinymce/plugins/responsive_filemanager.zip
 OstiumCMS.phpproj
 application/controllers/Test.php
 application/views/test.php
+*.psd
