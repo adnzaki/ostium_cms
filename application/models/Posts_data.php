@@ -237,12 +237,15 @@ class Posts_data extends CI_Model
     {
         $input  = $this->common_data();
         $data   = $this->insert_value();
-        if($judul === '')
+        if(empty($input['judul']))
         {
-            $judul     = "Tanpa Judul";
-            $status    = "draft";
+            $data['status_post'] = "draft";
+            $data['judul_post'] = "Tanpa Judul";
         }
-        $data['status_post']        = "publik";
+        else
+        {
+            $data['status_post'] = "publik";
+        }
         $data['visibilitas_post']   = $input['visibilitas'];
         $data['tanggal_post']       = $input['tanggal'];
         $this->db->insert('os_post', $data);
@@ -304,7 +307,15 @@ class Posts_data extends CI_Model
     {
         $input  = $this->common_data();
         $data   = $this->insert_value();
-        $data['status_post']      = $this->input->post('status-post');
+        if(empty($input['judul']))
+        {
+            $data['status_post'] = "draft";
+            $data['judul_post'] = "Tanpa Judul";
+        }
+        else
+        {
+            $data['status_post'] = $this->input->post('status-post');
+        }
         $data['visibilitas_post'] = $input['visibilitas'];
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
