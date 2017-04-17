@@ -8,7 +8,7 @@
                 <form action="<?= base_url('posts/update_post/') . $edit->id_post ?>" method="post">
                     <input type="hidden" name="permalink" id="permalink" value="<?= $edit->permalink ?>">
                     <input type="hidden" name="kategori" id="kategori" value="">
-                    <input type="hidden" name="user" id="user" value="">
+                    <input type="hidden" name="user" id="user" value="<?= $edit->penulis_post ?>">
                     <input type="hidden" name="gambar-fitur" id="link-img" value="">
                     <input type="hidden" name="visibilitas" id="visibilitas" value="<?= $edit->visibilitas_post ?>">
                     <input type="hidden" name="status-post" id="status-post" value="<?= $edit->status_post ?>">

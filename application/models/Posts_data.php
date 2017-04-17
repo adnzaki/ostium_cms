@@ -66,6 +66,18 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Get user id from its user_login data
+     *
+     * @return array
+     */
+    public function get_user()
+    {
+        $this->db->select('id_user')->from('os_user')
+        ->where('user_login', $this->session->userdata('username'));
+        return $this->db->get()->result();
+    }
+
+    /**
      * Ambil data post dan draft terbaru
      * @param int $limit
      * @param string $key

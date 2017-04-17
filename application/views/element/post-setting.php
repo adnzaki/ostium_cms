@@ -102,37 +102,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <li class="header">PENULIS</li>
-        <div class="setting-content">
-            <div class="row clearfix">
-                <div class="col-xs-12">
-                    <select name="" id="user-sender" class="form-control show-tick">
-                        <?php
-                        foreach ($user as $user)
-                        {
-                            if(! isset($post_id))
-                            {
-                                echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
-                            }
-                            else
-                            {
-                                $cek = $CI->Posts_data->is_author($user->id_user, $post_id);
-                                if($cek)
-                                {
-                                    echo "<option value='$user->id_user' id='$user->id_user' selected='selected'>$user->user_name</option>";
-                                }
-                                else
-                                {
-                                    echo "<option value='$user->id_user' id='$user->id_user'>$user->user_name</option>";
-                                }
-                            }
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-        </div>
+        </div>        
         <li class="header">GAMBAR FITUR</li>
         <div class="setting-content">
 

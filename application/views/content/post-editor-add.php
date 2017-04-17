@@ -5,7 +5,9 @@
               <form action="<?php echo base_url() ?>posts/add_post" method="post">
                   <input type="hidden" name="permalink" id="permalink" value="">
                   <input type="hidden" name="kategori" id="kategori" value="">
-                  <input type="hidden" name="user" id="user" value="">
+                  <?php foreach($user as $user): ?>
+                      <input type="hidden" name="user" id="user" value="<?= $user->id_user ?>">
+                  <?php endforeach; ?>
                   <input type="hidden" name="gambar-fitur" id="link-img" value="">
                   <input type="hidden" name="visibilitas" id="visibilitas" value="">
                   <input type="hidden" name="status-post" id="status-post" value="">

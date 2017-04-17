@@ -94,21 +94,10 @@ $(document).delegate('.post-delete', 'click', function() {
 
 // Post Attribute Setting
 var postAttribute = {
-    user: "#user-sender",
-    // send user id to form input
-    setUser: function() {
-        $(this.user).on('change', function() {
-            var id = $(this).find(":selected").attr('id');
-            $("#user").val(id);
-        })
-    },
     // default attribute selected when the page is loaded
     defaultAttribute: function() {
-        var user        = $(this.user).find(":selected").attr('id'),
-            gambar      = $("#prev-img").attr('src'),
+        var gambar      = $("#prev-img").attr('src'),
             permalink   = $("#permalink").val();
-
-        $("#user").val(user);
         $("#link-img").val(gambar);
         $("#permalink-text").text(permalink);
         postVisibility();
@@ -288,7 +277,6 @@ function tagSuggestion() {
 $(window).load(function() {
     runTinyMCE();
     activateScroll();
-    postAttribute.setUser();
     postAttribute.defaultAttribute();
     tag.existTag();
     tagSuggestion();
