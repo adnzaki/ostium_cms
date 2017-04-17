@@ -16,6 +16,7 @@ $(".buat-post").on('click', function() {
                 $(this).fadeIn(400);
             })
             runTinyMCE();
+            postAttribute.imageLink();
         });
     })
 });
@@ -94,12 +95,18 @@ $(document).delegate('.post-delete', 'click', function() {
 
 // Post Attribute Setting
 var postAttribute = {
+    imageLink: function() {
+        var gambar = $("#prev-img").attr('src'),
+            linkSplice = gambar.split("/"),
+            imgName = linkSplice.slice(linkSplice.length - 1);
+        $("#link-img").val(imgName);
+    },
     // default attribute selected when the page is loaded
     defaultAttribute: function() {
-        var gambar      = $("#prev-img").attr('src'),
-            permalink   = $("#permalink").val();
-        $("#link-img").val(gambar);
-        $("#permalink-text").text(permalink);
+        var baseLink = baseUrl + 'read/';
+        var permalink = $("#permalink").val();
+        $("#permalink-text").text(baseLink + permalink);
+        $("#permalink-input").val(permalink);
         postVisibility();
         postStatus();
         isEditedPost();
@@ -163,8 +170,9 @@ function createLink(input) {
     if (lastChar.search(/\W/) === 0) {
         permalink = permalink.substring(0, permalink.length - 1);
     }
+    var seoTitle = permalink.split("/").slice(5);
     $("#permalink-text").html(permalink);
-    $("#permalink").val(permalink);
+    $("#permalink").val(seoTitle);
 }
 
 $("input.status-post-input").on('click', function() {
@@ -289,6 +297,7 @@ $(window).resize(function () {
 function responsive_filemanager_callback(field_id) {
     var image = $("#" + field_id).val();
     $("#prev-img").attr('src', image);
+    postAttribute.imageLink();
 }
 
 var $list = $('.list-setting'),

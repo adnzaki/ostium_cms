@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         <li class="header">GAMBAR FITUR</li>
         <div class="setting-content">
 
@@ -120,7 +120,7 @@
                     {
                         foreach ($edit_post as $edit)
                         {
-                            echo "<img src='$edit->gambar_fitur ?>' class='img-responsive' id='prev-img'>";
+                            echo "<img src='$edit->gambar_fitur' class='img-responsive' id='prev-img'>";
                         }
                     }
                     ?>
