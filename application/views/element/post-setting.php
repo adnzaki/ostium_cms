@@ -120,7 +120,15 @@
                     {
                         foreach ($edit_post as $edit)
                         {
-                            echo "<img src='$edit->gambar_fitur' class='img-responsive' id='prev-img'>";
+                            if($edit->gambar_fitur === 'no-image.png')
+                            {
+                                echo "<img src='" . $asset . "images/no-image.png' class='img-responsive' id='prev-img'>";
+                            }
+                            else
+                            {
+                                $source = 'plugins/tinymce/plugins/filemanager/source/';
+                                echo "<img src='" . $asset . $source . $edit->gambar_fitur . "' class='img-responsive' id='prev-img'>";
+                            }
                         }
                     }
                     ?>
