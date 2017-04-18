@@ -223,7 +223,7 @@ class Posts_data extends CI_Model
             'tag_slug'        => $input['tag_slug'],
             'isi_post'        => $input['isi_post'],
             'gambar_fitur'    => $input['gambar'],
-            'permalink'       => $input['permalink']
+            'permalink'       => $this->validate_permalink($input['permalink'])
         ];
 
         return $data;
@@ -288,6 +288,44 @@ class Posts_data extends CI_Model
     }
 
     /**
+     * Fungsi ini digunakan untuk memvalidasi permalink yang diinput oleh user
+     * Jika terdapat permalink yang sama dengan permalink yang sudah ada,
+     * misalnya "budak", maka secara otomatis sistem akan menambahkan inisial
+     * angka di belakangnya menjadi "budak-2" dan seterusnya.
+     * Ini digunakan untuk menghindari terjadinya kesamaan antar permalink,
+     * karena setiap permalink adalah "Unique Title" sehingga harus berbeda satu sama lain
+     *
+     * @param string $link
+     * @return string
+     */
+    protected function validate_permalink($link)
+    {
+        $param = "permalink REGEXP '" . $link . "-[0-9]$' OR permalink='" . $link . "'";
+        $query = $this->db->select('id_post, permalink')->from('os_post')
+            ->where($param)->order_by('id_post', 'DESC')->limit(1)->get();
+        if($query->num_rows() > 0)
+        {
+            foreach ($query->result() as $res)
+            {
+                $exist_link = $res->permalink;
+                $last_char = substr($exist_link, strlen($exist_link) - 1);
+                if(preg_match('/[0-9]/', $last_char) === 1)
+                {
+                    preg_match_all('/[0-9]/', $exist_link, $matches);
+                    $get_num = implode("", $matches[0]);
+                    $link .= "-" . intval($get_num + 1);
+                }
+                else
+                {
+                    $link .= "-2";
+                }
+            }
+        }
+
+        return $link;
+    }
+
+    /**
      * Mengambil post yang akan diedit
      * @param int $id
      * @return array()
@@ -317,6 +355,7 @@ class Posts_data extends CI_Model
             $data['status_post'] = $this->input->post('status-post');
         }
         $data['visibilitas_post'] = $input['visibilitas'];
+        $data['permalink'] = $input['permalink'];
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
         $this->update_category($id);
@@ -339,6 +378,7 @@ class Posts_data extends CI_Model
         }
         $data['status_post']    = "publik";
         $data['tanggal_post']   = $input['tanggal'];
+        $data['permalink'] = $input['permalink'];
         $this->db->where('id_post', $id);
         $this->db->update('os_post', $data);
         $this->update_category($id);
