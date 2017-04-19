@@ -435,7 +435,7 @@ class Posts_data extends CI_Model
      * @param string $event
      * @return string
      */
-    public function validate_permalink($link, $event)
+    protected function validate_permalink($link, $event)
     {
         $event === 'add' ? $start = 0 : $start = 1;
         $param = "permalink REGEXP '" . $link . "-[0-9]$' OR permalink='" . $link . "'";
