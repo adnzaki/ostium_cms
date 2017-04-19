@@ -513,29 +513,4 @@ class Posts_data extends CI_Model
         }
     }
 
-    /**
-     * Fungsi yang digunakan untuk mengecek apakah penulis
-     * yang ada pada opsi "Penulis" merupakan pemilik post atau bukan
-     *
-     * @param int $user_id
-     * @param int $post_id
-     * @return bool
-     */
-    public function is_author($user_id, $post_id)
-    {
-        $this->db->select('id_user')->from('os_user');
-        $this->db->join('os_post', 'os_post.penulis_post = os_user.id_user');
-        $data = ['id_user' => $user_id, 'id_post' => $post_id];
-        $this->db->where($data);
-        $get = $this->db->get();
-        if($get->num_rows() > 0)
-        {
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
-    }
-
 }
