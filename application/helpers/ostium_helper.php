@@ -163,3 +163,25 @@ if(! function_exists('check_session'))
          }
      }
 }
+
+if(! function_exists('in_assoc_array'))
+{
+    /**
+     * In Assoc Array
+     * This is a very simple function to check if a value exists in an associative array
+     *
+     * @param mixed $needle
+     * @param array $array
+     * @return bool
+     */
+    function in_assoc_array($needle, $array)
+    {
+        for($i = 0; $i < count($array); $i++)
+        {
+            if(in_array($needle, $array[$i]))
+            {
+                return TRUE;
+            }
+        }
+    }
+}
