@@ -2,6 +2,15 @@
 Change Log
 ##########
 
+Version 0.2.2-dev
+=================
+What's new in this version?
+    - Remove option to select author in post editor
+    - Automatically select author in post editor by using user data
+    - Improve permalink and featured image to have dynamic URL
+    - Validate permalink to avoid similarity each other
+Notes:
+    - It's highly recommended to delete all posts before trying this version
 
 Version 0.2.1-dev
 =================
