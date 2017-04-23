@@ -6,7 +6,7 @@
             <th>Kategori</th>
             <th>Penulis</th>
             <th>Tanggal</th>
-            <th colspan="2" class="align-center">Tindakan</th>
+            <th colspan="2" class="align-center">Action</th>
         </tr>
     </thead>
     <tbody>
