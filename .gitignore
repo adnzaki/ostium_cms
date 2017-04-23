@@ -54,3 +54,4 @@ OstiumCMS.phpproj
 application/controllers/Test.php
 application/views/test.php
 *.psd
+application/views/test-success.php
