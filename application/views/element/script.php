@@ -1,6 +1,5 @@
 <script type="text/javascript">
     var baseUrl = "<?php echo base_url() ?>";
-    var ostags = <?= json_encode($tag) ?>;
 </script>
 
 <!-- Vue Js -->

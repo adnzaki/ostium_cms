@@ -40,6 +40,7 @@
         $(window).load(function () {
             $(".post-sidebar").show();
         })
+        var ostags = <?= json_encode($tag) ?>;
     </script>
 </body>
 

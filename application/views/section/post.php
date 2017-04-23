@@ -36,6 +36,9 @@
     <?php $this->view('element/sidebar') ?>
     <?php $this->view('content/post-all') ?>
     <?php $this->view('content/post-editor-add') ?>
+    <script type="text/javascript">
+        var ostags = <?= json_encode($tag) ?>;
+    </script>
     <?php $this->view('element/script') ?>
 </body>
 
