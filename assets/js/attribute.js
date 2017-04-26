@@ -49,9 +49,6 @@ var at = new Vue({
                 }
             })
         },
-        coba: function() {
-            alert('bangke!!!');
-        },
         categoryToEdit: function(id) {
             $.ajax({
                 url: baseUrl + 'attribute/edit_category/' + id,
