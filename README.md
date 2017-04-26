@@ -6,12 +6,12 @@ Wolestech (rintisan startup yang dibangun sekelompok mahasiswa TI-14C STMIK Bina
 ## Peringatan
 Aplikasi ini masih dalam tahap awal pengembangan awal dan belum dapat digunakan untuk keperluan produksi.
 
-##Instalasi (Khusus Windows)
+## Instalasi (Khusus Windows)
 - Download OstiumCMS kemudian ekstrak di dalam folder web server anda, misalnya C:\Program Files\xampp\htdocs
 - Buat database dengan nama 'ostium_db' (Anda bisa menggunakan nama lain dengan syarat anda harus mengubah file konfigurasi di folder application\config\database.php
 - Import database dengan mengupload file ostium_db.sql yang sudah disediakan pada source code ini
 - Jika anda menggunakan pengaturan database yang berbeda, buka folder application\config\database.php kemudian sesuaikan konfigurasi database sesuai dengan yang ada pada sistem database anda seperti username, hostname, password, dsb.
 - Selesai, jalankan pada web browser anda.
 
-##Server Requirement
+## Server Requirement
 PHP 5.6 ke atas.
