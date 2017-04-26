@@ -40,7 +40,7 @@
     margin-right: 10px;
 }
 
-.post-edit, .post-delete {
+.pointer {
     cursor: pointer;
 }
 
@@ -224,6 +224,19 @@ section.post-content {
 
 .os-msg-error {
     color: #600606 !important;
+}
+
+#form-edit-kategori, .load-content {
+    display: none;
+}
+
+.load-content {
+    text-align: center;
+}
+
+.os-error-input {
+    color: rgb(199, 54, 54);
+    font-size: 13px;
 }
 
 

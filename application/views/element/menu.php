@@ -25,7 +25,11 @@
             </ul> -->
         </li>
         <li>
-            <a href="javascript:void(0);" class="menu-toggle">
+            <a href="<?php echo base_url('post-attribute') ?>">
+                <i class="material-icons">extension</i>
+                <span>Kategori & Tag</span>
+            </a>
+            <!-- <a href="javascript:void(0);" class="menu-toggle">
                 <i class="material-icons">trending_down</i>
                 <span>Attribute</span>
             </a>
@@ -36,7 +40,7 @@
                 <li>
                     <a href="javascript:void(0);">Tag</a>
                 </li>
-            </ul>
+            </ul> -->
         </li>
         <li>
             <a href="pages/changelogs.html">
