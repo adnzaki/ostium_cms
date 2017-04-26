@@ -21,7 +21,6 @@ class Posts extends CI_Controller
     {
         parent:: __construct();
         $this->load->model('Posts_data');
-        $this->load->helper('ostium');
         $this->load->library('pagination');
         $this->load->config('pagination');
         $this->load->library('ostiumdate');
@@ -216,6 +215,7 @@ class Posts extends CI_Controller
         {
             $data['edit_post']      = $this->Posts_data->edit_post($id);
             $data['post_id']        = $id;
+            $data['main_title']     = "Ostium CMS | Edit Post";
             $this->load->view('section/post-edit', $data);
         }
         else
