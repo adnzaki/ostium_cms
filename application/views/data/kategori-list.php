@@ -10,7 +10,6 @@
         </thead>
         <tbody>
             <tr v-for="(list, index) in categoryList">
-                <input type="hidden" v-model="list.id_kategori" name="" value="">
                 <td>{{ index + 1 }}</td>
                 <td>{{ list.nama_kategori }}</td>
                 <td>{{ list.slug_kategori }}</td>

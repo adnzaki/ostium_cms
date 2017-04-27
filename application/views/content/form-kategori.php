@@ -25,7 +25,6 @@
 </form>
 
 <form method="post" id="edit-kategori" v-else v-for="item in editCategory">
-    <input type="hidden" name="idKategori" id="id-kategori" v-model="item.id" value="">
     <label for="nama-kategori">Nama Kategori</label>
     <div class="form-group">
         <div class="form-line">
