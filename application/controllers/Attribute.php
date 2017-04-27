@@ -45,16 +45,22 @@
       */
      public function category_validation($event, $key = '')
      {
+         $event === 'insert' ?
+            $is_unique = [
+                '|is_unique[os_kategori.nama_kategori]',
+                '|is_unique[os_kategori.slug_kategori]'
+            ] : $is_unique = ['', ''];
+
          $rules = [
              [
                  'field' => 'namaKategori',
                  'label' => 'Nama kategori',
-                 'rules' => 'required|is_unique[os_kategori.nama_kategori]|min_length[3]'
+                 'rules' => 'required'.$is_unique[0].'|min_length[3]'
              ],
              [
                  'field' => 'slugKategori',
                  'label' => 'Slug kategori',
-                 'rules' => 'required|is_unique[os_kategori.slug_kategori]'
+                 'rules' => 'required'.$is_unique[1]
              ],
              [
                  'field' => 'deskripsiKategori',
