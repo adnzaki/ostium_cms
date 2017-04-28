@@ -46,5 +46,6 @@
             </div>
 
         </div>
+        <?php $this->view('content/popup/delete-category'); ?>
     </div>
 </section>

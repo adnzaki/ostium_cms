@@ -14,7 +14,8 @@ var at = new Vue({
             nama: '',
             slug: '',
             deskripsi: ''
-        }
+        },
+        getId: 0
     },
     methods: {
         slugGenerator: function(key) {
@@ -45,9 +46,16 @@ var at = new Vue({
                 url: baseUrl + 'attribute/delete_category/' + id,
                 type: 'POST',
                 success: function() {
-                    at.fetchCategory();
+                    $('#category-delete-confifm').modal('hide');
+                    at.fetchCategory();                    
                 }
             })
+        },
+        deleteConfirm: function(id) {
+            this.getId = id;
+            var color = $("#hapus-kategori").data('color');
+            $('#category-delete-confifm .modal-content').removeAttr('class').addClass('modal-content modal-col-' + color);
+            $('#category-delete-confifm').modal('show');
         },
         categoryToEdit: function(id) {
             $.ajax({
@@ -55,9 +63,6 @@ var at = new Vue({
                 type: 'GET',
                 dataType: 'json',
                 data: 'id=' + id,
-                // beforeSend: function() {
-                //     $(".load-content").show();
-                // },
                 success: function(data) {
                     at.editCategory.splice(0, 1);
                     at.showCategoryEdit = true;

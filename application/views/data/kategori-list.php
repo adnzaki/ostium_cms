@@ -16,7 +16,7 @@
                 <td class="align-center pointer" id="btn-edit-kategori" @click="categoryToEdit(list.id_kategori)">
                     <i class="material-icons">mode_edit</i>
                 </td>
-                <td class="align-center pointer" data-color="red" @click="deleteCategory(list.id_kategori)" id="hapus-kategori">
+                <td class="align-center pointer" data-color="red" @click="deleteConfirm(list.id_kategori)" id="hapus-kategori">
                     <i class="material-icons">delete</i>
                 </td>
             </tr>
