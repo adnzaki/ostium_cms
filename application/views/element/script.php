@@ -8,6 +8,9 @@
 <!-- Jquery Core Js -->
 <script src="<?php echo $asset ?>plugins/jquery/jquery.min.js"></script>
 
+<!-- Validation Plugin Js -->
+<script src="<?php echo $asset ?>plugins/jquery-validation/jquery.validate.js"></script>
+
 <!-- JqueryUI Js -->
 <script src="<?php echo $asset ?>plugins/jquery/jquery-ui.min.js"></script>
 
