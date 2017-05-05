@@ -14,7 +14,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo base_url('post-attribute') ?>">
+            <a href="<?php echo base_url('category-tag') ?>">
                 <i class="material-icons">extension</i>
                 <span>Kategori & Tag</span>
             </a>
