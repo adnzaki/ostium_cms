@@ -5,7 +5,7 @@
                 <h4 class="modal-title" id="defaultModalLabel">Konfirmasi</h4>
             </div>
             <div class="modal-body">
-                Apakah anda yakin ingin menghapus kategori ini? {{ slugDesc }}
+                Apakah anda yakin ingin menghapus kategori ini?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link waves-effect" onclick="at.deleteCategory(at.getId)">OK</button>
