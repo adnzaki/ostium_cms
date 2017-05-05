@@ -66,12 +66,12 @@
                 echo $tanggal;
                 ?>
             </td>
-            <td class="align-center post-edit">
+            <td class="align-center post-edit pointer">
                 <a href="<?php echo base_url('post/edit/').$ap->id_post ?>">
                     <i class="material-icons">mode_edit</i>
                 </a>
             </td>
-            <td class="align-center post-delete" data-post="<?=$ap->id_post ?>" data-color="red">
+            <td class="align-center post-delete pointer" data-post="<?=$ap->id_post ?>" data-color="red">
                 <i class="material-icons">delete</i>
             </td>
         </tr>
