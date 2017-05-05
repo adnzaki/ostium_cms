@@ -47,7 +47,7 @@ var at = new Vue({
                 type: 'POST',
                 success: function() {
                     $('#category-delete-confifm').modal('hide');
-                    at.fetchCategory();                    
+                    at.fetchCategory();
                 }
             })
         },
