@@ -37,6 +37,7 @@ class Home extends CI_Controller
         $data['asset']          = base_url()."assets/";
         $data['main_title']     = 'Ostium CMS | Dashboard';
         $data['kategori']       = $this->Posts_data->get_post_attribute('os_kategori');
+        $data['user']           = $this->Posts_data->get_user();
         $data['tag']            = $this->Posts_data->get_post_attribute('os_tag');
         $data['recent_post']    = $this->Posts_data->get_recent_post(5, 'publik');
         $data['recent_draft']   = $this->Posts_data->get_recent_post(5, 'draft');
