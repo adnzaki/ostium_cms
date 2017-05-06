@@ -185,3 +185,27 @@ if(! function_exists('in_assoc_array'))
         }
     }
 }
+
+if(! function_exists('menu_active'))
+{
+    /**
+     * Menu Active
+     * A function to give a mark whether the menu items is current page
+     *
+     * @param string $uri
+     * @return string
+     */
+    function menu_active($uri)
+    {
+        if(! strpos($_SERVER['PHP_SELF'], $uri))
+        {
+            $class = '';
+        }
+        else
+        {
+            $class = 'active';
+        }
+
+        return $class;
+    }
+}
