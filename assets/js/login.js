@@ -43,7 +43,7 @@ $(document).ready(function() {
                     else {
                         $(".os-status").removeClass('os-msg-error');
                         $(".os-status").text("Login berhasil, mengalihkan halaman...");
-                        window.location.href = baseUrl;
+                        window.location.href = baseUrl + 'home';
                     }
                 }
             })
