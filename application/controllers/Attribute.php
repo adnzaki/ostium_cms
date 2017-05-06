@@ -17,6 +17,7 @@
      {
          parent:: __construct();
          $this->load->model('Attribute_data');
+         $this->load->model('Posts_data');
          if(! check_session())
          {
              redirect('login');
