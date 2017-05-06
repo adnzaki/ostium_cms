@@ -209,3 +209,20 @@ if(! function_exists('menu_active'))
         return $class;
     }
 }
+
+if(! function_exists('user_data'))
+{
+    /**
+     * User Data
+     * Display some user data on the sidebar
+     *
+     * @param string $data
+     * @return string
+     */
+    function user_data($data)
+    {
+        $CI =& get_instance();
+        $user = json_decode(json_encode($CI->Posts_data->get_user()), true);
+        return $user[0][$data];
+    }
+}

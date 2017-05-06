@@ -72,9 +72,8 @@ class Posts_data extends CI_Model
      */
     public function get_user()
     {
-        $this->db->select('id_user')->from('os_user')
-        ->where('user_login', $this->session->userdata('username'));
-        return $this->db->get()->result();
+        $query = $this->db->get_where('os_user', ['user_login' => $this->session->userdata('username')]);
+        return $query->result();
     }
 
     /**
