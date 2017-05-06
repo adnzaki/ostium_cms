@@ -222,7 +222,8 @@ if(! function_exists('user_data'))
     function user_data($data)
     {
         $CI =& get_instance();
-        $user = json_decode(json_encode($CI->Posts_data->get_user()), true);
+        $query = $CI->db->get_where('os_user', ['user_login' => $CI->session->userdata('username')]);
+        $user = $query->result_array();
         return $user[0][$data];
     }
 }
