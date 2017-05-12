@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * OstiumCMS Indonesia Date Class
  *
- * Menyediakan sekumpulan fungsi untuk menampilkan tanggal berbahasa Indonesia
+ * Menyediakan sekumpulan fungsi untuk menampilkan tanggal dengan format berbahasa Indonesia
  *
  * @package		Application
  * @subpackage	Libraries
@@ -106,6 +106,8 @@ class OstiumDate
     /**
      * Set tanggal dengan tampilan lengkap
      * Misalnya: Sabtu, 1 Oktober 2016
+     * Format: fullDate(1, 10, 2016)
+     * Jika argumen kosong akan menampilkan tanggal hari ini
      *
      * @param mixed $date
      * @param mixed $month
@@ -143,11 +145,14 @@ class OstiumDate
     /**
      * Set tanggal dengan tampilan ringkas
      * Misalnya: 26-12-2016
+     * Format: shortDate(26, 12, 2016, '-')
+     * Jika argumen kosong akan menampilkan tanggal hari ini,
+     * dengan pemisah tanggal default adalah tanda strip (-)
      *
      * @param mixed $date
      * @param mixed $month
      * @param mixed $year
-     * @param mixed $separator
+     * @param string $separator
      * @return string
      */
     public function shortDate($date = '', $month = '', $year = '', $separator = '-')
@@ -186,6 +191,7 @@ class OstiumDate
      * Contoh: 'd' = 26, 'D' = Sen, 26, 'Dd' = Senin, 26
      *         'm' = 12, 'M' = Des, Mm = Desember, Y = 2016
      * Contoh eksekusi: format('D-M-Y', '1-9-2016', '-')
+     * akan menampilkan hasil: Kam, 1-Sep-2016
      * => argumen ke-3 akan menghasilkan spasi jika dikosongkan
      *
      * @param string $pattern
@@ -199,8 +205,7 @@ class OstiumDate
         $day    = intval($date[0]);
         $month  = intval($date[1]);
         $year   = $date[2];
-        // $day    = intval($day);
-        // $month  = intval($month);
+        
         if(! $this->dateValidation($day, $month, $year))
         {
             $hint = $day . "-" . $month . "-" . $year;
