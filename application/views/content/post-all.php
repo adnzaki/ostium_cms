@@ -60,8 +60,7 @@
                   foreach ($tanggal as $tgl) {
                       $date = explode(" ", $tgl->tanggal_post);
                       $date_to_set = $date[0];
-                      $set_date = explode("-", $date_to_set);
-                      $print_date = $this->ostiumdate->format('d-Mm-y', $set_date[2].'-'.$set_date[1].'-'.$set_date[0]);
+                      $print_date = $this->ostiumdate->format('d-Mm-y', reverse($date_to_set, '-'));
                       $escape_day = explode(" ", $print_date);
                       $date_value = array(
                           'month' => $escape_day[1] . ' ' . $escape_day[2],
