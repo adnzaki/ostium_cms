@@ -227,3 +227,36 @@ if(! function_exists('user_data'))
         return $user[0][$data];
     }
 }
+
+if(! function_exists('reverse'))
+{
+    /**
+     * Reverse
+     * Reverse the word provided by user
+     *
+     * @param string $word
+     * @param string $separator
+     * @return string
+     */
+    function reverse($word, $separator)
+    {
+        $explode = explode($separator, $word);
+        $reverseWord = '';
+        $lastIndex = count($explode) - 1;
+        for($i = 0; $i < count($explode); $i++)
+        {
+
+            if(count($explode) == 1)
+            {
+                $reverseWord .= $explode[$i];
+            }
+            else
+            {
+                $i === 0 ? $j = $lastIndex : $j = $lastIndex - $i;
+                $reverseWord .= $explode[$j] . $separator;
+            }
+        }
+
+        return substr($reverseWord, 0, strlen($reverseWord) - 1);
+    }
+}
