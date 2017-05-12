@@ -14,12 +14,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * OstiumCMS Filter Link Helpers
+ * OstiumCMS Common Helpers
  *
  * @package		Application
  * @subpackage	Helpers
  * @category	Helpers
  * @author		Adnan Zaki
+ * @version     1.0
  * @link		https://github.com/adnzaki/ostium_cms/
  */
 
@@ -152,7 +153,6 @@ if(! function_exists('check_session'))
      function check_session()
      {
          $CI =& get_instance();
-         $session_data = ['username', 'logged_in'];
          if($CI->session->has_userdata('username'))
          {
              return TRUE;
@@ -245,8 +245,7 @@ if(! function_exists('reverse'))
         $lastIndex = count($explode) - 1;
         for($i = 0; $i < count($explode); $i++)
         {
-
-            if(count($explode) == 1)
+            if(count($explode) === 1)
             {
                 $reverseWord .= $explode[$i];
             }
